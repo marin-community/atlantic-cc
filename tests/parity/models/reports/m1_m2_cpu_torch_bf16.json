@@ -1,0 +1,370 @@
+{
+ "environment": {
+  "machine": "Linux x86_64",
+  "jax": "cpu"
+ },
+ "terminal": "all",
+ "runs": {
+  "torch-bf16": {
+   "seconds": {
+    "pooled": 188.1,
+    "terminal": 5540.8
+   },
+   "pooled": {
+    "levanter": {
+     "bf16": {
+      "n": 2000,
+      "max": 0.002404332160949707,
+      "p99": 0.0009863297641277311,
+      "p50": 9.553134441375732e-05,
+      "mean": 0.0001783657930791378,
+      "identical_fraction": 0.048
+     },
+     "fp32": {
+      "n": 2000,
+      "max": 0.004503309726715088,
+      "p99": 0.0024101653695106505,
+      "p50": 0.0004242993891239166,
+      "mean": 0.0005724229998886585,
+      "identical_fraction": 0.0
+     }
+    },
+    "stored_tpu": {
+     "all": {
+      "abs_diff": {
+       "n": 2000,
+       "max": 0.0005993843078613281,
+       "p99": 0.0002111367881298065,
+       "p50": 2.384185791015625e-07,
+       "mean": 1.0469548404216767e-05,
+       "identical_fraction": 0.092
+      },
+      "decisions": {
+       "n": 2000,
+       "agreement": 1.0,
+       "n_flips": 0,
+       "max_flip_distance_to_threshold": 0.0
+      }
+     },
+     "natural_strata": {
+      "abs_diff": {
+       "n": 1443,
+       "max": 0.0005993843078613281,
+       "p99": 0.0002302992343902586,
+       "p50": 2.384185791015625e-07,
+       "mean": 1.1629168762569203e-05,
+       "identical_fraction": 0.09702009702009702
+      },
+      "decisions": {
+       "n": 1443,
+       "agreement": 1.0,
+       "n_flips": 0,
+       "max_flip_distance_to_threshold": 0.0
+      }
+     },
+     "by_crawl": {
+      "CC-MAIN-2013-20": {
+       "abs_diff": {
+        "n": 345,
+        "max": 0.0005993843078613281,
+        "p99": 0.00018250226974487308,
+        "p50": 2.980232238769531e-07,
+        "mean": 1.1778784834820292e-05,
+        "identical_fraction": 0.057971014492753624
+       },
+       "decisions": {
+        "n": 345,
+        "agreement": 1.0,
+        "n_flips": 0,
+        "max_flip_distance_to_threshold": 0.0
+       }
+      },
+      "CC-MAIN-2021-04": {
+       "abs_diff": {
+        "n": 374,
+        "max": 0.00044292211532592773,
+        "p99": 0.00021004915237426703,
+        "p50": 2.384185791015625e-07,
+        "mean": 1.254572189427952e-05,
+        "identical_fraction": 0.06951871657754011
+       },
+       "decisions": {
+        "n": 374,
+        "agreement": 1.0,
+        "n_flips": 0,
+        "max_flip_distance_to_threshold": 0.0
+       }
+      },
+      "CC-MAIN-2024-33": {
+       "abs_diff": {
+        "n": 829,
+        "max": 0.0005018711090087891,
+        "p99": 0.0002223247289657597,
+        "p50": 1.7881393432617188e-07,
+        "mean": 9.643298150259278e-06,
+        "identical_fraction": 0.11459589867310012
+       },
+       "decisions": {
+        "n": 829,
+        "agreement": 1.0,
+        "n_flips": 0,
+        "max_flip_distance_to_threshold": 0.0
+       }
+      },
+      "CC-NEWS-2016-08": {
+       "abs_diff": {
+        "n": 452,
+        "max": 0.00039580464363098145,
+        "p99": 0.000207892656326294,
+        "p50": 2.384185791015625e-07,
+        "mean": 9.267747534059845e-06,
+        "identical_fraction": 0.09513274336283185
+       },
+       "decisions": {
+        "n": 452,
+        "agreement": 1.0,
+        "n_flips": 0,
+        "max_flip_distance_to_threshold": 0.0
+       }
+      }
+     },
+     "by_production_device": {
+      "TPU v4": {
+       "abs_diff": {
+        "n": 277,
+        "max": 0.0002695918083190918,
+        "p99": 0.00019490242004394532,
+        "p50": 2.980232238769531e-07,
+        "mean": 8.7832931146725e-06,
+        "identical_fraction": 0.02527075812274368
+       },
+       "decisions": {
+        "n": 277,
+        "agreement": 1.0,
+        "n_flips": 0,
+        "max_flip_distance_to_threshold": 0.0
+       }
+      },
+      "TPU v5": {
+       "abs_diff": {
+        "n": 695,
+        "max": 0.00042068958282470703,
+        "p99": 0.00019813388586044275,
+        "p50": 1.7881393432617188e-07,
+        "mean": 8.256272446337363e-06,
+        "identical_fraction": 0.10359712230215827
+       },
+       "decisions": {
+        "n": 695,
+        "agreement": 1.0,
+        "n_flips": 0,
+        "max_flip_distance_to_threshold": 0.0
+       }
+      },
+      "TPU v5 lite": {
+       "abs_diff": {
+        "n": 885,
+        "max": 0.0005993843078613281,
+        "p99": 0.00023141622543334958,
+        "p50": 2.8312206268310547e-07,
+        "mean": 1.3490475840487723e-05,
+        "identical_fraction": 0.059887005649717516
+       },
+       "decisions": {
+        "n": 885,
+        "agreement": 1.0,
+        "n_flips": 0,
+        "max_flip_distance_to_threshold": 0.0
+       }
+      },
+      "TPU v6 lite": {
+       "abs_diff": {
+        "n": 143,
+        "max": 0.00020700693130493164,
+        "p99": 0.00010106086730957038,
+        "p50": 2.9802322387695312e-08,
+        "mean": 5.796812214217819e-06,
+        "identical_fraction": 0.36363636363636365
+       },
+       "decisions": {
+        "n": 143,
+        "agreement": 1.0,
+        "n_flips": 0,
+        "max_flip_distance_to_threshold": 0.0
+       }
+      }
+     }
+    }
+   },
+   "terminal": {
+    "levanter": {},
+    "stored_tpu": {
+     "all": {
+      "abs_diff": {
+       "n": 1629,
+       "max": 0.011845767498016357,
+       "p99": 0.007749781608581544,
+       "p50": 0.001132369041442871,
+       "mean": 0.0016744063630873913,
+       "identical_fraction": 0.02394106813996317
+      },
+      "decisions": {
+       "n": 1629,
+       "agreement": 0.9938612645794966,
+       "n_flips": 10,
+       "max_flip_distance_to_threshold": 0.005438417196273804
+      }
+     },
+     "natural_strata": {
+      "abs_diff": {
+       "n": 1222,
+       "max": 0.011845767498016357,
+       "p99": 0.007753465771675108,
+       "p50": 0.0010732412338256836,
+       "mean": 0.0016027987734970992,
+       "identical_fraction": 0.027004909983633387
+      },
+      "decisions": {
+       "n": 1222,
+       "agreement": 0.997545008183306,
+       "n_flips": 3,
+       "max_flip_distance_to_threshold": 0.0024278461933135986
+      }
+     },
+     "by_crawl": {
+      "CC-MAIN-2013-20": {
+       "abs_diff": {
+        "n": 271,
+        "max": 0.010737806558609009,
+        "p99": 0.008234637975692767,
+        "p50": 0.0011293292045593262,
+        "mean": 0.0016518976415655269,
+        "identical_fraction": 0.02214022140221402
+       },
+       "decisions": {
+        "n": 271,
+        "agreement": 0.996309963099631,
+        "n_flips": 1,
+        "max_flip_distance_to_threshold": 0.0033906102180480957
+       }
+      },
+      "CC-MAIN-2021-04": {
+       "abs_diff": {
+        "n": 315,
+        "max": 0.008790194988250732,
+        "p99": 0.008270790576934828,
+        "p50": 0.001181483268737793,
+        "mean": 0.0017465836471981472,
+        "identical_fraction": 0.009523809523809525
+       },
+       "decisions": {
+        "n": 315,
+        "agreement": 0.9904761904761905,
+        "n_flips": 3,
+        "max_flip_distance_to_threshold": 0.005438417196273804
+       }
+      },
+      "CC-MAIN-2024-33": {
+       "abs_diff": {
+        "n": 720,
+        "max": 0.01090693473815918,
+        "p99": 0.007667222023010241,
+        "p50": 0.0012440085411071777,
+        "mean": 0.0017479329887363645,
+        "identical_fraction": 0.029166666666666667
+       },
+       "decisions": {
+        "n": 720,
+        "agreement": 0.9944444444444445,
+        "n_flips": 4,
+        "max_flip_distance_to_threshold": 0.002308100461959839
+       }
+      },
+      "CC-NEWS-2016-08": {
+       "abs_diff": {
+        "n": 323,
+        "max": 0.011845767498016357,
+        "p99": 0.0070448720455169615,
+        "p50": 0.0009006857872009277,
+        "mean": 0.0014590034174845315,
+        "identical_fraction": 0.02786377708978328
+       },
+       "decisions": {
+        "n": 323,
+        "agreement": 0.9938080495356038,
+        "n_flips": 2,
+        "max_flip_distance_to_threshold": 0.0024278461933135986
+       }
+      }
+     },
+     "by_production_device": {
+      "TPU v4": {
+       "abs_diff": {
+        "n": 241,
+        "max": 0.008777111768722534,
+        "p99": 0.005827164649963376,
+        "p50": 0.0009753704071044922,
+        "mean": 0.0014748138016190272,
+        "identical_fraction": 0.012448132780082987
+       },
+       "decisions": {
+        "n": 241,
+        "agreement": 0.9875518672199171,
+        "n_flips": 3,
+        "max_flip_distance_to_threshold": 0.005438417196273804
+       }
+      },
+      "TPU v5": {
+       "abs_diff": {
+        "n": 538,
+        "max": 0.011845767498016357,
+        "p99": 0.007039891481399535,
+        "p50": 0.0011056959629058838,
+        "mean": 0.0016419894190082764,
+        "identical_fraction": 0.026022304832713755
+       },
+       "decisions": {
+        "n": 538,
+        "agreement": 0.9925650557620818,
+        "n_flips": 4,
+        "max_flip_distance_to_threshold": 0.002308100461959839
+       }
+      },
+      "TPU v5 lite": {
+       "abs_diff": {
+        "n": 722,
+        "max": 0.01090693473815918,
+        "p99": 0.008391508460044855,
+        "p50": 0.0011313557624816895,
+        "mean": 0.0017485033276999095,
+        "identical_fraction": 0.018005540166204988
+       },
+       "decisions": {
+        "n": 722,
+        "agreement": 0.997229916897507,
+        "n_flips": 2,
+        "max_flip_distance_to_threshold": 0.0024278461933135986
+       }
+      },
+      "TPU v6 lite": {
+       "abs_diff": {
+        "n": 128,
+        "max": 0.007711887359619141,
+        "p99": 0.006140398979187013,
+        "p50": 0.0015082359313964844,
+        "mean": 0.0017685010097920895,
+        "identical_fraction": 0.0703125
+       },
+       "decisions": {
+        "n": 128,
+        "agreement": 0.9921875,
+        "n_flips": 1,
+        "max_flip_distance_to_threshold": 0.0005043148994445801
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

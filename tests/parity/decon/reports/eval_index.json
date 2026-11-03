@@ -1,0 +1,41 @@
+{
+ "generated": "2026-11-03T03:07:46+00:00",
+ "full_files": 1123,
+ "val_files": 24,
+ "records": 2106579,
+ "full_index_rows": 93734507,
+ "val_index_rows": 39935132,
+ "capacity": 167087048,
+ "index_digest_rebuilt": {
+  "full": {
+   "rows": 93734507,
+   "sum": "99af3e27ee7cc322",
+   "xor": "fce89d9434942e90"
+  },
+  "val": {
+   "rows": 39935132,
+   "sum": "18992b81d77cce83",
+   "xor": "4af21d40b191d8a5"
+  }
+ },
+ "index_digest_stored": {
+  "full": {
+   "rows": 93734507,
+   "sum": "99af3e27ee7cc322",
+   "xor": "fce89d9434942e90"
+  },
+  "val": {
+   "rows": 39935132,
+   "sum": "18992b81d77cce83",
+   "xor": "4af21d40b191d8a5"
+  }
+ },
+ "index_equal": {
+  "full": true,
+  "val": true
+ },
+ "bloom_sha256_rebuilt": "8fe585247c881e882e601bab0230c280954380a3f22f9369805e8fc5f5a9ff67",
+ "bloom_sha256_stored": "8fe585247c881e882e601bab0230c280954380a3f22f9369805e8fc5f5a9ff67",
+ "bloom_equal": true,
+ "seconds": 758.3
+}

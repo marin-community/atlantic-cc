@@ -1,0 +1,42 @@
+{
+  "a_n_extract_crashed": 0,
+  "a_n_extract_empty": 276,
+  "a_n_in": 20550,
+  "a_n_prefilter_dropped": 92,
+  "device": "TPU v6 lite",
+  "n_band": 6185,
+  "n_devices": 4,
+  "n_hi_accept": 3697,
+  "n_kept": 6314,
+  "n_presurvivors": 16503,
+  "region": "us-east5",
+  "raw": {
+    "marker": {
+      "path": "gs://marin-us-central1/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/_b_marks/shard-31000/data-51cde1189cc9",
+      "record": {
+        "warc_hash": "51cde1189cc9",
+        "region": "us-east5",
+        "kept_path": "gs://marin-us-east5/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/kept/data-51cde1189cc9.parquet",
+        "n_presurvivors": 16503,
+        "n_hi_accept": 3697,
+        "n_band": 6185,
+        "n_kept": 6314,
+        "read_s": 0.099,
+        "tokenize_s": 8.368,
+        "pooled_s": 3.842,
+        "score_s": 14.051,
+        "wall_s": 28.232,
+        "device": "TPU v6 lite",
+        "n_devices": 4,
+        "a_n_in": 20550,
+        "a_n_prefilter_dropped": 92,
+        "a_n_extract_empty": 276,
+        "a_n_extract_crashed": 0,
+        "a_decode_s": 13.234,
+        "a_extract_s": 17.681,
+        "a_fasttext_s": 7.386,
+        "a_wall_s": 38.304
+      }
+    }
+  }
+}

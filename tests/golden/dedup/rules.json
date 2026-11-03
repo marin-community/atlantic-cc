@@ -1,0 +1,138 @@
+{
+ "hello": {
+  "kept": true,
+  "compacted_len": 11,
+  "content_id": "df8d09e93f874900a99b8775cc15b6c7",
+  "buckets_first3": [
+   12158953473927232760,
+   12000769508094348243,
+   8685574483107631071
+  ],
+  "buckets_sha256": "c8568d90685fc95d90f05a0d1ecdbeb5259ea68ad1971d28193e5b011d9fd4a9",
+  "has_signature": true
+ },
+ "fox": {
+  "kept": true,
+  "compacted_len": 44,
+  "content_id": "d06a8295313e6a153ff8e02db829c73c",
+  "buckets_first3": [
+   9439546155533975604,
+   9585464689271362340,
+   16251029020227135530
+  ],
+  "buckets_sha256": "40d1fbac6f229a7e239a9d9ece8bee65d7e4a8687245d78e146ed1dee9dc75f3",
+  "has_signature": true
+ },
+ "short": {
+  "kept": true,
+  "compacted_len": 4,
+  "content_id": "8d6b60383dfa90c21be79eecd1b1353d",
+  "buckets_first3": [
+   13465842350242581109,
+   7169979235219908167,
+   3530397296857842837
+  ],
+  "buckets_sha256": "d1a949053325e6659dfabdc80ccb56d5c304304b461d6dd79f0ab4840d8bb8b7",
+  "has_signature": true
+ },
+ "empty_after_clean": {
+  "kept": true,
+  "compacted_len": 3,
+  "content_id": "d1e3a20a9e4c3dde9560657257ca2469",
+  "buckets_first3": [
+   8923315473444778553,
+   351647814559141092,
+   8385770899655050298
+  ],
+  "buckets_sha256": "488a33c9657fb5e197629cb8297de2c2e7efb182eb1f6aaafa9462e9b732f829",
+  "has_signature": true
+ },
+ "ws129": {
+  "kept": true,
+  "compacted_len": 130,
+  "content_id": "c35425102b5b9c856ea9786800ddda46",
+  "buckets_first3": [
+   1344340237339987806,
+   6409568242082216555,
+   5144985960726626967
+  ],
+  "buckets_sha256": "706cd72490e31cdf96b88fa89ae5fc2c9395fe8e5235a8f96f3055ecb865cb83",
+  "has_signature": true
+ },
+ "ws128": {
+  "kept": true,
+  "compacted_len": 130,
+  "content_id": "c35425102b5b9c856ea9786800ddda46",
+  "buckets_first3": [
+   1344340237339987806,
+   6409568242082216555,
+   5144985960726626967
+  ],
+  "buckets_sha256": "706cd72490e31cdf96b88fa89ae5fc2c9395fe8e5235a8f96f3055ecb865cb83",
+  "has_signature": true
+ },
+ "mixed_ws": {
+  "kept": true,
+  "compacted_len": 130,
+  "content_id": "6141401ebc40fd4b72e8ef55fbec56ac",
+  "buckets_first3": [
+   1344340237339987806,
+   6409568242082216555,
+   5144985960726626967
+  ],
+  "buckets_sha256": "706cd72490e31cdf96b88fa89ae5fc2c9395fe8e5235a8f96f3055ecb865cb83",
+  "has_signature": true
+ },
+ "fs_sep": {
+  "kept": true,
+  "compacted_len": 130,
+  "content_id": "2babcde36d083c905fd36ddaaf510b15",
+  "buckets_first3": [
+   8942836211252432846,
+   5028086369961608949,
+   15529804982526385142
+  ],
+  "buckets_sha256": "35625b8a0eb225845a3c3c1795cefebe997b7d689881190266a63606c67a7f05",
+  "has_signature": true
+ },
+ "is_kept": {
+  "None": false,
+  "''": false,
+  "' '": false,
+  "'\\u3000'": false,
+  "'\\x1c'": false,
+  "'x'": true
+ },
+ "split_hash": {
+  "fox": 3275419600353722387,
+  "three_tokens": 5728600131650158283,
+  "empty": 3244421341483603138
+ },
+ "cluster_key": {
+  "small": "123456789",
+  "split": "123456789:39011:03"
+ },
+ "ngram_hashes_len": {
+  "fox": 7,
+  "two_tokens": 1,
+  "empty": 0
+ },
+ "scramble": [
+  1663341875487337577,
+  13366484115847643136,
+  9223991640548009107
+ ],
+ "doc_key": 50331655,
+ "c075_micro": [
+  {
+   "member": "1111",
+   "rep": "0000",
+   "containment": 1.0
+  },
+  {
+   "member": "2222",
+   "rep": "0000",
+   "containment": 1.0
+  }
+ ]
+}

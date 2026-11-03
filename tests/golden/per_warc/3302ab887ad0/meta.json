@@ -1,0 +1,27 @@
+{
+  "fixture": "F1",
+  "description": "early crawl, smallest; 2M-ladder era (no Content-Length guard)",
+  "warc_path": "s3://commoncrawl/crawl-data/CC-MAIN-2014-23/segments/1405997884573.18/warc/CC-MAIN-20140722025804-00181-ip-10-33-131-23.ec2.internal.warc.gz",
+  "warc_hash": "3302ab887ad0",
+  "snapshot": "CC-MAIN-2014-23",
+  "warc_bytes": 221920839,
+  "shard": 5000,
+  "code_path": "fused",
+  "region": "us-west4",
+  "device": "TPU v5 lite",
+  "n_devices": 4,
+  "processed_at": "2026-09-03T16:21:15.628000+00:00",
+  "content_length_guard": false,
+  "n_kept": 4422,
+  "n_tombstones": 6183,
+  "sources": {
+    "kept": {
+      "path": "gs://marin-us-central2/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/kept/data-3302ab887ad0.parquet",
+      "md5": "KMfjt13JhtLHfphzg/48Aw=="
+    },
+    "tombstones": {
+      "path": "gs://marin-us-west4/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/tombstones/data-3302ab887ad0.jsonl.gz",
+      "md5": "R76wdtvJzGyoq4ULnVmnlQ=="
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+ "check": "plan",
+ "asrun_stage": "gs://marin-us-central2/tmp/ttl=14d/release_regroup_v3",
+ "part_mb": 1000,
+ "pieces_listed": 1292989,
+ "piece_bytes": 28325795322567,
+ "listing_seconds": 108.6,
+ "parts_planned": 27985,
+ "parts_asrun": 27985,
+ "plan_equal": true,
+ "plan_json_bytes_equal": true,
+ "first_difference": null,
+ "crawls": 249,
+ "wall_seconds": 113.6
+}

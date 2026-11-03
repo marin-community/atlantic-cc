@@ -1,0 +1,69 @@
+{
+ "environment": {
+  "marin_tag": "lpv11-8m-as-run",
+  "jax": "0.11.0",
+  "platform": "cpu",
+  "n_devices": 1,
+  "machine": "Linux x86_64",
+  "cpu": "AMD EPYC 7B12",
+  "python": "3.12.15"
+ },
+ "runs": {
+  "pooled-bf16": {
+   "logits": {
+    "n": 4000,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 2000,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "pooled-fp32": {
+   "logits": {
+    "n": 4000,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 2000,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "terminal-fp32": {
+   "logits": {
+    "n": 1024,
+    "max_abs": 3.0994415283203125e-06,
+    "identical_fraction": 0.0458984375,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 512,
+    "max_abs": 7.152557373046875e-07,
+    "identical_fraction": 0.31640625,
+    "nan_positions_equal": true
+   }
+  },
+  "terminal-bf16": {
+   "logits": {
+    "n": 128,
+    "max_abs": 0.021372318267822266,
+    "identical_fraction": 0.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 64,
+    "max_abs": 0.006090670824050903,
+    "identical_fraction": 0.0,
+    "nan_positions_equal": true
+   }
+  }
+ }
+}

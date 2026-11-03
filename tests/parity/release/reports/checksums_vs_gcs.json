@@ -1,0 +1,13 @@
+{
+ "markers": 27988,
+ "expected_objects": 27988,
+ "missing_markers": [],
+ "unexpected_markers": [],
+ "gcs_objects": 27988,
+ "md5_vs_gcs_mismatch": [],
+ "n_md5_vs_gcs_mismatch": 0,
+ "size_vs_gcs_mismatch": [],
+ "total_bytes": 22769660068997,
+ "data_bytes": 22769659891232,
+ "gcs_only": []
+}

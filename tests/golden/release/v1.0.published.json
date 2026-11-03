@@ -1,0 +1,156 @@
+{
+ "manifest": {
+  "bytes": 37690,
+  "md5": "70ef1582aed844fa159ff3452adfdfc0",
+  "sha256": "12cc17436c671b9599f6d5cea8a87f4750ca788ee87c098972930b5e798d8829"
+ },
+ "paths_files": {
+  "v1.0.parquet.paths.gz": {
+   "bytes": 70599,
+   "md5": "1fb4e3bb6f2973a599016ee4bfd4b8a0",
+   "sha256": "522c6c3f30b363ec98a3892307960e9293d52670106c76ad4db2db597ddfe178",
+   "gzip_mtime": 1793254392,
+   "lines": 27985,
+   "content_sha256": "5b4399bf3c3051d4cbe65fe4316d20f990c3ee0fc1c0f133a221d1fae3e98539",
+   "head": [
+    "projects/atlantic-cc/v1.0/crawl=CC-MAIN-2013-20/contaminated-00000-of-00001.parquet",
+    "projects/atlantic-cc/v1.0/crawl=CC-MAIN-2013-20/part-00000-of-00410.parquet",
+    "projects/atlantic-cc/v1.0/crawl=CC-MAIN-2013-20/part-00001-of-00410.parquet"
+   ],
+   "tail": [
+    "projects/atlantic-cc/v1.0/crawl=CC-SUPPLEMENTAL-2026-22/part-00008-of-00011.parquet",
+    "projects/atlantic-cc/v1.0/crawl=CC-SUPPLEMENTAL-2026-22/part-00009-of-00011.parquet",
+    "projects/atlantic-cc/v1.0/crawl=CC-SUPPLEMENTAL-2026-22/part-00010-of-00011.parquet"
+   ]
+  },
+  "v1.0.clean.parquet.paths.gz": {
+   "bytes": 69476,
+   "md5": "85731ddfa63d77d7d2a1c222f495c7ab",
+   "sha256": "f8931301e9770c3e2686692474bb48ef08ab61d94ad7af3c5779fa93f0375782",
+   "gzip_mtime": 1793254392,
+   "lines": 27736,
+   "content_sha256": "95f6328e7f7f274a72644ebbfdc1cc4a60c7577d1e282c728840d82f5bcb6ad7",
+   "head": [
+    "projects/atlantic-cc/v1.0/crawl=CC-MAIN-2013-20/part-00000-of-00410.parquet",
+    "projects/atlantic-cc/v1.0/crawl=CC-MAIN-2013-20/part-00001-of-00410.parquet",
+    "projects/atlantic-cc/v1.0/crawl=CC-MAIN-2013-20/part-00002-of-00410.parquet"
+   ],
+   "tail": [
+    "projects/atlantic-cc/v1.0/crawl=CC-SUPPLEMENTAL-2026-22/part-00008-of-00011.parquet",
+    "projects/atlantic-cc/v1.0/crawl=CC-SUPPLEMENTAL-2026-22/part-00009-of-00011.parquet",
+    "projects/atlantic-cc/v1.0/crawl=CC-SUPPLEMENTAL-2026-22/part-00010-of-00011.parquet"
+   ]
+  }
+ },
+ "checksums": {
+  "lines": 27988,
+  "sha256": "a44350759eaecbd543b7fcc420f9b247dc405f4d84090df36f0e55f1419118f8",
+  "head": [
+   "85731ddfa63d77d7d2a1c222f495c7ab  v1.0.clean.parquet.paths.gz",
+   "70ef1582aed844fa159ff3452adfdfc0  v1.0.manifest.json",
+   "1fb4e3bb6f2973a599016ee4bfd4b8a0  v1.0.parquet.paths.gz",
+   "b917cec0f18a72c277055ae98234b467  v1.0/crawl=CC-MAIN-2013-20/contaminated-00000-of-00001.parquet"
+  ]
+ },
+ "schema": {
+  "arrow": "record_id: string\nurl: string\ncrawl: string\nwarc_path: string\ntext: string\nfasttext_score: double\npooled_prob: double\nmodernbert_prob: double\nexact_copies: int64\nfuzzy_cluster_size: int64\ndecon_matches: list<element: string>\n  child 0, element: string",
+  "parquet": "required group field_id=-1 schema {\n  optional binary field_id=-1 record_id (String);\n  optional binary field_id=-1 url (String);\n  optional binary field_id=-1 crawl (String);\n  optional binary field_id=-1 warc_path (String);\n  optional binary field_id=-1 text (String);\n  optional double field_id=-1 fasttext_score;\n  optional double field_id=-1 pooled_prob;\n  optional double field_id=-1 modernbert_prob;\n  optional int64 field_id=-1 exact_copies;\n  optional int64 field_id=-1 fuzzy_cluster_size;\n  optional group field_id=-1 decon_matches (List) {\n    repeated group field_id=-1 list {\n      optional binary field_id=-1 element (String);\n    }\n  }\n}\n",
+  "created_by": "parquet-cpp-arrow version 23.0.1",
+  "compression": "ZSTD",
+  "row_group_rows": 10000
+ },
+ "cc_news_2016_08": {
+  "part-00000-of-00001": {
+   "bytes": 50277276,
+   "md5": "7937b9d3a958e0f0123c5ca310d6449e",
+   "sha256": "2cfddaf221d36f0e518c15286e6e9c0c3a5ac6b427e90665f39088ae4f32d75b",
+   "rows": 43262,
+   "row_groups": 5,
+   "warc_runs": [
+    [
+     "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160830145200-00006.warc.gz",
+     6673,
+     "76e5aa156d4e"
+    ],
+    [
+     "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160827132735-00002.warc.gz",
+     382,
+     "7c23fdce676f"
+    ],
+    [
+     "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160827145159-00003.warc.gz",
+     3943,
+     "92484a1eb2d3"
+    ],
+    [
+     "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160828145159-00004.warc.gz",
+     4780,
+     "9d55631098fa"
+    ],
+    [
+     "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160829145200-00005.warc.gz",
+     5940,
+     "c124d9421e00"
+    ],
+    [
+     "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160826124520-00000.warc.gz",
+     8814,
+     "cd785280d151"
+    ],
+    [
+     "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160826132734-00001.warc.gz",
+     5971,
+     "dc48fdfe22a6"
+    ],
+    [
+     "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160831145200-00007.warc.gz",
+     6759,
+     "df0c05c96bbe"
+    ]
+   ],
+   "record_ids_head": [
+    "d8723b76-73a6-4ae7-9891-6f07383118c3",
+    "d80716a9-1f82-4917-91bb-0790fd42e2e0",
+    "824cbead-07d3-495e-aff5-2eae65f86c70"
+   ],
+   "record_ids_tail": [
+    "8dd06e39-b5d2-486f-8053-ecdff8b308b2",
+    "b839861a-fbdd-436c-a927-e1e5e64f730c",
+    "1f95ab7c-2ece-41bd-a475-12866c772997"
+   ],
+   "record_ids_sha256": "8acb3c2c25143b2fd425ab227180cb9a61596d469e7dec570c5a29506af49f85",
+   "text_sha256": "e1626463a4b1902dd86cbc9cf715ed9a766c55c59e67c53e50d9c18ebb712323",
+   "null_modernbert_prob": 35233
+  },
+  "contaminated-00000-of-00001": {
+   "bytes": 145767,
+   "md5": "6d2a3b0f3d71576e33f384507ad107c9",
+   "sha256": "273a405d2492dbc92884bbc03422a107bf556f766b57fa655fffd0063f6f3a93",
+   "rows": 2,
+   "records": [
+    {
+     "record_id": "f263c271-23da-49f3-8082-3d2bec260a34",
+     "url": "http://www.spectator.co.uk/2016/01/its-not-only-germany-that-covers-up-mass-sex-attacks-by-migrant-men-swedens-record-is-shameful/",
+     "warc_path": "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160827145159-00003.warc.gz",
+     "decon_matches": [
+      "paloma_4chan"
+     ],
+     "text_sha256": "42aa3f0b527b47f98903e17c85e77e2027f24e0a5d5134717f27aa7944d6b2e4",
+     "exact_copies": 2,
+     "fuzzy_cluster_size": 4557202931
+    },
+    {
+     "record_id": "3cdc9411-8745-4943-909a-200d7b9d3e5c",
+     "url": "http://www.dailymail.co.uk/news/article-3759742/Oscar-Pistorius-appeal-against-shockingly-lenient-sentence-REJECTED.html?ITO=1490&ns_mchannel=rss&ns_campaign=1490",
+     "warc_path": "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160826124520-00000.warc.gz",
+     "decon_matches": [
+      "paloma_c4_100_domains"
+     ],
+     "text_sha256": "8390f7c7cda108da7abcc76a75008dadbdd4b8fd2b63ada69c9ae0258faa2873",
+     "exact_copies": 1,
+     "fuzzy_cluster_size": 1
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,237 @@
+{
+ "environment": {
+  "marin_tag": "lpv11-8m-as-run",
+  "jax": "0.11.0",
+  "platform": "cpu",
+  "n_devices": 1,
+  "machine": "Linux x86_64",
+  "cpu": "AMD EPYC 7B12",
+  "python": "3.12.16"
+ },
+ "cases": {
+  "pooled_tiny_256-bf16": {
+   "logits": {
+    "n": 16,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 8,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "pooled_tiny_128-bf16": {
+   "logits": {
+    "n": 16,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 8,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "pooled_8192-bf16": {
+   "logits": {
+    "n": 16,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 8,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "pooled_128-bf16": {
+   "logits": {
+    "n": 16,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 8,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "ettin_tiny_128-bf16": {
+   "logits": {
+    "n": 14,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 7,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "ettin_tiny_64-bf16": {
+   "logits": {
+    "n": 12,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 6,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "ettin_2048-bf16": {
+   "logits": {
+    "n": 14,
+    "max_abs": 0.022031426429748535,
+    "identical_fraction": 0.14285714285714285,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 7,
+    "max_abs": 0.0025888383388519287,
+    "identical_fraction": 0.14285714285714285,
+    "nan_positions_equal": true
+   }
+  },
+  "ettin_128-bf16": {
+   "logits": {
+    "n": 12,
+    "max_abs": 0.018478989601135254,
+    "identical_fraction": 0.16666666666666666,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 6,
+    "max_abs": 0.0012330412864685059,
+    "identical_fraction": 0.16666666666666666,
+    "nan_positions_equal": true
+   }
+  },
+  "pooled_tiny_256-fp32": {
+   "logits": {
+    "n": 16,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 8,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "pooled_tiny_128-fp32": {
+   "logits": {
+    "n": 16,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 8,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "pooled_8192-fp32": {
+   "logits": {
+    "n": 16,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 8,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "pooled_128-fp32": {
+   "logits": {
+    "n": 16,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 8,
+    "max_abs": 0.0,
+    "identical_fraction": 1.0,
+    "nan_positions_equal": true
+   }
+  },
+  "ettin_tiny_128-fp32": {
+   "logits": {
+    "n": 14,
+    "max_abs": 1.9073486328125e-06,
+    "identical_fraction": 0.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 7,
+    "max_abs": 2.384185791015625e-07,
+    "identical_fraction": 0.42857142857142855,
+    "nan_positions_equal": true
+   }
+  },
+  "ettin_tiny_64-fp32": {
+   "logits": {
+    "n": 12,
+    "max_abs": 1.9073486328125e-06,
+    "identical_fraction": 0.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 6,
+    "max_abs": 4.76837158203125e-07,
+    "identical_fraction": 0.3333333333333333,
+    "nan_positions_equal": true
+   }
+  },
+  "ettin_2048-fp32": {
+   "logits": {
+    "n": 14,
+    "max_abs": 2.2649765014648438e-06,
+    "identical_fraction": 0.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 7,
+    "max_abs": 2.4586915969848633e-07,
+    "identical_fraction": 0.0,
+    "nan_positions_equal": true
+   }
+  },
+  "ettin_128-fp32": {
+   "logits": {
+    "n": 12,
+    "max_abs": 1.7881393432617188e-06,
+    "identical_fraction": 0.0,
+    "nan_positions_equal": true
+   },
+   "probs": {
+    "n": 6,
+    "max_abs": 1.1920928955078125e-07,
+    "identical_fraction": 0.0,
+    "nan_positions_equal": true
+   }
+  }
+ }
+}

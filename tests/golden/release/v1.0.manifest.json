@@ -1,0 +1,2504 @@
+{
+ "version": "v1.0",
+ "records": 9951767085,
+ "by_kind": {
+  "part": 9950417677,
+  "contaminated": 1349408
+ },
+ "crawls": {
+  "CC-MAIN-2013-20": {
+   "part": {
+    "records": 168238886,
+    "files": 410
+   },
+   "contaminated": {
+    "records": 20534,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2013-48": {
+   "part": {
+    "records": 118787248,
+    "files": 314
+   },
+   "contaminated": {
+    "records": 16368,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2014-10": {
+   "part": {
+    "records": 84481812,
+    "files": 246
+   },
+   "contaminated": {
+    "records": 12712,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2014-15": {
+   "part": {
+    "records": 80559447,
+    "files": 250
+   },
+   "contaminated": {
+    "records": 11946,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2014-23": {
+   "part": {
+    "records": 103879378,
+    "files": 311
+   },
+   "contaminated": {
+    "records": 15072,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2014-35": {
+   "part": {
+    "records": 77794377,
+    "files": 240
+   },
+   "contaminated": {
+    "records": 11005,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2014-41": {
+   "part": {
+    "records": 77290130,
+    "files": 240
+   },
+   "contaminated": {
+    "records": 11834,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2014-42": {
+   "part": {
+    "records": 76824922,
+    "files": 264
+   },
+   "contaminated": {
+    "records": 12103,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2014-49": {
+   "part": {
+    "records": 43909364,
+    "files": 149
+   },
+   "contaminated": {
+    "records": 6618,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2014-52": {
+   "part": {
+    "records": 54409070,
+    "files": 171
+   },
+   "contaminated": {
+    "records": 8522,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2015-06": {
+   "part": {
+    "records": 46380937,
+    "files": 147
+   },
+   "contaminated": {
+    "records": 7005,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2015-11": {
+   "part": {
+    "records": 46313529,
+    "files": 154
+   },
+   "contaminated": {
+    "records": 7550,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2015-14": {
+   "part": {
+    "records": 38867131,
+    "files": 131
+   },
+   "contaminated": {
+    "records": 6090,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2015-18": {
+   "part": {
+    "records": 53546250,
+    "files": 177
+   },
+   "contaminated": {
+    "records": 9529,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2015-22": {
+   "part": {
+    "records": 49668303,
+    "files": 167
+   },
+   "contaminated": {
+    "records": 9588,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2015-27": {
+   "part": {
+    "records": 38990165,
+    "files": 134
+   },
+   "contaminated": {
+    "records": 7029,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2015-32": {
+   "part": {
+    "records": 42912003,
+    "files": 143
+   },
+   "contaminated": {
+    "records": 7737,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2015-35": {
+   "part": {
+    "records": 45418131,
+    "files": 151
+   },
+   "contaminated": {
+    "records": 7799,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2015-40": {
+   "part": {
+    "records": 33058550,
+    "files": 110
+   },
+   "contaminated": {
+    "records": 5704,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2015-48": {
+   "part": {
+    "records": 47896226,
+    "files": 159
+   },
+   "contaminated": {
+    "records": 8319,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2016-07": {
+   "part": {
+    "records": 47306263,
+    "files": 157
+   },
+   "contaminated": {
+    "records": 12521,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2016-18": {
+   "part": {
+    "records": 31928681,
+    "files": 104
+   },
+   "contaminated": {
+    "records": 7264,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2016-22": {
+   "part": {
+    "records": 30608462,
+    "files": 103
+   },
+   "contaminated": {
+    "records": 5681,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2016-26": {
+   "part": {
+    "records": 24765195,
+    "files": 84
+   },
+   "contaminated": {
+    "records": 4362,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2016-30": {
+   "part": {
+    "records": 40233499,
+    "files": 135
+   },
+   "contaminated": {
+    "records": 7155,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2016-36": {
+   "part": {
+    "records": 35328291,
+    "files": 125
+   },
+   "contaminated": {
+    "records": 6509,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2016-40": {
+   "part": {
+    "records": 44247806,
+    "files": 138
+   },
+   "contaminated": {
+    "records": 7161,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2016-44": {
+   "part": {
+    "records": 82390253,
+    "files": 207
+   },
+   "contaminated": {
+    "records": 10225,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2016-50": {
+   "part": {
+    "records": 66340245,
+    "files": 182
+   },
+   "contaminated": {
+    "records": 8835,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-04": {
+   "part": {
+    "records": 67167968,
+    "files": 184
+   },
+   "contaminated": {
+    "records": 9250,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-09": {
+   "part": {
+    "records": 70954766,
+    "files": 210
+   },
+   "contaminated": {
+    "records": 12177,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-13": {
+   "part": {
+    "records": 78376305,
+    "files": 235
+   },
+   "contaminated": {
+    "records": 11890,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-17": {
+   "part": {
+    "records": 73705861,
+    "files": 218
+   },
+   "contaminated": {
+    "records": 10612,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-22": {
+   "part": {
+    "records": 76687158,
+    "files": 223
+   },
+   "contaminated": {
+    "records": 11280,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-26": {
+   "part": {
+    "records": 89581928,
+    "files": 244
+   },
+   "contaminated": {
+    "records": 11776,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-30": {
+   "part": {
+    "records": 78314961,
+    "files": 207
+   },
+   "contaminated": {
+    "records": 9609,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-34": {
+   "part": {
+    "records": 102720296,
+    "files": 255
+   },
+   "contaminated": {
+    "records": 13024,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-39": {
+   "part": {
+    "records": 86107898,
+    "files": 228
+   },
+   "contaminated": {
+    "records": 11462,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-43": {
+   "part": {
+    "records": 106614994,
+    "files": 277
+   },
+   "contaminated": {
+    "records": 13785,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-47": {
+   "part": {
+    "records": 88387057,
+    "files": 231
+   },
+   "contaminated": {
+    "records": 12401,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2017-51": {
+   "part": {
+    "records": 94740490,
+    "files": 234
+   },
+   "contaminated": {
+    "records": 12435,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-05": {
+   "part": {
+    "records": 97027986,
+    "files": 243
+   },
+   "contaminated": {
+    "records": 14407,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-09": {
+   "part": {
+    "records": 94834981,
+    "files": 246
+   },
+   "contaminated": {
+    "records": 13478,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-13": {
+   "part": {
+    "records": 88412445,
+    "files": 224
+   },
+   "contaminated": {
+    "records": 14393,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-17": {
+   "part": {
+    "records": 73521956,
+    "files": 201
+   },
+   "contaminated": {
+    "records": 12817,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-22": {
+   "part": {
+    "records": 70449002,
+    "files": 184
+   },
+   "contaminated": {
+    "records": 10753,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-26": {
+   "part": {
+    "records": 76025789,
+    "files": 204
+   },
+   "contaminated": {
+    "records": 11582,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-30": {
+   "part": {
+    "records": 88446260,
+    "files": 226
+   },
+   "contaminated": {
+    "records": 12906,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-34": {
+   "part": {
+    "records": 59891113,
+    "files": 159
+   },
+   "contaminated": {
+    "records": 11265,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-39": {
+   "part": {
+    "records": 66415220,
+    "files": 176
+   },
+   "contaminated": {
+    "records": 12015,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-43": {
+   "part": {
+    "records": 67907266,
+    "files": 182
+   },
+   "contaminated": {
+    "records": 12303,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-47": {
+   "part": {
+    "records": 63458395,
+    "files": 181
+   },
+   "contaminated": {
+    "records": 11507,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2018-51": {
+   "part": {
+    "records": 75151350,
+    "files": 205
+   },
+   "contaminated": {
+    "records": 13504,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-04": {
+   "part": {
+    "records": 69284421,
+    "files": 195
+   },
+   "contaminated": {
+    "records": 13309,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-09": {
+   "part": {
+    "records": 66697421,
+    "files": 189
+   },
+   "contaminated": {
+    "records": 13299,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-13": {
+   "part": {
+    "records": 59272188,
+    "files": 169
+   },
+   "contaminated": {
+    "records": 12408,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-18": {
+   "part": {
+    "records": 60193596,
+    "files": 175
+   },
+   "contaminated": {
+    "records": 16410,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-22": {
+   "part": {
+    "records": 64080769,
+    "files": 186
+   },
+   "contaminated": {
+    "records": 12965,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-26": {
+   "part": {
+    "records": 62057868,
+    "files": 185
+   },
+   "contaminated": {
+    "records": 13399,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-30": {
+   "part": {
+    "records": 64681662,
+    "files": 193
+   },
+   "contaminated": {
+    "records": 13955,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-35": {
+   "part": {
+    "records": 72502078,
+    "files": 215
+   },
+   "contaminated": {
+    "records": 13564,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-39": {
+   "part": {
+    "records": 65098788,
+    "files": 194
+   },
+   "contaminated": {
+    "records": 11669,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-43": {
+   "part": {
+    "records": 75762536,
+    "files": 221
+   },
+   "contaminated": {
+    "records": 14102,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-47": {
+   "part": {
+    "records": 64186986,
+    "files": 191
+   },
+   "contaminated": {
+    "records": 11507,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2019-51": {
+   "part": {
+    "records": 60404046,
+    "files": 182
+   },
+   "contaminated": {
+    "records": 10652,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2020-05": {
+   "part": {
+    "records": 72675570,
+    "files": 224
+   },
+   "contaminated": {
+    "records": 11702,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2020-10": {
+   "part": {
+    "records": 67639616,
+    "files": 188
+   },
+   "contaminated": {
+    "records": 10956,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2020-16": {
+   "part": {
+    "records": 72163873,
+    "files": 217
+   },
+   "contaminated": {
+    "records": 11291,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2020-24": {
+   "part": {
+    "records": 75885327,
+    "files": 208
+   },
+   "contaminated": {
+    "records": 12041,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2020-29": {
+   "part": {
+    "records": 82972090,
+    "files": 244
+   },
+   "contaminated": {
+    "records": 13673,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2020-34": {
+   "part": {
+    "records": 68781985,
+    "files": 196
+   },
+   "contaminated": {
+    "records": 14736,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2020-40": {
+   "part": {
+    "records": 92456020,
+    "files": 246
+   },
+   "contaminated": {
+    "records": 15048,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2020-45": {
+   "part": {
+    "records": 80430810,
+    "files": 217
+   },
+   "contaminated": {
+    "records": 13568,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2020-50": {
+   "part": {
+    "records": 74728798,
+    "files": 205
+   },
+   "contaminated": {
+    "records": 12023,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2021-04": {
+   "part": {
+    "records": 92804801,
+    "files": 255
+   },
+   "contaminated": {
+    "records": 16343,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2021-10": {
+   "part": {
+    "records": 81365497,
+    "files": 227
+   },
+   "contaminated": {
+    "records": 14075,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2021-17": {
+   "part": {
+    "records": 92315708,
+    "files": 261
+   },
+   "contaminated": {
+    "records": 14895,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2021-21": {
+   "part": {
+    "records": 76288805,
+    "files": 216
+   },
+   "contaminated": {
+    "records": 14466,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2021-25": {
+   "part": {
+    "records": 78449392,
+    "files": 211
+   },
+   "contaminated": {
+    "records": 13926,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2021-31": {
+   "part": {
+    "records": 88740461,
+    "files": 249
+   },
+   "contaminated": {
+    "records": 13522,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2021-39": {
+   "part": {
+    "records": 92243093,
+    "files": 252
+   },
+   "contaminated": {
+    "records": 13478,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2021-43": {
+   "part": {
+    "records": 100750780,
+    "files": 277
+   },
+   "contaminated": {
+    "records": 15996,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2021-49": {
+   "part": {
+    "records": 84608222,
+    "files": 221
+   },
+   "contaminated": {
+    "records": 12716,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2022-05": {
+   "part": {
+    "records": 89930164,
+    "files": 262
+   },
+   "contaminated": {
+    "records": 13401,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2022-21": {
+   "part": {
+    "records": 110800150,
+    "files": 295
+   },
+   "contaminated": {
+    "records": 14530,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2022-27": {
+   "part": {
+    "records": 102036031,
+    "files": 274
+   },
+   "contaminated": {
+    "records": 13545,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2022-33": {
+   "part": {
+    "records": 90451003,
+    "files": 230
+   },
+   "contaminated": {
+    "records": 12730,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2022-40": {
+   "part": {
+    "records": 103257622,
+    "files": 278
+   },
+   "contaminated": {
+    "records": 13851,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2022-49": {
+   "part": {
+    "records": 109222466,
+    "files": 300
+   },
+   "contaminated": {
+    "records": 13416,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2023-06": {
+   "part": {
+    "records": 106732880,
+    "files": 286
+   },
+   "contaminated": {
+    "records": 12906,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2023-14": {
+   "part": {
+    "records": 110170133,
+    "files": 290
+   },
+   "contaminated": {
+    "records": 13377,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2023-23": {
+   "part": {
+    "records": 105664405,
+    "files": 289
+   },
+   "contaminated": {
+    "records": 11889,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2023-40": {
+   "part": {
+    "records": 110737644,
+    "files": 302
+   },
+   "contaminated": {
+    "records": 10767,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2023-50": {
+   "part": {
+    "records": 110708534,
+    "files": 299
+   },
+   "contaminated": {
+    "records": 11108,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2024-10": {
+   "part": {
+    "records": 98181610,
+    "files": 265
+   },
+   "contaminated": {
+    "records": 9752,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2024-18": {
+   "part": {
+    "records": 88326303,
+    "files": 239
+   },
+   "contaminated": {
+    "records": 8481,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2024-22": {
+   "part": {
+    "records": 85232307,
+    "files": 230
+   },
+   "contaminated": {
+    "records": 9534,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2024-26": {
+   "part": {
+    "records": 85144451,
+    "files": 228
+   },
+   "contaminated": {
+    "records": 8193,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2024-30": {
+   "part": {
+    "records": 78494984,
+    "files": 208
+   },
+   "contaminated": {
+    "records": 7165,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2024-33": {
+   "part": {
+    "records": 70578362,
+    "files": 189
+   },
+   "contaminated": {
+    "records": 7482,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2024-38": {
+   "part": {
+    "records": 79741481,
+    "files": 219
+   },
+   "contaminated": {
+    "records": 7334,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2024-42": {
+   "part": {
+    "records": 74403297,
+    "files": 201
+   },
+   "contaminated": {
+    "records": 6614,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2024-46": {
+   "part": {
+    "records": 79451302,
+    "files": 216
+   },
+   "contaminated": {
+    "records": 7003,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2024-51": {
+   "part": {
+    "records": 79375955,
+    "files": 216
+   },
+   "contaminated": {
+    "records": 6919,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-05": {
+   "part": {
+    "records": 90367388,
+    "files": 248
+   },
+   "contaminated": {
+    "records": 6970,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-08": {
+   "part": {
+    "records": 83111590,
+    "files": 223
+   },
+   "contaminated": {
+    "records": 7015,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-13": {
+   "part": {
+    "records": 88753788,
+    "files": 243
+   },
+   "contaminated": {
+    "records": 7695,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-18": {
+   "part": {
+    "records": 88182383,
+    "files": 245
+   },
+   "contaminated": {
+    "records": 6956,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-21": {
+   "part": {
+    "records": 80993937,
+    "files": 223
+   },
+   "contaminated": {
+    "records": 6328,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-26": {
+   "part": {
+    "records": 76296000,
+    "files": 209
+   },
+   "contaminated": {
+    "records": 5960,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-30": {
+   "part": {
+    "records": 75964223,
+    "files": 207
+   },
+   "contaminated": {
+    "records": 5997,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-33": {
+   "part": {
+    "records": 76984231,
+    "files": 212
+   },
+   "contaminated": {
+    "records": 6024,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-38": {
+   "part": {
+    "records": 75944935,
+    "files": 212
+   },
+   "contaminated": {
+    "records": 8622,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-43": {
+   "part": {
+    "records": 84192505,
+    "files": 236
+   },
+   "contaminated": {
+    "records": 8193,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-47": {
+   "part": {
+    "records": 76011295,
+    "files": 215
+   },
+   "contaminated": {
+    "records": 6625,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2025-51": {
+   "part": {
+    "records": 73913118,
+    "files": 209
+   },
+   "contaminated": {
+    "records": 5660,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2026-04": {
+   "part": {
+    "records": 82987040,
+    "files": 236
+   },
+   "contaminated": {
+    "records": 6296,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2026-08": {
+   "part": {
+    "records": 77373279,
+    "files": 217
+   },
+   "contaminated": {
+    "records": 6223,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2026-12": {
+   "part": {
+    "records": 78008059,
+    "files": 219
+   },
+   "contaminated": {
+    "records": 5839,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2026-17": {
+   "part": {
+    "records": 91081403,
+    "files": 256
+   },
+   "contaminated": {
+    "records": 6411,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2026-21": {
+   "part": {
+    "records": 93269742,
+    "files": 264
+   },
+   "contaminated": {
+    "records": 6161,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2026-25": {
+   "part": {
+    "records": 99071334,
+    "files": 278
+   },
+   "contaminated": {
+    "records": 6483,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2026-30": {
+   "part": {
+    "records": 110033616,
+    "files": 309
+   },
+   "contaminated": {
+    "records": 6723,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2026-34": {
+   "part": {
+    "records": 112024228,
+    "files": 317
+   },
+   "contaminated": {
+    "records": 6835,
+    "files": 1
+   }
+  },
+  "CC-MAIN-2026-39": {
+   "part": {
+    "records": 131306899,
+    "files": 362
+   },
+   "contaminated": {
+    "records": 7293,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2016-08": {
+   "part": {
+    "records": 43262,
+    "files": 1
+   },
+   "contaminated": {
+    "records": 2,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2016-09": {
+   "part": {
+    "records": 166629,
+    "files": 1
+   },
+   "contaminated": {
+    "records": 45,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2016-10": {
+   "part": {
+    "records": 152957,
+    "files": 1
+   },
+   "contaminated": {
+    "records": 59,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2016-11": {
+   "part": {
+    "records": 126758,
+    "files": 1
+   },
+   "contaminated": {
+    "records": 30,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2016-12": {
+   "part": {
+    "records": 476244,
+    "files": 1
+   },
+   "contaminated": {
+    "records": 97,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-01": {
+   "part": {
+    "records": 1306308,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 409,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-02": {
+   "part": {
+    "records": 1463715,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 533,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-03": {
+   "part": {
+    "records": 1461414,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 996,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-04": {
+   "part": {
+    "records": 1264974,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 511,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-05": {
+   "part": {
+    "records": 1494148,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 1479,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-06": {
+   "part": {
+    "records": 1353966,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 1376,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-07": {
+   "part": {
+    "records": 771844,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 200,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-08": {
+   "part": {
+    "records": 983288,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 272,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-09": {
+   "part": {
+    "records": 1092983,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 389,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-10": {
+   "part": {
+    "records": 961953,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 247,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-11": {
+   "part": {
+    "records": 693752,
+    "files": 1
+   },
+   "contaminated": {
+    "records": 231,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2017-12": {
+   "part": {
+    "records": 615469,
+    "files": 1
+   },
+   "contaminated": {
+    "records": 296,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-01": {
+   "part": {
+    "records": 749469,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 562,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-02": {
+   "part": {
+    "records": 596987,
+    "files": 1
+   },
+   "contaminated": {
+    "records": 276,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-03": {
+   "part": {
+    "records": 1026225,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 477,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-04": {
+   "part": {
+    "records": 905202,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 327,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-05": {
+   "part": {
+    "records": 799477,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 337,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-06": {
+   "part": {
+    "records": 823803,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 180,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-07": {
+   "part": {
+    "records": 772208,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 272,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-08": {
+   "part": {
+    "records": 879738,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 268,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-09": {
+   "part": {
+    "records": 848618,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 416,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-10": {
+   "part": {
+    "records": 1007688,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 477,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-11": {
+   "part": {
+    "records": 857662,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 413,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2018-12": {
+   "part": {
+    "records": 724976,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 434,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-01": {
+   "part": {
+    "records": 825773,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 430,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-02": {
+   "part": {
+    "records": 803830,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 303,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-03": {
+   "part": {
+    "records": 932982,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 618,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-04": {
+   "part": {
+    "records": 867129,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 566,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-05": {
+   "part": {
+    "records": 973921,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 130,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-06": {
+   "part": {
+    "records": 1127399,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 103,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-07": {
+   "part": {
+    "records": 1402941,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 173,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-08": {
+   "part": {
+    "records": 1475079,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 157,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-09": {
+   "part": {
+    "records": 1481676,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 112,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-10": {
+   "part": {
+    "records": 1465746,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 121,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-11": {
+   "part": {
+    "records": 1430254,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 126,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2019-12": {
+   "part": {
+    "records": 1706543,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 96,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-01": {
+   "part": {
+    "records": 2434018,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 127,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-02": {
+   "part": {
+    "records": 2453036,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 131,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-03": {
+   "part": {
+    "records": 3188493,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 150,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-04": {
+   "part": {
+    "records": 3179667,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 156,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-05": {
+   "part": {
+    "records": 2518546,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 163,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-06": {
+   "part": {
+    "records": 2097139,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 149,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-07": {
+   "part": {
+    "records": 2140772,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 77,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-08": {
+   "part": {
+    "records": 2297453,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 191,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-09": {
+   "part": {
+    "records": 2435230,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 165,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-10": {
+   "part": {
+    "records": 2631747,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 144,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-11": {
+   "part": {
+    "records": 2637490,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 89,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2020-12": {
+   "part": {
+    "records": 2406382,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 102,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-01": {
+   "part": {
+    "records": 2460230,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 276,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-02": {
+   "part": {
+    "records": 2806182,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 82,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-03": {
+   "part": {
+    "records": 3070749,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 129,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-04": {
+   "part": {
+    "records": 2813978,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 105,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-05": {
+   "part": {
+    "records": 2796099,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 205,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-06": {
+   "part": {
+    "records": 2806800,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 168,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-07": {
+   "part": {
+    "records": 2727578,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 125,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-08": {
+   "part": {
+    "records": 2957493,
+    "files": 6
+   },
+   "contaminated": {
+    "records": 115,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-09": {
+   "part": {
+    "records": 2733800,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 51,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-10": {
+   "part": {
+    "records": 2855319,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 115,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-11": {
+   "part": {
+    "records": 2778392,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 213,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2021-12": {
+   "part": {
+    "records": 2875722,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 118,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-01": {
+   "part": {
+    "records": 2781787,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 217,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-02": {
+   "part": {
+    "records": 2789330,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 77,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-03": {
+   "part": {
+    "records": 2951802,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 114,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-04": {
+   "part": {
+    "records": 2799996,
+    "files": 6
+   },
+   "contaminated": {
+    "records": 286,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-05": {
+   "part": {
+    "records": 2640951,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 176,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-06": {
+   "part": {
+    "records": 2553668,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 101,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-07": {
+   "part": {
+    "records": 2670253,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 213,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-08": {
+   "part": {
+    "records": 2808414,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 182,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-09": {
+   "part": {
+    "records": 2589096,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 149,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-10": {
+   "part": {
+    "records": 2754433,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 106,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-11": {
+   "part": {
+    "records": 2755037,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 120,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2022-12": {
+   "part": {
+    "records": 2607511,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 109,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-01": {
+   "part": {
+    "records": 2563350,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 101,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-02": {
+   "part": {
+    "records": 2448623,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 102,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-03": {
+   "part": {
+    "records": 2837725,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 88,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-04": {
+   "part": {
+    "records": 2555377,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 171,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-05": {
+   "part": {
+    "records": 2618122,
+    "files": 5
+   },
+   "contaminated": {
+    "records": 63,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-06": {
+   "part": {
+    "records": 2544416,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 45,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-07": {
+   "part": {
+    "records": 2477261,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 90,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-08": {
+   "part": {
+    "records": 2466635,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 71,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-09": {
+   "part": {
+    "records": 2024692,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 139,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-10": {
+   "part": {
+    "records": 1869618,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 117,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-11": {
+   "part": {
+    "records": 1948550,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 98,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2023-12": {
+   "part": {
+    "records": 1952264,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 59,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-01": {
+   "part": {
+    "records": 1902094,
+    "files": 4
+   },
+   "contaminated": {
+    "records": 147,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-02": {
+   "part": {
+    "records": 1749194,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 66,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-03": {
+   "part": {
+    "records": 1813609,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 70,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-04": {
+   "part": {
+    "records": 1586750,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 85,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-05": {
+   "part": {
+    "records": 1574478,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 52,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-06": {
+   "part": {
+    "records": 1404089,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 26,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-07": {
+   "part": {
+    "records": 1365713,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 31,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-08": {
+   "part": {
+    "records": 1340131,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 22,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-09": {
+   "part": {
+    "records": 1299119,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 49,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-10": {
+   "part": {
+    "records": 1431401,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 72,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-11": {
+   "part": {
+    "records": 1343003,
+    "files": 3
+   },
+   "contaminated": {
+    "records": 66,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2024-12": {
+   "part": {
+    "records": 1003715,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 20,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-01": {
+   "part": {
+    "records": 1032072,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 23,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-02": {
+   "part": {
+    "records": 1059907,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 41,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-03": {
+   "part": {
+    "records": 1199981,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 28,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-04": {
+   "part": {
+    "records": 1272670,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 25,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-05": {
+   "part": {
+    "records": 1222356,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 24,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-06": {
+   "part": {
+    "records": 1132560,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 36,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-07": {
+   "part": {
+    "records": 1216423,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 60,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-08": {
+   "part": {
+    "records": 1225353,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 81,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-09": {
+   "part": {
+    "records": 1259006,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 1059,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-10": {
+   "part": {
+    "records": 1189027,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 46,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-11": {
+   "part": {
+    "records": 1139853,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 21,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2025-12": {
+   "part": {
+    "records": 1237641,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 20,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2026-01": {
+   "part": {
+    "records": 1043332,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 32,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2026-02": {
+   "part": {
+    "records": 985652,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 22,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2026-03": {
+   "part": {
+    "records": 1053135,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 6,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2026-04": {
+   "part": {
+    "records": 871184,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 12,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2026-05": {
+   "part": {
+    "records": 922108,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 22,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2026-06": {
+   "part": {
+    "records": 993175,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 14,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2026-07": {
+   "part": {
+    "records": 993468,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 13,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2026-08": {
+   "part": {
+    "records": 954565,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 10,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2026-09": {
+   "part": {
+    "records": 979163,
+    "files": 2
+   },
+   "contaminated": {
+    "records": 13,
+    "files": 1
+   }
+  },
+  "CC-NEWS-2026-10": {
+   "part": {
+    "records": 525622,
+    "files": 1
+   },
+   "contaminated": {
+    "records": 3,
+    "files": 1
+   }
+  },
+  "CC-SUPPLEMENTAL-2026-22": {
+   "part": {
+    "records": 3758629,
+    "files": 11
+   },
+   "contaminated": {
+    "records": 797,
+    "files": 1
+   }
+  }
+ },
+ "decontamination": {
+  "method": "Marin decontamination v4 (hero run rule): full-val eval set, word 13-grams, paragraph overlap >= 0.5 with >= 2 distinct phrases, per-crawl boilerplate drop sets, plus phrases in >= 1000 pool docs across 3+ crawls, plus phrases in >= 100 StarCoderData files",
+  "run": "gs://marin-us-central2/documents/baseline_lpv11_fastpipe_v2_1_fused_deduped/8582115warcs/decon_v4/filter-full-val-pooldf1000-codedf100"
+ }
+}

@@ -1,0 +1,27 @@
+{
+  "fixture": "F4",
+  "description": "CC-NEWS extension",
+  "warc_path": "s3://commoncrawl/crawl-data/CC-NEWS/2017/07/CC-NEWS-20170728033529-00050.warc.gz",
+  "warc_hash": "4e28437dae88",
+  "snapshot": "CC-NEWS-2017-07",
+  "warc_bytes": 336551542,
+  "shard": 34500,
+  "code_path": "fused",
+  "region": "us-central1",
+  "device": "TPU v5",
+  "n_devices": 4,
+  "processed_at": "2026-10-15T21:13:14.167000+00:00",
+  "content_length_guard": true,
+  "n_kept": 5826,
+  "n_tombstones": 2165,
+  "sources": {
+    "kept": {
+      "path": "gs://marin-us-central2/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/kept/data-4e28437dae88.parquet",
+      "md5": "5dsA2O9K0w8r7EhlRaSsxQ=="
+    },
+    "tombstones": {
+      "path": "gs://marin-us-central1/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/tombstones/data-4e28437dae88.jsonl.gz",
+      "md5": "OBivnEZsBxMp6AH4qsFhfg=="
+    }
+  }
+}

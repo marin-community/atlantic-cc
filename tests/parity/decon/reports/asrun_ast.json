@@ -1,0 +1,119 @@
+{
+ "experiments/fast_curation/decon_v4.py -> matching.py": {
+  "identical": [
+   "DEFAULT_PARAGRAPH_DELIMITER",
+   "FEATURE_FILTER_VERSION",
+   "LARGE_TEXT_STREAMING_THRESHOLD",
+   "MIN_SHORT_EXACT_TOKENS",
+   "NGramConfig",
+   "_ParagraphOverlap",
+   "_TOKEN_PATTERN",
+   "_bloom_hash",
+   "_document_overlap_and_matches",
+   "_extract_features",
+   "_extract_ngrams",
+   "_extract_streaming_ngrams",
+   "_extract_token_ngrams",
+   "_has_alpha",
+   "_iter_nonempty_segments",
+   "_iter_paragraphs",
+   "_paragraph_overlap_matches_and_presence",
+   "_short_exact_feature",
+   "_short_exact_feature_from_tokens"
+  ],
+  "different": [],
+  "missing_in_port": [],
+  "asrun_only": [
+   "_BLOOM_CACHE_DIR",
+   "_load_bloom"
+  ]
+ },
+ "experiments/fast_curation/decon_8m.py -> names.py": {
+  "identical": [
+   "_EVAL_ID_RE",
+   "eval_name"
+  ],
+  "different": [],
+  "missing_in_port": [],
+  "asrun_only": []
+ },
+ "experiments/fast_curation/decon_8m.py -> dropsets.py": {
+  "identical": [
+   "drop_set_source"
+  ],
+  "different": [],
+  "missing_in_port": [],
+  "asrun_only": []
+ },
+ "experiments/datakit/decontam/prepare_eval_corpus.py -> eval_corpus.py": {
+  "identical": [
+   "AAEvalConfig",
+   "AARecordType",
+   "AA_INDEX_VERSION",
+   "EVAL_CORPUS_VERSION",
+   "_PARQUET_BATCH",
+   "_PARQUET_SCHEMA",
+   "_aa_manifest_entry",
+   "_aa_records",
+   "_concat_strings",
+   "_extract_aa_text",
+   "_lmh_doc_text",
+   "_row_identifier",
+   "_scicode_text",
+   "logger"
+  ],
+  "different": [
+   "_iter_aa_rows",
+   "_write_json"
+  ],
+  "missing_in_port": [],
+  "asrun_only": [
+   "AA_MANIFEST_RELATIVE",
+   "EVALS_RELATIVE",
+   "LMH_EVALS_RELATIVE",
+   "LMH_MANIFEST_RELATIVE",
+   "_LMH_EXTRACTION_VERSION",
+   "_LMH_VERSION_SIDECAR",
+   "_aa_manifest",
+   "_lmh_output_root",
+   "_lmh_task_names",
+   "_output_root",
+   "_prepare_aa",
+   "_prepare_lmh",
+   "_staged_aa_is_current",
+   "_staged_lmh_version",
+   "_write_parquet",
+   "main"
+  ]
+ },
+ "experiments/datakit/decontam/lmh_loader.py -> lmh_loader.py": {
+  "identical": [
+   "_PACKAGED_BUILDERS",
+   "_with_canonical_path",
+   "canonical_dataset_id",
+   "flatten_task_dict",
+   "logger",
+   "materialize_first_nonempty_split"
+  ],
+  "different": [
+   "trust_remote_code_for_hf"
+  ],
+  "missing_in_port": [],
+  "asrun_only": []
+ },
+ "experiments/fast_curation/decon_eval_corpus_fill.py -> eval_corpus.py": {
+  "identical": [
+   "lmh_load_name",
+   "mmmlu_config",
+   "mmmlu_text",
+   "squad_v2_text",
+   "_INCLUDE_RE",
+   "_MMMLU_RE",
+   "MMMLU_REPO",
+   "SQUAD_V2_PARQUET"
+  ],
+  "different": [],
+  "missing_in_port": [],
+  "asrun_only": []
+ }
+}

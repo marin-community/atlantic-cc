@@ -1,0 +1,80 @@
+{
+ "generated": "2026-11-03T02:54:21+00:00",
+ "membership": "S' (eval_hits.npy, 10944079 hashes)",
+ "drop_hashes": 66558,
+ "artifact_load_seconds": 9.8,
+ "cases": [
+  {
+   "case": "R1 crawl=CC-NEWS-2016-08 (whole crawl)",
+   "files": [
+    "crawl=CC-NEWS-2016-08/part-00000-of-00001.parquet",
+    "crawl=CC-NEWS-2016-08/contaminated-00000-of-00001.parquet"
+   ],
+   "docs": 43264,
+   "flagged": 2,
+   "stored_flagged": 2,
+   "mismatched": 0,
+   "mismatched_ids": [],
+   "matched_hashes_without_names": 0,
+   "per_file": [
+    {
+     "path": "crawl=CC-NEWS-2016-08/part-00000-of-00001.parquet",
+     "docs": 43262,
+     "flagged": 0,
+     "stored_flagged": 0,
+     "mismatched": 0
+    },
+    {
+     "path": "crawl=CC-NEWS-2016-08/contaminated-00000-of-00001.parquet",
+     "docs": 2,
+     "flagged": 2,
+     "stored_flagged": 2,
+     "mismatched": 0
+    }
+   ],
+   "seconds": 112.1,
+   "expected_flagged": {
+    "f263c271-23da-49f3-8082-3d2bec260a34": [
+     "paloma_4chan"
+    ],
+    "3cdc9411-8745-4943-909a-200d7b9d3e5c": [
+     "paloma_c4_100_domains"
+    ]
+   },
+   "flagged_equal_expected": true,
+   "passed": true
+  },
+  {
+   "case": "R2 contaminated-only files",
+   "files": [
+    "crawl=CC-NEWS-2024-05/contaminated-00000-of-00001.parquet",
+    "crawl=CC-SUPPLEMENTAL-2026-22/contaminated-00000-of-00001.parquet"
+   ],
+   "docs": 849,
+   "flagged": 849,
+   "stored_flagged": 849,
+   "mismatched": 0,
+   "mismatched_ids": [],
+   "matched_hashes_without_names": 0,
+   "per_file": [
+    {
+     "path": "crawl=CC-NEWS-2024-05/contaminated-00000-of-00001.parquet",
+     "docs": 52,
+     "flagged": 52,
+     "stored_flagged": 52,
+     "mismatched": 0
+    },
+    {
+     "path": "crawl=CC-SUPPLEMENTAL-2026-22/contaminated-00000-of-00001.parquet",
+     "docs": 797,
+     "flagged": 797,
+     "stored_flagged": 797,
+     "mismatched": 0
+    }
+   ],
+   "seconds": 40.8,
+   "passed": true
+  }
+ ],
+ "passed": true
+}

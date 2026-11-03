@@ -1,0 +1,22 @@
+{
+ "n_documents": 83262,
+ "low_level_vs_stored": {
+  "n": 83262,
+  "max": 0.0,
+  "p99": 0.0,
+  "p50": 0.0,
+  "mean": 0.0,
+  "identical_fraction": 1.0
+ },
+ "with_newline_vs_low_level": {
+  "n": 83262,
+  "max": 0.6999086886644363,
+  "p99": 0.04305316329002376,
+  "p50": 0.000605463981628418,
+  "mean": 0.0034106142199600824,
+  "identical_fraction": 0.00016814393120511158
+ },
+ "with_newline_decision_flips": 0,
+ "platform": "Linux x86_64",
+ "fasttext": "0.9.2"
+}

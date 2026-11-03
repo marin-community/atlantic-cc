@@ -1,0 +1,28 @@
+{
+ "what": "PyTorch ModernBERT (transformers ModernBertForSequenceClassification) in bfloat16 with SDPA attention vs the stored production scores, on the 1,629 band documents of tests/golden/models/realdocs.parquet",
+ "environment": {
+  "machine": "Darwin arm64",
+  "device": "Apple GPU (MPS)"
+ },
+ "columns": {
+  "n": "band documents",
+  "p50/p99/max/mean": "|P - stored P|",
+  "flips": "keep/drop decisions that differ at 0.4378",
+  "flips_natural": "flips outside the near-threshold strata",
+  "n_natural": "band documents outside the near-threshold strata",
+  "max_flip_dist": "largest distance from 0.4378 among flipped documents",
+  "secs": "scoring time"
+ },
+ "result": {
+  "n": 1629,
+  "max": 0.01107490062713623,
+  "p99": 0.008131456375122073,
+  "p50": 0.0010805726051330566,
+  "mean": 0.001659454470254513,
+  "flips": 16,
+  "flips_natural": 5,
+  "n_natural": 1222,
+  "max_flip_dist": 0.005438407373428322,
+  "secs": 752.3
+ }
+}

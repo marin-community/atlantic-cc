@@ -1,0 +1,26 @@
+{
+ "drop_hashes": {
+  "count": 66558,
+  "expected_count": 66558,
+  "sha256": "5d71024672f39cd7e52fe4ae97c6d846481cbcf290aacf5d9cbd4ed787795fb8"
+ },
+ "drop_in_bloom_pybloom": 66558,
+ "drop_subset_of_eval_hits": false,
+ "eval_hit_names": {
+  "distinct_eval_names": 491,
+  "hashes_without_names": 0,
+  "max_names_per_hash": 18,
+  "pairs": 11572018,
+  "rows": 10944079
+ },
+ "eval_hits": {
+  "count": 10944079,
+  "expected_count": 10944079,
+  "sha256": "1890774187c40b516dd1243ec69f9022e7c5854e9ae64e3ce19fbca955a828a0"
+ },
+ "eval_hits_in_bloom_native": 10944079,
+ "eval_hits_in_bloom_pybloom": 10944079,
+ "index_rows": 133669639,
+ "index_rows_in_bloom_native": 133669639,
+ "seconds": 1157.0
+}

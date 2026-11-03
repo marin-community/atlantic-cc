@@ -1,0 +1,27 @@
+{
+  "fixture": "F6",
+  "description": "rung 1: the two-phase code path (no Content-Length guard)",
+  "warc_path": "s3://commoncrawl/crawl-data/CC-MAIN-2013-48/segments/1386164021936/warc/CC-MAIN-20131204133341-00077-ip-10-33-133-15.ec2.internal.warc.gz",
+  "warc_hash": "33baad0028fc",
+  "snapshot": "CC-MAIN-2013-48",
+  "warc_bytes": 621312243,
+  "shard": 0,
+  "code_path": "two-phase (rung 1)",
+  "region": "us-east5",
+  "device": "TPU v6 lite",
+  "n_devices": 4,
+  "processed_at": "2026-08-30T17:43:00.556000+00:00",
+  "content_length_guard": false,
+  "n_kept": 12761,
+  "n_tombstones": 19910,
+  "sources": {
+    "kept": {
+      "path": "gs://marin-us-central2/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/kept/data-33baad0028fc.parquet",
+      "md5": "UeX0QjjQgToLTV5KVAJG8Q=="
+    },
+    "tombstones": {
+      "path": "gs://marin-us-east5/documents/fast_curation/lpv11_fastpipe_v2_1-944ca6bc38/tombstones/data-33baad0028fc.jsonl.gz",
+      "md5": "3Q/ltzDNkFAkdhjTinlTfg=="
+    }
+  }
+}

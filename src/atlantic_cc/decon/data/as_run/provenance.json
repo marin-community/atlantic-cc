@@ -1,0 +1,408 @@
+{
+ "audit-full-val-per-crawl-pooldf1000-codedf100.json": {
+  "candidates_audited": 23967,
+  "code_drop_min_df": 100,
+  "drop_sets": "per-crawl",
+  "est_removed_chars": 56231109943.32767,
+  "est_removed_docs": 1378547.4546666674,
+  "eval_set": "full-val",
+  "extra_drop_min_df": null,
+  "files_with_candidates": 274757,
+  "min_matched_features": 2,
+  "pool_candidates": 77283874,
+  "pool_drop_min_df": 1000,
+  "pool_files": 274767,
+  "removed": 424,
+  "removed_features_histogram": {
+   "10": 326,
+   "2": 28,
+   "3": 14,
+   "4": 10,
+   "5": 17,
+   "6": 9,
+   "7": 5,
+   "8": 11,
+   "9": 4
+  },
+  "removed_mean_chars": 42730.19103773585,
+  "removed_short_exact_only": 0,
+  "scoring": "v4"
+ },
+ "bloom-full-val/filter.bin:object": {
+  "crc32c": "YXSmJg==",
+  "created": "2026-10-21T06:19:50.931Z",
+  "md5": "SfJxGrzHsYuxeKI3qxzV1Q==",
+  "size": 900865757
+ },
+ "bloom-full-val/val_index.parquet:object": {
+  "crc32c": "cqWH1Q==",
+  "created": "2026-10-21T06:19:40.317Z",
+  "md5": "DC6HvirN9hfn3vRgZI18NA==",
+  "size": 332620723
+ },
+ "bloom-full/eval_hash_index.parquet:object": {
+  "crc32c": "WpW1xA==",
+  "created": "2026-10-20T22:53:31.678Z",
+  "md5": "tcXuOM6UUOqiyweKhQnAzA==",
+  "size": 750013901
+ },
+ "boilerplate/candidate_summary.json": {
+  "attribute_files": 274767,
+  "distinct_phrases": 10944079,
+  "phrases_at_least": {
+   "100": 302922,
+   "1000": 35059,
+   "10000": 10348,
+   "100000": 2005,
+   "4000": 17273,
+   "50": 575263,
+   "500": 58413
+  }
+ },
+ "boilerplate/code_summary.json": {
+  "phrases_at_least_df": {
+   "10": 15541,
+   "100": 9901,
+   "1000": 5976,
+   "50": 11518,
+   "500": 7420
+  },
+  "phrases_at_least_df_2_languages": {
+   "10": 13726,
+   "100": 9142,
+   "50": 10477,
+   "500": 6958
+  },
+  "phrases_seen": 32199,
+  "source_files": 167
+ },
+ "boilerplate/pool_summary.json": {
+  "phrases_at_least_3_crawls_and_df": {
+   "1000": 60158,
+   "10000": 17199,
+   "100000": 3428,
+   "4000": 29542,
+   "50": 690057,
+   "500": 101916
+  },
+  "tracked_phrases": 1273366
+ },
+ "filter-full-val-pooldf1000-codedf100/export.json": {
+  "do_not_export": "gs://marin-us-central2/documents/baseline_lpv11_fastpipe_v2_1_fused_deduped/8582115warcs/deduped_c075",
+  "export_dataset": "gs://marin-us-central2/documents/baseline_lpv11_fastpipe_v2_1_fused_deduped/8582115warcs/deduped_c075_decon-full-val-pooldf1000-codedf100",
+  "method": "Marin decontamination v4 (hero run rule): full-val eval set, word 13-grams, paragraph overlap >= 0.5 with >= 2 distinct phrases, per-crawl boilerplate drop sets, plus phrases in >= 1000 pool docs across 3+ crawls, plus phrases in >= 100 StarCoderData files",
+  "removed_docs": "gs://marin-us-central2/documents/baseline_lpv11_fastpipe_v2_1_fused_deduped/8582115warcs/decon_v4/filter-full-val-pooldf1000-codedf100/removed_docs.parquet",
+  "summary": {
+   "code_drop_min_df": 100,
+   "decon/chars_kept": 72661114711390,
+   "decon/chars_removed": 51071476115,
+   "decon/docs_in": 9951767085,
+   "decon/docs_kept": 9950417677,
+   "decon/docs_removed": 1349408,
+   "drop_sets": "per-crawl",
+   "eval_set": "full-val",
+   "feature_filter_version": 4,
+   "files": 274767,
+   "min_matched_features": 2,
+   "pool_drop_min_df": 1000
+  }
+ },
+ "filter-full-val-pooldf1000-codedf100/summary.json": {
+  "code_drop_min_df": 100,
+  "decon/chars_kept": 72661114711390,
+  "decon/chars_removed": 51071476115,
+  "decon/docs_in": 9951767085,
+  "decon/docs_kept": 9950417677,
+  "decon/docs_removed": 1349408,
+  "drop_sets": "per-crawl",
+  "eval_set": "full-val",
+  "feature_filter_version": 4,
+  "files": 274767,
+  "min_matched_features": 2,
+  "pool_drop_min_df": 1000
+ },
+ "starcoder_selection": {
+  "c": {
+   "n_files": 53,
+   "picked": [
+    "train-00031-of-00053.parquet",
+    "train-00013-of-00053.parquet",
+    "train-00006-of-00053.parquet",
+    "train-00001-of-00053.parquet",
+    "train-00034-of-00053.parquet",
+    "train-00009-of-00053.parquet",
+    "train-00035-of-00053.parquet",
+    "train-00043-of-00053.parquet",
+    "train-00000-of-00053.parquet",
+    "train-00004-of-00053.parquet"
+   ]
+  },
+  "c-sharp": {
+   "n_files": 45,
+   "picked": [
+    "train-00021-of-00045.parquet",
+    "train-00004-of-00045.parquet",
+    "train-00032-of-00045.parquet",
+    "train-00019-of-00045.parquet",
+    "train-00013-of-00045.parquet",
+    "train-00012-of-00045.parquet",
+    "train-00027-of-00045.parquet",
+    "train-00028-of-00045.parquet",
+    "train-00023-of-00045.parquet",
+    "train-00017-of-00045.parquet"
+   ]
+  },
+  "cpp": {
+   "n_files": 48,
+   "picked": [
+    "train-00036-of-00048.parquet",
+    "train-00029-of-00048.parquet",
+    "train-00044-of-00048.parquet",
+    "train-00017-of-00048.parquet",
+    "train-00007-of-00048.parquet",
+    "train-00038-of-00048.parquet",
+    "train-00021-of-00048.parquet",
+    "train-00019-of-00048.parquet",
+    "train-00000-of-00048.parquet",
+    "train-00001-of-00048.parquet"
+   ]
+  },
+  "css": {
+   "n_files": 12,
+   "picked": [
+    "train-00000-of-00012.parquet",
+    "train-00011-of-00012.parquet",
+    "train-00001-of-00012.parquet",
+    "train-00005-of-00012.parquet",
+    "train-00003-of-00012.parquet",
+    "train-00006-of-00012.parquet",
+    "train-00007-of-00012.parquet",
+    "train-00009-of-00012.parquet",
+    "train-00010-of-00012.parquet",
+    "train-00008-of-00012.parquet"
+   ]
+  },
+  "dart": {
+   "n_files": 4,
+   "picked": [
+    "train-00003-of-00004.parquet",
+    "train-00001-of-00004.parquet",
+    "train-00000-of-00004.parquet",
+    "train-00002-of-00004.parquet"
+   ]
+  },
+  "go": {
+   "n_files": 24,
+   "picked": [
+    "train-00018-of-00024.parquet",
+    "train-00006-of-00024.parquet",
+    "train-00021-of-00024.parquet",
+    "train-00000-of-00024.parquet",
+    "train-00017-of-00024.parquet",
+    "train-00007-of-00024.parquet",
+    "train-00019-of-00024.parquet",
+    "train-00023-of-00024.parquet",
+    "train-00002-of-00024.parquet",
+    "train-00010-of-00024.parquet"
+   ]
+  },
+  "haskell": {
+   "n_files": 3,
+   "picked": [
+    "train-00002-of-00003.parquet",
+    "train-00001-of-00003.parquet",
+    "train-00000-of-00003.parquet"
+   ]
+  },
+  "html": {
+   "n_files": 29,
+   "picked": [
+    "train-00022-of-00029.parquet",
+    "train-00020-of-00029.parquet",
+    "train-00017-of-00029.parquet",
+    "train-00027-of-00029.parquet",
+    "train-00000-of-00029.parquet",
+    "train-00026-of-00029.parquet",
+    "train-00008-of-00029.parquet",
+    "train-00025-of-00029.parquet",
+    "train-00007-of-00029.parquet",
+    "train-00006-of-00029.parquet"
+   ]
+  },
+  "java": {
+   "n_files": 87,
+   "picked": [
+    "train-00070-of-00087.parquet",
+    "train-00034-of-00087.parquet",
+    "train-00077-of-00087.parquet",
+    "train-00031-of-00087.parquet",
+    "train-00047-of-00087.parquet",
+    "train-00075-of-00087.parquet",
+    "train-00035-of-00087.parquet",
+    "train-00067-of-00087.parquet",
+    "train-00025-of-00087.parquet",
+    "train-00043-of-00087.parquet"
+   ]
+  },
+  "javascript": {
+   "n_files": 65,
+   "picked": [
+    "train-00032-of-00065.parquet",
+    "train-00003-of-00065.parquet",
+    "train-00011-of-00065.parquet",
+    "train-00050-of-00065.parquet",
+    "train-00006-of-00065.parquet",
+    "train-00058-of-00065.parquet",
+    "train-00041-of-00065.parquet",
+    "train-00001-of-00065.parquet",
+    "train-00042-of-00065.parquet",
+    "train-00049-of-00065.parquet"
+   ]
+  },
+  "julia": {
+   "n_files": 2,
+   "picked": [
+    "train-00001-of-00002.parquet",
+    "train-00000-of-00002.parquet"
+   ]
+  },
+  "kotlin": {
+   "n_files": 6,
+   "picked": [
+    "train-00000-of-00006.parquet",
+    "train-00005-of-00006.parquet",
+    "train-00003-of-00006.parquet",
+    "train-00001-of-00006.parquet",
+    "train-00004-of-00006.parquet",
+    "train-00002-of-00006.parquet"
+   ]
+  },
+  "lua": {
+   "n_files": 3,
+   "picked": [
+    "train-00002-of-00003.parquet",
+    "train-00000-of-00003.parquet",
+    "train-00001-of-00003.parquet"
+   ]
+  },
+  "perl": {
+   "n_files": 3,
+   "picked": [
+    "train-00002-of-00003.parquet",
+    "train-00001-of-00003.parquet",
+    "train-00000-of-00003.parquet"
+   ]
+  },
+  "php": {
+   "n_files": 61,
+   "picked": [
+    "train-00006-of-00061.parquet",
+    "train-00050-of-00061.parquet",
+    "train-00035-of-00061.parquet",
+    "train-00005-of-00061.parquet",
+    "train-00052-of-00061.parquet",
+    "train-00003-of-00061.parquet",
+    "train-00029-of-00061.parquet",
+    "train-00008-of-00061.parquet",
+    "train-00046-of-00061.parquet",
+    "train-00058-of-00061.parquet"
+   ]
+  },
+  "python": {
+   "n_files": 59,
+   "picked": [
+    "train-00053-of-00059.parquet",
+    "train-00024-of-00059.parquet",
+    "train-00028-of-00059.parquet",
+    "train-00033-of-00059.parquet",
+    "train-00040-of-00059.parquet",
+    "train-00058-of-00059.parquet",
+    "train-00014-of-00059.parquet",
+    "train-00029-of-00059.parquet",
+    "train-00008-of-00059.parquet",
+    "train-00013-of-00059.parquet"
+   ]
+  },
+  "r": {
+   "n_files": 1,
+   "picked": [
+    "train-00000-of-00001.parquet"
+   ]
+  },
+  "ruby": {
+   "n_files": 7,
+   "picked": [
+    "train-00002-of-00007.parquet",
+    "train-00003-of-00007.parquet",
+    "train-00004-of-00007.parquet",
+    "train-00005-of-00007.parquet",
+    "train-00001-of-00007.parquet",
+    "train-00006-of-00007.parquet",
+    "train-00000-of-00007.parquet"
+   ]
+  },
+  "rust": {
+   "n_files": 9,
+   "picked": [
+    "train-00002-of-00009.parquet",
+    "train-00008-of-00009.parquet",
+    "train-00004-of-00009.parquet",
+    "train-00007-of-00009.parquet",
+    "train-00006-of-00009.parquet",
+    "train-00003-of-00009.parquet",
+    "train-00000-of-00009.parquet",
+    "train-00001-of-00009.parquet",
+    "train-00005-of-00009.parquet"
+   ]
+  },
+  "scala": {
+   "n_files": 5,
+   "picked": [
+    "train-00000-of-00005.parquet",
+    "train-00003-of-00005.parquet",
+    "train-00001-of-00005.parquet",
+    "train-00002-of-00005.parquet",
+    "train-00004-of-00005.parquet"
+   ]
+  },
+  "shell": {
+   "n_files": 4,
+   "picked": [
+    "train-00000-of-00004.parquet",
+    "train-00003-of-00004.parquet",
+    "train-00001-of-00004.parquet",
+    "train-00002-of-00004.parquet"
+   ]
+  },
+  "sql": {
+   "n_files": 11,
+   "picked": [
+    "train-00007-of-00011.parquet",
+    "train-00000-of-00011.parquet",
+    "train-00010-of-00011.parquet",
+    "train-00009-of-00011.parquet",
+    "train-00006-of-00011.parquet",
+    "train-00008-of-00011.parquet",
+    "train-00004-of-00011.parquet",
+    "train-00003-of-00011.parquet",
+    "train-00005-of-00011.parquet",
+    "train-00002-of-00011.parquet"
+   ]
+  },
+  "typescript": {
+   "n_files": 27,
+   "picked": [
+    "train-00020-of-00027.parquet",
+    "train-00005-of-00027.parquet",
+    "train-00011-of-00027.parquet",
+    "train-00001-of-00027.parquet",
+    "train-00012-of-00027.parquet",
+    "train-00015-of-00027.parquet",
+    "train-00009-of-00027.parquet",
+    "train-00022-of-00027.parquet",
+    "train-00021-of-00027.parquet",
+    "train-00017-of-00027.parquet"
+   ]
+  }
+ }
+}

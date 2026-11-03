@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "atlantic-cc"
+version = "1.0.0"
+description = "Code to reproduce Atlantic-CC, a quality-filtered, deduplicated and decontaminated corpus built from all of Common Crawl."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = "==3.12.*"
+# Versions are pinned to the environment that produced Atlantic-CC v1.0 (the as-run uv.lock).
+# Several of them change outputs: warcio and charset-normalizer change decoding, numpy changes
+# threshold semantics (NEP 50) and dedup tie order, msgspec changes JSON float formatting.
+dependencies = [
+    "numpy==2.3.5",
+    "pyarrow==23.0.1",
+    "fsspec==2026.1.0",
+    "requests==2.33.1",
+    "warcio==1.8.1",
+    "charset-normalizer==3.5.0",
+    "fasttext-wheel==0.9.2",
+    "gigatoken==0.10.0",
+    "awkward==2.13.0",
+    "tokenizers==0.22.2",
+    "transformers==5.12.1",
+    "huggingface-hub==1.21.0",
+    "safetensors==0.6.2",
+    "msgspec==0.20.0",
+    "zstandard==0.25.0",
+    "xxhash==3.6.0",
+    "marin-dupekit-native==0.1.6.dev31131847556",
+]
+
+[project.optional-dependencies]
+gcs = ["gcsfs==2026.1.0", "google-cloud-storage==3.8.0"]
+s3 = ["s3fs==2026.1.0"]
+jax = ["jax==0.11.0"]
+tpu = ["jax[tpu]==0.11.0"]
+torch = ["torch>=2.6"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+atlantic-cc = "atlantic_cc.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/atlantic_cc"]
+
+[tool.uv]
+# marin-dupekit-native is published only as dev pre-releases.
+prerelease = "explicit"
+
+[tool.iris.bundle]
+# Parity and integration tests run as Iris jobs; Iris drops tests/ from job bundles by default.
+include = ["tests/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# The default run is offline, CPU-only and fast. Select marked tests explicitly, e.g. `-m network`
+# (a later -m replaces this one).
+addopts = "-ra -m 'not network and not gcs and not extractor and not tpu and not gpu and not slow'"
+markers = [
+    "network: downloads from data.commoncrawl.org or the Hugging Face Hub",
+    "gcs: reads Marin's GCS buckets (maintainers only; used to build goldens and run parity)",
+    "extractor: needs the resiliparse-rs extension",
+    "tpu: needs a TPU",
+    "gpu: needs a CUDA GPU",
+    "slow: loads real model weights or takes more than 30 seconds",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "PLC0415"]

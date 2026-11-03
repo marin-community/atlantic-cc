@@ -1,0 +1,194 @@
+{
+ "candidate": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a4/t2/sa/run",
+ "candidate_output_root": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a4/t2/sa/out",
+ "criteria": {
+  "1_survivor_and_removal_sets": {
+   "attrs": {
+    "equal_units": 22,
+    "mismatched_unit_count": 0,
+    "mismatched_units": {},
+    "rows": 13764089,
+    "units": 22
+   },
+   "c075_marks": {
+    "equal_units": 22,
+    "mismatched_unit_count": 0,
+    "mismatched_units": {},
+    "rows": 7268475,
+    "units": 22
+   },
+   "oversized": {
+    "candidate": {
+     "109353898849": 624080
+    },
+    "equal": true
+   },
+   "pass": true,
+   "reps": {
+    "equal_units": 22,
+    "mismatched_unit_count": 0,
+    "mismatched_units": {},
+    "rows": 89622794,
+    "units": 22
+   }
+  },
+  "2_survivor_tuples": {
+   "method": "implied by identical decompressed outputs; checked record by record in differing files",
+   "pass": true
+  },
+  "3_decompressed_outputs": {
+   "candidate_sha256_of_digests": "313efcc26d860675ff3a379a838e92054452ddce64569f2b8652b978d6de7b77",
+   "decompressed_bytes": 469973134067,
+   "docs": 82354319,
+   "equal_files": 334,
+   "files": 334,
+   "mismatched_details": {},
+   "mismatched_files": 0,
+   "names_equal": true,
+   "only_candidate": [],
+   "only_reference": [],
+   "pass": true,
+   "reference_files": 334
+  },
+  "4_stats": {
+   "compared_fields": 160,
+   "differences": [],
+   "headline": {
+    "c075": {
+     "chars": 432223247083,
+     "docs": 82354319,
+     "max_cluster_size": 100000,
+     "removed": 7268475,
+     "rule": {
+      "exact_scan_maximum": 256,
+      "maximum_candidates": 32,
+      "maximum_posting_length": 512,
+      "minimum_containment": 0.75,
+      "ngram_size": 3,
+      "probe_ngrams": 32,
+      "rule_version": "containment_ngram3_v2"
+     }
+    },
+    "components": 3728645,
+    "exact_duplicates": 5843777,
+    "records_in": 95466571,
+    "unique_docs": 89622794
+   },
+   "partition_dependent_fields_dropped": false,
+   "pass": true
+  },
+  "5_gz_bytes": {
+   "equal": true,
+   "equal_files": 334,
+   "note": "gzip bytes also depend on the zlib build (header OS byte, deflate implementation)"
+  }
+ },
+ "elapsed_seconds": 556.2,
+ "inputs": {
+  "equal": true,
+  "files": 10364,
+  "inputs_sha256": "f34694f7fbf4ef4ce09c7d48af2edc5581ea45d0cdb1779745a9d783c60ae3e1"
+ },
+ "pass": true,
+ "plans": {
+  "candidate": {
+   "c075": 56,
+   "exact": 3,
+   "lsh": 20,
+   "units": 22,
+   "units_per_node_partition": 5
+  },
+  "reference": {
+   "c075": 56,
+   "exact": 3,
+   "lsh": 20,
+   "units": 22,
+   "units_per_node_partition": 5
+  },
+  "same_layout": true,
+  "same_partitions": true
+ },
+ "reference": "gs://marin-us-central2/tmp/ttl=14d/rdedup/dclm-pools/400m-1x",
+ "reference_output_root": "gs://marin-us-central2/documents/atlantic_cc_dclm_pools/400m-1x",
+ "runtime": {
+  "candidate": [
+   {
+    "NPY_DISABLE_CPU_FEATURES": "",
+    "cpu_has_avx512f": false,
+    "cpu_model": "AMD EPYC 7B12",
+    "host": "t1v-n-3ae2e34f-w-0",
+    "machine": "x86_64",
+    "numpy_avx512_enabled": [],
+    "role": "worker"
+   },
+   {
+    "NPY_DISABLE_CPU_FEATURES": "",
+    "cpu_has_avx512f": false,
+    "cpu_model": "AMD EPYC 7B12",
+    "host": "t1v-n-3ae2e34f-w-0",
+    "machine": "x86_64",
+    "numpy_avx512_enabled": [],
+    "role": "worker"
+   },
+   {
+    "NPY_DISABLE_CPU_FEATURES": "",
+    "cpu_has_avx512f": false,
+    "cpu_model": "AMD EPYC 7B12",
+    "host": "t1v-n-f49bab5b-w-3",
+    "machine": "x86_64",
+    "numpy_avx512_enabled": [],
+    "role": "worker"
+   }
+  ],
+  "reference": []
+ },
+ "verifier": {
+  "NPY_DISABLE_CPU_FEATURES": "",
+  "host": "t1v-n-3ae2e34f-w-0",
+  "machine": "x86_64",
+  "numpy": "2.3.5",
+  "numpy_cpu_baseline": [
+   "SSE",
+   "SSE2",
+   "SSE3"
+  ],
+  "numpy_cpu_dispatch": [
+   "SSSE3",
+   "SSE41",
+   "POPCNT",
+   "SSE42",
+   "AVX",
+   "F16C",
+   "FMA3",
+   "AVX2",
+   "AVX512F",
+   "AVX512CD",
+   "AVX512_KNL",
+   "AVX512_KNM",
+   "AVX512_SKX",
+   "AVX512_CLX",
+   "AVX512_CNL",
+   "AVX512_ICL",
+   "AVX512_SPR"
+  ],
+  "numpy_cpu_enabled": [
+   "AVX",
+   "AVX2",
+   "F16C",
+   "FMA3",
+   "MMX",
+   "POPCNT",
+   "SSE",
+   "SSE2",
+   "SSE3",
+   "SSE41",
+   "SSE42",
+   "SSSE3"
+  ],
+  "pid": 22165,
+  "platform": "Linux-5.19.0-1022-gcp-x86_64-with-glibc2.41",
+  "python": "3.12.15 (main, Oct 21 2026, 01:08:20) [GCC 14.2.0]",
+  "tie_order_platform": "x86_64-avx2",
+  "time": 1793694447.9686134
+ }
+}

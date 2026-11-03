@@ -1,0 +1,184 @@
+{
+ "crawl-data/CC-MAIN-2013-20/segments/1368701233842/warc/CC-MAIN-20130516104713-00019-ip-10-60-113-184.ec2.internal.warc.gz": {
+  "warc_hash": "0001bb8e34b9",
+  "shard": 17550,
+  "device": "TPU v4",
+  "n_devices": 4,
+  "region": "us-central2"
+ },
+ "crawl-data/CC-MAIN-2013-20/segments/1368701614932/warc/CC-MAIN-20130516105334-00041-ip-10-60-113-184.ec2.internal.warc.gz": {
+  "warc_hash": "0000a404bca7",
+  "shard": 9988,
+  "device": "TPU v5 lite",
+  "n_devices": 4,
+  "region": "us-west4"
+ },
+ "crawl-data/CC-MAIN-2021-04/segments/1610703500028.5/warc/CC-MAIN-20210116044418-20210116074418-00342.warc.gz": {
+  "warc_hash": "00013e1800c2",
+  "shard": 17432,
+  "device": "TPU v5",
+  "n_devices": 4,
+  "region": "us-central1"
+ },
+ "crawl-data/CC-MAIN-2021-04/segments/1610703514121.8/warc/CC-MAIN-20210118030549-20210118060549-00711.warc.gz": {
+  "warc_hash": "0004a177b391",
+  "shard": 15479,
+  "device": "TPU v5 lite",
+  "n_devices": 4,
+  "region": "us-west4"
+ },
+ "crawl-data/CC-MAIN-2021-04/segments/1610703537796.45/warc/CC-MAIN-20210123094754-20210123124754-00675.warc.gz": {
+  "warc_hash": "00047d7ae73a",
+  "shard": 6266,
+  "device": "TPU v4",
+  "n_devices": 4,
+  "region": "us-central2"
+ },
+ "crawl-data/CC-MAIN-2021-04/segments/1610703564029.59/warc/CC-MAIN-20210125030118-20210125060118-00479.warc.gz": {
+  "warc_hash": "0000f8278c40",
+  "shard": 31527,
+  "device": "TPU v5 lite",
+  "n_devices": 4,
+  "region": "us-west4"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722640372747.5/warc/CC-MAIN-20240803153056-20240803183056-00558.warc.gz": {
+  "warc_hash": "000688ebb542",
+  "shard": 12267,
+  "device": "TPU v5 lite",
+  "n_devices": 4,
+  "region": "us-west4"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722640455981.23/warc/CC-MAIN-20240805211050-20240806001050-00207.warc.gz": {
+  "warc_hash": "0000f5bb7de1",
+  "shard": 30907,
+  "device": "TPU v5 lite",
+  "n_devices": 4,
+  "region": "us-west4"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722640476915.25/warc/CC-MAIN-20240806064139-20240806094139-00733.warc.gz": {
+  "warc_hash": "0008ebda7c20",
+  "shard": 8666,
+  "device": "TPU v6 lite",
+  "n_devices": 8,
+  "region": "us-east1"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722640492117.28/warc/CC-MAIN-20240806130705-20240806160705-00842.warc.gz": {
+  "warc_hash": "0006d3d89b62",
+  "shard": 31448,
+  "device": "TPU v4",
+  "n_devices": 4,
+  "region": "us-central2"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722640690787.34/warc/CC-MAIN-20240807080717-20240807110717-00786.warc.gz": {
+  "warc_hash": "00029127eef1",
+  "shard": 8231,
+  "device": "TPU v5",
+  "n_devices": 4,
+  "region": "us-central1"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722640713903.39/warc/CC-MAIN-20240808000606-20240808030606-00819.warc.gz": {
+  "warc_hash": "0002d4338516",
+  "shard": 25395,
+  "device": "TPU v4",
+  "n_devices": 4,
+  "region": "us-central2"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722640719674.40/warc/CC-MAIN-20240808031539-20240808061539-00121.warc.gz": {
+  "warc_hash": "00092318aea7",
+  "shard": 22808,
+  "device": "TPU v5",
+  "n_devices": 4,
+  "region": "us-central1"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722640843545.63/warc/CC-MAIN-20240811013030-20240811043030-00251.warc.gz": {
+  "warc_hash": "000928749ed0",
+  "shard": 24180,
+  "device": "TPU v5",
+  "n_devices": 4,
+  "region": "us-central1"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722640997721.66/warc/CC-MAIN-20240811110531-20240811140531-00658.warc.gz": {
+  "warc_hash": "000511ecdd55",
+  "shard": 12268,
+  "device": "TPU v6 lite",
+  "n_devices": 4,
+  "region": "us-east1"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722641048885.76/warc/CC-MAIN-20240812190307-20240812220307-00228.warc.gz": {
+  "warc_hash": "00078259e3d3",
+  "shard": 12121,
+  "device": "TPU v5 lite",
+  "n_devices": 8,
+  "region": "us-west4"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722641086966.85/warc/CC-MAIN-20240813235205-20240814025205-00745.warc.gz": {
+  "warc_hash": "0000129230e3",
+  "shard": 4754,
+  "device": "TPU v5 lite",
+  "n_devices": 4,
+  "region": "us-west4"
+ },
+ "crawl-data/CC-MAIN-2024-33/segments/1722641151918.94/warc/CC-MAIN-20240815044119-20240815074119-00727.warc.gz": {
+  "warc_hash": "000488ad44ff",
+  "shard": 9133,
+  "device": "TPU v5",
+  "n_devices": 4,
+  "region": "us-central1"
+ },
+ "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160826124520-00000.warc.gz": {
+  "warc_hash": "cd785280d151",
+  "shard": 34419,
+  "device": "TPU v5",
+  "n_devices": 4,
+  "region": "us-central1"
+ },
+ "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160826132734-00001.warc.gz": {
+  "warc_hash": "dc48fdfe22a6",
+  "shard": 34420,
+  "device": "TPU v5",
+  "n_devices": 4,
+  "region": "us-central1"
+ },
+ "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160827132735-00002.warc.gz": {
+  "warc_hash": "7c23fdce676f",
+  "shard": 34421,
+  "device": "TPU v5 lite",
+  "n_devices": 4,
+  "region": "us-west4"
+ },
+ "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160827145159-00003.warc.gz": {
+  "warc_hash": "92484a1eb2d3",
+  "shard": 34422,
+  "device": "TPU v5",
+  "n_devices": 4,
+  "region": "us-central1"
+ },
+ "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160828145159-00004.warc.gz": {
+  "warc_hash": "9d55631098fa",
+  "shard": 34423,
+  "device": "TPU v5 lite",
+  "n_devices": 4,
+  "region": "us-west4"
+ },
+ "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160829145200-00005.warc.gz": {
+  "warc_hash": "c124d9421e00",
+  "shard": 34424,
+  "device": "TPU v5",
+  "n_devices": 4,
+  "region": "us-central1"
+ },
+ "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160830145200-00006.warc.gz": {
+  "warc_hash": "76e5aa156d4e",
+  "shard": 34425,
+  "device": "TPU v5",
+  "n_devices": 4,
+  "region": "us-central1"
+ },
+ "crawl-data/CC-NEWS/2016/08/CC-NEWS-20160831145200-00007.warc.gz": {
+  "warc_hash": "df0c05c96bbe",
+  "shard": 34426,
+  "device": "TPU v5 lite",
+  "n_devices": 8,
+  "region": "us-west4"
+ }
+}

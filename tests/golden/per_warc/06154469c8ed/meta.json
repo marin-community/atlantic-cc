@@ -1,0 +1,27 @@
+{
+  "fixture": "F5",
+  "description": "CC-SUPPLEMENTAL extension; one extractor crash",
+  "warc_path": "s3://commoncrawl/projects/cc-open-athena-test/CC-SUPPLEMENTAL-2026-22/segments/20260526134233/warc/CC-SUPPLEMENTAL-2026-22-20260526134319-20260526174319-00066.warc.gz",
+  "warc_hash": "06154469c8ed",
+  "snapshot": "CC-SUPPLEMENTAL-2026-22",
+  "warc_bytes": 1279645018,
+  "shard": 32001,
+  "code_path": "fused",
+  "region": "us-central2",
+  "device": "TPU v4",
+  "n_devices": 4,
+  "processed_at": "2026-10-14T00:15:18.438000+00:00",
+  "content_length_guard": true,
+  "n_kept": 2456,
+  "n_tombstones": 3456,
+  "sources": {
+    "kept": {
+      "path": "gs://marin-us-central2/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/kept/data-06154469c8ed.parquet",
+      "md5": "rPzbJlPDo/DY6w98LdlcjA=="
+    },
+    "tombstones": {
+      "path": "gs://marin-us-central2/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/tombstones/data-06154469c8ed.jsonl.gz",
+      "md5": "e5N09rJMfh+3C0tkIRSpRg=="
+    }
+  }
+}

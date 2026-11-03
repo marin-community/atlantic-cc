@@ -1,0 +1,149 @@
+{
+ "check": "parts",
+ "results": [
+  {
+   "mine": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a6/r6/parts_rebuild/v1.0/crawl=CC-NEWS-2016-08/part-00000-of-00001.parquet",
+   "theirs": "gs://marin-us-central2/documents/baseline_lpv11_fastpipe_v2_1_fused_deduped/8582115warcs/release_1gb/v1.0/crawl=CC-NEWS-2016-08/part-00000-of-00001.parquet",
+   "md5_mine": "7937b9d3a958e0f0123c5ca310d6449e",
+   "md5_theirs": "7937b9d3a958e0f0123c5ca310d6449e",
+   "bytes_identical": true,
+   "footer_mine": {
+    "num_rows": 43262,
+    "num_row_groups": 5,
+    "created_by": "parquet-cpp-arrow version 23.0.1",
+    "row_group_rows": [
+     3262,
+     10000
+    ],
+    "compression": "ZSTD",
+    "schema": "record_id: string\nurl: string\ncrawl: string\nwarc_path: string\ntext: string\nfasttext_score: double\npooled_prob: double\nmodernbert_prob: double\nexact_copies: int64\nfuzzy_cluster_size: int64\ndecon_matches: list<element: string>\n  child 0, element: string"
+   },
+   "footer_theirs": {
+    "num_rows": 43262,
+    "num_row_groups": 5,
+    "created_by": "parquet-cpp-arrow version 23.0.1",
+    "row_group_rows": [
+     3262,
+     10000
+    ],
+    "compression": "ZSTD",
+    "schema": "record_id: string\nurl: string\ncrawl: string\nwarc_path: string\ntext: string\nfasttext_score: double\npooled_prob: double\nmodernbert_prob: double\nexact_copies: int64\nfuzzy_cluster_size: int64\ndecon_matches: list<element: string>\n  child 0, element: string"
+   },
+   "schemas_equal": true,
+   "row_groups_differing": [],
+   "rows_identical": true,
+   "selector": "CC-NEWS-2016-08/part/0",
+   "pieces": 8,
+   "records": 43262,
+   "seconds": 12.3
+  },
+  {
+   "mine": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a6/r6/parts_rebuild/v1.0/crawl=CC-NEWS-2016-08/contaminated-00000-of-00001.parquet",
+   "theirs": "gs://marin-us-central2/documents/baseline_lpv11_fastpipe_v2_1_fused_deduped/8582115warcs/release_1gb/v1.0/crawl=CC-NEWS-2016-08/contaminated-00000-of-00001.parquet",
+   "md5_mine": "6d2a3b0f3d71576e33f384507ad107c9",
+   "md5_theirs": "6d2a3b0f3d71576e33f384507ad107c9",
+   "bytes_identical": true,
+   "footer_mine": {
+    "num_rows": 2,
+    "num_row_groups": 1,
+    "created_by": "parquet-cpp-arrow version 23.0.1",
+    "row_group_rows": [
+     2
+    ],
+    "compression": "ZSTD",
+    "schema": "record_id: string\nurl: string\ncrawl: string\nwarc_path: string\ntext: string\nfasttext_score: double\npooled_prob: double\nmodernbert_prob: double\nexact_copies: int64\nfuzzy_cluster_size: int64\ndecon_matches: list<element: string>\n  child 0, element: string"
+   },
+   "footer_theirs": {
+    "num_rows": 2,
+    "num_row_groups": 1,
+    "created_by": "parquet-cpp-arrow version 23.0.1",
+    "row_group_rows": [
+     2
+    ],
+    "compression": "ZSTD",
+    "schema": "record_id: string\nurl: string\ncrawl: string\nwarc_path: string\ntext: string\nfasttext_score: double\npooled_prob: double\nmodernbert_prob: double\nexact_copies: int64\nfuzzy_cluster_size: int64\ndecon_matches: list<element: string>\n  child 0, element: string"
+   },
+   "schemas_equal": true,
+   "row_groups_differing": [],
+   "rows_identical": true,
+   "selector": "CC-NEWS-2016-08/contaminated/0",
+   "pieces": 2,
+   "records": 2,
+   "seconds": 0.5
+  },
+  {
+   "mine": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a6/r6/parts_rebuild/v1.0/crawl=CC-SUPPLEMENTAL-2026-22/part-00010-of-00011.parquet",
+   "theirs": "gs://marin-us-central2/documents/baseline_lpv11_fastpipe_v2_1_fused_deduped/8582115warcs/release_1gb/v1.0/crawl=CC-SUPPLEMENTAL-2026-22/part-00010-of-00011.parquet",
+   "md5_mine": "f8724828e40ce286edeadd3c5987b747",
+   "md5_theirs": "f8724828e40ce286edeadd3c5987b747",
+   "bytes_identical": true,
+   "footer_mine": {
+    "num_rows": 136429,
+    "num_row_groups": 14,
+    "created_by": "parquet-cpp-arrow version 23.0.1",
+    "row_group_rows": [
+     6429,
+     10000
+    ],
+    "compression": "ZSTD",
+    "schema": "record_id: string\nurl: string\ncrawl: string\nwarc_path: string\ntext: string\nfasttext_score: double\npooled_prob: double\nmodernbert_prob: double\nexact_copies: int64\nfuzzy_cluster_size: int64\ndecon_matches: list<element: string>\n  child 0, element: string"
+   },
+   "footer_theirs": {
+    "num_rows": 136429,
+    "num_row_groups": 14,
+    "created_by": "parquet-cpp-arrow version 23.0.1",
+    "row_group_rows": [
+     6429,
+     10000
+    ],
+    "compression": "ZSTD",
+    "schema": "record_id: string\nurl: string\ncrawl: string\nwarc_path: string\ntext: string\nfasttext_score: double\npooled_prob: double\nmodernbert_prob: double\nexact_copies: int64\nfuzzy_cluster_size: int64\ndecon_matches: list<element: string>\n  child 0, element: string"
+   },
+   "schemas_equal": true,
+   "row_groups_differing": [],
+   "rows_identical": true,
+   "selector": "CC-SUPPLEMENTAL-2026-22/part/10",
+   "pieces": 165,
+   "records": 136429,
+   "seconds": 81.1
+  },
+  {
+   "mine": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a6/r6/parts_rebuild/v1.0/crawl=CC-MAIN-2013-20/part-00000-of-00410.parquet",
+   "theirs": "gs://marin-us-central2/documents/baseline_lpv11_fastpipe_v2_1_fused_deduped/8582115warcs/release_1gb/v1.0/crawl=CC-MAIN-2013-20/part-00000-of-00410.parquet",
+   "md5_mine": "0e7dba6becb4642a5803c79620515ca7",
+   "md5_theirs": "0e7dba6becb4642a5803c79620515ca7",
+   "bytes_identical": true,
+   "footer_mine": {
+    "num_rows": 419226,
+    "num_row_groups": 42,
+    "created_by": "parquet-cpp-arrow version 23.0.1",
+    "row_group_rows": [
+     9226,
+     10000
+    ],
+    "compression": "ZSTD",
+    "schema": "record_id: string\nurl: string\ncrawl: string\nwarc_path: string\ntext: string\nfasttext_score: double\npooled_prob: double\nmodernbert_prob: double\nexact_copies: int64\nfuzzy_cluster_size: int64\ndecon_matches: list<element: string>\n  child 0, element: string"
+   },
+   "footer_theirs": {
+    "num_rows": 419226,
+    "num_row_groups": 42,
+    "created_by": "parquet-cpp-arrow version 23.0.1",
+    "row_group_rows": [
+     9226,
+     10000
+    ],
+    "compression": "ZSTD",
+    "schema": "record_id: string\nurl: string\ncrawl: string\nwarc_path: string\ntext: string\nfasttext_score: double\npooled_prob: double\nmodernbert_prob: double\nexact_copies: int64\nfuzzy_cluster_size: int64\ndecon_matches: list<element: string>\n  child 0, element: string"
+   },
+   "schemas_equal": true,
+   "row_groups_differing": [],
+   "rows_identical": true,
+   "selector": "CC-MAIN-2013-20/part/0",
+   "pieces": 9,
+   "records": 419226,
+   "seconds": 162.6
+  }
+ ],
+ "all_bytes_identical": true,
+ "wall_seconds": 258.9
+}

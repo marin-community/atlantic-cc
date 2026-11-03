@@ -1,0 +1,1215 @@
+{
+ "harness": "tests/parity/r2_phase_b.py",
+ "created": "2026-11-03T10:02:20+00:00",
+ "output": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a8/r3-2080ti-fp32",
+ "gates": {
+  "min_decision_agreement": 0.999,
+  "pooled_flip_epsilon": 0.02,
+  "terminal_flip_epsilon": 0.05
+ },
+ "aggregate": {
+  "all": {
+   "n_warcs": 5,
+   "n_common_survivors": 50524,
+   "pooled_abs_delta": {
+    "n": 50524,
+    "n_zero": 193,
+    "mean": 0.00029166215233736347,
+    "p50": 0.00010499999999999919,
+    "p90": 0.0008311271667480469,
+    "p99": 0.0021284735202789272,
+    "p99.9": 0.003519431000000028,
+    "max": 0.00892755389213562
+   },
+   "terminal_abs_delta": {
+    "n": 18090,
+    "n_zero": 3,
+    "mean": 0.0013178347465948482,
+    "p50": 0.0008549999999999947,
+    "p90": 0.0031300018711090034,
+    "p99": 0.0064320586590576115,
+    "p99.9": 0.010360807482833988,
+    "max": 0.018373
+   },
+   "decision_agreement": 0.999406222785211,
+   "n_flips": 30,
+   "pass": {
+    "decision_agreement": true,
+    "flips_within_epsilon": true
+   }
+  },
+  "same_device_type": {
+   "n_warcs": 0,
+   "n_common_survivors": 0,
+   "pooled_abs_delta": {
+    "n": 0
+   },
+   "terminal_abs_delta": {
+    "n": 0
+   },
+   "decision_agreement": 1.0,
+   "n_flips": 0,
+   "pass": {
+    "decision_agreement": true,
+    "flips_within_epsilon": true
+   }
+  },
+  "other_device_type": {
+   "n_warcs": 5,
+   "n_common_survivors": 50524,
+   "pooled_abs_delta": {
+    "n": 50524,
+    "n_zero": 193,
+    "mean": 0.00029166215233736347,
+    "p50": 0.00010499999999999919,
+    "p90": 0.0008311271667480469,
+    "p99": 0.0021284735202789272,
+    "p99.9": 0.003519431000000028,
+    "max": 0.00892755389213562
+   },
+   "terminal_abs_delta": {
+    "n": 18090,
+    "n_zero": 3,
+    "mean": 0.0013178347465948482,
+    "p50": 0.0008549999999999947,
+    "p90": 0.0031300018711090034,
+    "p99": 0.0064320586590576115,
+    "p99.9": 0.010360807482833988,
+    "max": 0.018373
+   },
+   "decision_agreement": 0.999406222785211,
+   "n_flips": 30,
+   "pass": {
+    "decision_agreement": true,
+    "flips_within_epsilon": true
+   }
+  }
+ },
+ "warcs": [
+  {
+   "name": "F1",
+   "warc_path": "s3://commoncrawl/crawl-data/CC-MAIN-2014-23/segments/1405997884573.18/warc/CC-MAIN-20140722025804-00181-ip-10-33-131-23.ec2.internal.warc.gz",
+   "warc_hash": "3302ab887ad0",
+   "asrun_shard": 5000,
+   "status": "ok",
+   "backend": "torch",
+   "device": "NVIDIA GeForce RTX 2080 Ti",
+   "n_devices": 1,
+   "asrun_device": "TPU v5 lite",
+   "asrun_n_devices": 4,
+   "same_device_type": false,
+   "counters": {
+    "ours": {
+     "n_in": 13516,
+     "n_prefilter_dropped": 58,
+     "n_extract_empty": 215,
+     "n_extract_crashed": 0,
+     "n_presurvivors": 10605,
+     "n_hi_accept": 2596,
+     "n_band": 4199,
+     "n_kept": 4415
+    },
+    "asrun": {
+     "n_in": 13516,
+     "n_prefilter_dropped": 58,
+     "n_extract_empty": 215,
+     "n_extract_crashed": 0,
+     "n_presurvivors": 10605,
+     "n_hi_accept": 2599,
+     "n_band": 4194,
+     "n_kept": 4422
+    }
+   },
+   "phase_a_counters_equal": true,
+   "seconds": {
+    "ours": {
+     "phase_a": 54.901,
+     "tokenize": 7.077,
+     "pooled": 2.024,
+     "terminal": 63.834
+    },
+    "asrun": {
+     "tokenize": 7.756,
+     "pooled": 1.579,
+     "score": 7.74,
+     "wall": 18.796
+    }
+   },
+   "survivors": {
+    "ours": 10605,
+    "asrun": 10605,
+    "common": 10605,
+    "only_ours": 0,
+    "only_asrun": 0,
+    "only_ours_ids": [],
+    "only_asrun_ids": []
+   },
+   "kept": {
+    "ours": 4415,
+    "asrun": 4422
+   },
+   "pooled_abs_delta": {
+    "n": 10605,
+    "n_zero": 23,
+    "mean": 0.00031489231358869407,
+    "p50": 0.00013262033462524414,
+    "p90": 0.0008616000000000016,
+    "p99": 0.0021888274584960844,
+    "p99.9": 0.0034986016750336133,
+    "max": 0.005745977163314819
+   },
+   "terminal_abs_delta": {
+    "n": 4194,
+    "n_zero": 2,
+    "mean": 0.0013076243835489238,
+    "p50": 0.000841755826950074,
+    "p90": 0.003116999999999981,
+    "p99": 0.006271822275428741,
+    "p99.9": 0.01144347837567413,
+    "max": 0.018373
+   },
+   "routes_asrun_to_ours": {
+    "accept": {
+     "accept": 2596,
+     "band_keep": 3,
+     "band_reject": 0,
+     "drop": 0
+    },
+    "band_keep": {
+     "accept": 0,
+     "band_keep": 1815,
+     "band_reject": 8,
+     "drop": 0
+    },
+    "band_reject": {
+     "accept": 0,
+     "band_keep": 1,
+     "band_reject": 2370,
+     "drop": 0
+    },
+    "drop": {
+     "accept": 0,
+     "band_keep": 0,
+     "band_reject": 2,
+     "drop": 3810
+    }
+   },
+   "decision_agreement": 0.9991513437057992,
+   "n_flips": 9,
+   "flips": [
+    {
+     "doc_id": "c77d4058-b748-41e3-bf65-dc2610201f3e",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.5122588276863098,
+      "terminal": 0.4390248954296112
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.512252,
+      "terminal": 0.437323
+     },
+     "asrun_distance": 0.001224905252456665,
+     "ours_distance": 0.00047699017715452374,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "bb3cfc6c-7386-4812-ac95-8865231c6a54",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.24229073524475098,
+      "terminal": 0.4390248954296112
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.242227,
+      "terminal": 0.437382
+     },
+     "asrun_distance": 0.001224905252456665,
+     "ours_distance": 0.000417990177154548,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "2d7d8203-8a40-4eed-b472-2a3259bcb93f",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.30145782232284546,
+      "terminal": 0.44022783637046814
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.301157,
+      "terminal": 0.437522
+     },
+     "asrun_distance": 0.0024278461933135986,
+     "ours_distance": 0.000277990177154519,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "36abbe10-90e6-44ff-8ab0-f13710641325",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.2721870541572571,
+      "terminal": 0.43782293796539307
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.272178,
+      "terminal": 0.435158
+     },
+     "asrun_distance": 2.294778823852539e-05,
+     "ours_distance": 0.0026419901771545518,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "dd8716fa-0aad-465e-86a2-10732f4f1727",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.30010342597961426,
+      "terminal": 0.4396864175796509
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.29995,
+      "terminal": 0.43688
+     },
+     "asrun_distance": 0.0018864274024963379,
+     "ours_distance": 0.0009199901771545504,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "e66af748-c26e-4af6-8ebd-5fb448f40a25",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.3622753620147705,
+      "terminal": 0.4390850067138672
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.36083,
+      "terminal": 0.43742
+     },
+     "asrun_distance": 0.0012850165367126465,
+     "ours_distance": 0.0003799901771545655,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "98ddb41a-dcad-43dd-ab5f-76020a15d9d1",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.43758252263069153,
+      "terminal": 0.43818339705467224
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.438779,
+      "terminal": 0.437142
+     },
+     "asrun_distance": 0.0003834068775177002,
+     "ours_distance": 0.000657990177154566,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "55f91d4c-96e5-4fa3-93c0-f0c0f71508ab",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.24386952817440033,
+      "terminal": 0.43806326389312744
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.245032,
+      "terminal": 0.437123
+     },
+     "asrun_distance": 0.0002632737159729004,
+     "ours_distance": 0.0006769901771545572,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "4d6d4803-9d4a-454e-b274-f9d273db2b38",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_reject",
+      "pooled": 0.187159,
+      "terminal": 0.434941
+     },
+     "ours": {
+      "route": "band_keep",
+      "pooled": 0.1886930912733078,
+      "terminal": 0.43791353702545166
+     },
+     "asrun_distance": 0.002858990177154519,
+     "ours_distance": 0.00011354684829711914,
+     "within_epsilon": true
+    }
+   ],
+   "pass": {
+    "decision_agreement": true,
+    "flips_within_epsilon": true
+   }
+  },
+  {
+   "name": "F2",
+   "warc_path": "s3://commoncrawl/crawl-data/CC-MAIN-2013-48/segments/1386165158218/warc/CC-MAIN-20131204135238-00069-ip-10-33-133-15.ec2.internal.warc.gz",
+   "warc_hash": "51cde1189cc9",
+   "asrun_shard": 31000,
+   "status": "ok",
+   "backend": "torch",
+   "device": "NVIDIA GeForce RTX 2080 Ti",
+   "n_devices": 1,
+   "asrun_device": "TPU v6 lite",
+   "asrun_n_devices": 4,
+   "same_device_type": false,
+   "counters": {
+    "ours": {
+     "n_in": 20550,
+     "n_prefilter_dropped": 92,
+     "n_extract_empty": 276,
+     "n_extract_crashed": 0,
+     "n_presurvivors": 16503,
+     "n_hi_accept": 3692,
+     "n_band": 6196,
+     "n_kept": 6308
+    },
+    "asrun": {
+     "n_in": 20550,
+     "n_prefilter_dropped": 92,
+     "n_extract_empty": 276,
+     "n_extract_crashed": 0,
+     "n_presurvivors": 16503,
+     "n_hi_accept": 3697,
+     "n_band": 6185,
+     "n_kept": 6314
+    }
+   },
+   "phase_a_counters_equal": true,
+   "seconds": {
+    "ours": {
+     "phase_a": 73.721,
+     "tokenize": 7.16,
+     "pooled": 4.088,
+     "terminal": 97.72
+    },
+    "asrun": {
+     "tokenize": 8.368,
+     "pooled": 3.842,
+     "score": 14.051,
+     "wall": 28.232
+    }
+   },
+   "survivors": {
+    "ours": 16503,
+    "asrun": 16503,
+    "common": 16503,
+    "only_ours": 0,
+    "only_asrun": 0,
+    "only_ours_ids": [],
+    "only_asrun_ids": []
+   },
+   "kept": {
+    "ours": 6308,
+    "asrun": 6314
+   },
+   "pooled_abs_delta": {
+    "n": 16503,
+    "n_zero": 40,
+    "mean": 0.0003140311787015618,
+    "p50": 0.00012699999999999517,
+    "p90": 0.0008681893348693848,
+    "p99": 0.002253265976905821,
+    "p99.9": 0.003469918841049327,
+    "max": 0.00892755389213562
+   },
+   "terminal_abs_delta": {
+    "n": 6181,
+    "n_zero": 1,
+    "mean": 0.0013210512935152101,
+    "p50": 0.0008556842803955078,
+    "p90": 0.0031260000000000177,
+    "p99": 0.006598711013793945,
+    "p99.9": 0.009607997527999887,
+    "max": 0.01283799999999996
+   },
+   "routes_asrun_to_ours": {
+    "accept": {
+     "accept": 3692,
+     "band_keep": 5,
+     "band_reject": 0,
+     "drop": 0
+    },
+    "band_keep": {
+     "accept": 0,
+     "band_keep": 2610,
+     "band_reject": 7,
+     "drop": 0
+    },
+    "band_reject": {
+     "accept": 0,
+     "band_keep": 1,
+     "band_reject": 3563,
+     "drop": 4
+    },
+    "drop": {
+     "accept": 0,
+     "band_keep": 0,
+     "band_reject": 10,
+     "drop": 6611
+    }
+   },
+   "decision_agreement": 0.9995152396533964,
+   "n_flips": 8,
+   "flips": [
+    {
+     "doc_id": "4e596d1c-6c06-4a24-9df4-4fa3ffb7e731",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.24762651324272156,
+      "terminal": 0.4378235340118408
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.248583,
+      "terminal": 0.434016
+     },
+     "asrun_distance": 2.3543834686279297e-05,
+     "ours_distance": 0.003783990177154528,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "4c655508-6e3b-43e2-a96e-b1ed68002242",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.466852605342865,
+      "terminal": 0.4390257000923157
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.466223,
+      "terminal": 0.43723
+     },
+     "asrun_distance": 0.0012257099151611328,
+     "ours_distance": 0.0005699901771545335,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "8e8cbf59-7c8d-438b-bf8a-be6cc67375b7",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.3967995345592499,
+      "terminal": 0.4383043050765991
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.397896,
+      "terminal": 0.436643
+     },
+     "asrun_distance": 0.0005043148994445801,
+     "ours_distance": 0.0011569901771545377,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "ec7a44cc-2f5e-4a0d-8ab9-7d0c86ebc13f",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.4558829665184021,
+      "terminal": 0.44017595052719116
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.455392,
+      "terminal": 0.434193
+     },
+     "asrun_distance": 0.002375960350036621,
+     "ours_distance": 0.0036069901771545454,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "ed1dbdae-2d91-474d-ae14-1e2ce8515e05",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.2852294147014618,
+      "terminal": 0.4399879574775696
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.285273,
+      "terminal": 0.434024
+     },
+     "asrun_distance": 0.002187967300415039,
+     "ours_distance": 0.00377599017715452,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "bbd3fcbf-0aeb-467a-82f2-18766c546729",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.18219518661499023,
+      "terminal": 0.4404090940952301
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.180878,
+      "terminal": 0.437745
+     },
+     "asrun_distance": 0.0026091039180755615,
+     "ours_distance": 5.4990177154545794e-05,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "6d4be092-d58e-4e73-ba3c-f3cb9428ef05",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.45334070920944214,
+      "terminal": 0.4378235340118408
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.452403,
+      "terminal": 0.43756
+     },
+     "asrun_distance": 2.3543834686279297e-05,
+     "ours_distance": 0.00023999017715453652,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "ca892df7-7c60-4b79-b229-dcf11153a36c",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_reject",
+      "pooled": 0.445047,
+      "terminal": 0.437223
+     },
+     "ours": {
+      "route": "band_keep",
+      "pooled": 0.4444597363471985,
+      "terminal": 0.4417811930179596
+     },
+     "asrun_distance": 0.0005769901771545682,
+     "ours_distance": 0.003981202840805054,
+     "within_epsilon": true
+    }
+   ],
+   "pass": {
+    "decision_agreement": true,
+    "flips_within_epsilon": true
+   }
+  },
+  {
+   "name": "F3",
+   "warc_path": "s3://commoncrawl/crawl-data/CC-MAIN-2026-12/segments/1772687277590.81/warc/CC-MAIN-20260308022436-20260308052436-00349.warc.gz",
+   "warc_hash": "4ff1f9108b5a",
+   "asrun_shard": 10000,
+   "status": "ok",
+   "backend": "torch",
+   "device": "NVIDIA GeForce RTX 2080 Ti",
+   "n_devices": 1,
+   "asrun_device": "TPU v4",
+   "asrun_n_devices": 4,
+   "same_device_type": false,
+   "counters": {
+    "ours": {
+     "n_in": 19112,
+     "n_prefilter_dropped": 131,
+     "n_extract_empty": 518,
+     "n_extract_crashed": 0,
+     "n_presurvivors": 9513,
+     "n_hi_accept": 1395,
+     "n_band": 3307,
+     "n_kept": 2830
+    },
+    "asrun": {
+     "n_in": 19112,
+     "n_prefilter_dropped": 131,
+     "n_extract_empty": 518,
+     "n_extract_crashed": 0,
+     "n_presurvivors": 9513,
+     "n_hi_accept": 1396,
+     "n_band": 3304,
+     "n_kept": 2830
+    }
+   },
+   "phase_a_counters_equal": true,
+   "seconds": {
+    "ours": {
+     "phase_a": 141.267,
+     "tokenize": 3.658,
+     "pooled": 3.431,
+     "terminal": 51.247
+    },
+    "asrun": {
+     "tokenize": 9.84,
+     "pooled": 1.895,
+     "score": 6.916,
+     "wall": 20.509
+    }
+   },
+   "survivors": {
+    "ours": 9513,
+    "asrun": 9513,
+    "common": 9513,
+    "only_ours": 0,
+    "only_asrun": 0,
+    "only_ours_ids": [],
+    "only_asrun_ids": []
+   },
+   "kept": {
+    "ours": 2830,
+    "asrun": 2830
+   },
+   "pooled_abs_delta": {
+    "n": 9513,
+    "n_zero": 71,
+    "mean": 0.0002681240301827933,
+    "p50": 7.897615432739258e-05,
+    "p90": 0.0007903397083282475,
+    "p99": 0.0020550741603088166,
+    "p99.9": 0.0036037521362305047,
+    "max": 0.005990386009216309
+   },
+   "terminal_abs_delta": {
+    "n": 3302,
+    "n_zero": 0,
+    "mean": 0.001306369958870054,
+    "p50": 0.0008625000000000022,
+    "p90": 0.0030766000000000213,
+    "p99": 0.006079599999999965,
+    "p99.9": 0.010091608000000417,
+    "max": 0.01435800000000001
+   },
+   "routes_asrun_to_ours": {
+    "accept": {
+     "accept": 1394,
+     "band_keep": 2,
+     "band_reject": 0,
+     "drop": 0
+    },
+    "band_keep": {
+     "accept": 1,
+     "band_keep": 1430,
+     "band_reject": 3,
+     "drop": 0
+    },
+    "band_reject": {
+     "accept": 0,
+     "band_keep": 3,
+     "band_reject": 1866,
+     "drop": 1
+    },
+    "drop": {
+     "accept": 0,
+     "band_keep": 0,
+     "band_reject": 3,
+     "drop": 4810
+    }
+   },
+   "decision_agreement": 0.999369284137496,
+   "n_flips": 6,
+   "flips": [
+    {
+     "doc_id": "346adc8d-4a9d-4e0a-ac8c-013a700178c3",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.3044349253177643,
+      "terminal": 0.43806326389312744
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.304038,
+      "terminal": 0.436634
+     },
+     "asrun_distance": 0.0002632737159729004,
+     "ours_distance": 0.001165990177154519,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "678eb169-cb54-4a26-8a50-a3e790611341",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.5710994005203247,
+      "terminal": 0.44215402007102966
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.571345,
+      "terminal": 0.437793
+     },
+     "asrun_distance": 0.004354029893875122,
+     "ours_distance": 6.990177154553301e-06,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "f02012e1-a26a-427c-a0a6-f7b50ee22696",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.7061227560043335,
+      "terminal": 0.44094982743263245
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.706178,
+      "terminal": 0.43682
+     },
+     "asrun_distance": 0.0031498372554779053,
+     "ours_distance": 0.000979990177154555,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "0f8cdd3e-0ba4-4073-a737-491680fbaf2d",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_reject",
+      "pooled": 0.295673,
+      "terminal": 0.437583
+     },
+     "ours": {
+      "route": "band_keep",
+      "pooled": 0.2956697940826416,
+      "terminal": 0.43930792808532715
+     },
+     "asrun_distance": 0.00021699017715454127,
+     "ours_distance": 0.0015079379081726074,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "d24af13e-15be-4c81-99a7-097677fa6184",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_reject",
+      "pooled": 0.287802,
+      "terminal": 0.437222
+     },
+     "ours": {
+      "route": "band_keep",
+      "pooled": 0.28781551122665405,
+      "terminal": 0.4432413578033447
+     },
+     "asrun_distance": 0.0005779901771545415,
+     "ours_distance": 0.0054413676261901855,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "4048b29e-3c36-4e6e-bd35-278fc31a6544",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_reject",
+      "pooled": 0.311433,
+      "terminal": 0.435422
+     },
+     "ours": {
+      "route": "band_keep",
+      "pooled": 0.3131052553653717,
+      "terminal": 0.43821582198143005
+     },
+     "asrun_distance": 0.0023779901771545653,
+     "ours_distance": 0.0004158318042755127,
+     "within_epsilon": true
+    }
+   ],
+   "pass": {
+    "decision_agreement": true,
+    "flips_within_epsilon": true
+   }
+  },
+  {
+   "name": "F4",
+   "warc_path": "s3://commoncrawl/crawl-data/CC-NEWS/2017/07/CC-NEWS-20170728033529-00050.warc.gz",
+   "warc_hash": "4e28437dae88",
+   "asrun_shard": 34500,
+   "status": "ok",
+   "backend": "torch",
+   "device": "NVIDIA GeForce RTX 2080 Ti",
+   "n_devices": 1,
+   "asrun_device": "TPU v5",
+   "asrun_n_devices": 4,
+   "same_device_type": false,
+   "counters": {
+    "ours": {
+     "n_in": 13734,
+     "n_prefilter_dropped": 0,
+     "n_extract_empty": 21,
+     "n_extract_crashed": 0,
+     "n_presurvivors": 7991,
+     "n_hi_accept": 4566,
+     "n_band": 1560,
+     "n_kept": 5825
+    },
+    "asrun": {
+     "n_in": 13734,
+     "n_prefilter_dropped": 0,
+     "n_extract_empty": 21,
+     "n_extract_crashed": 0,
+     "n_presurvivors": 7991,
+     "n_hi_accept": 4568,
+     "n_band": 1558,
+     "n_kept": 5826
+    }
+   },
+   "phase_a_counters_equal": true,
+   "seconds": {
+    "ours": {
+     "phase_a": 66.055,
+     "tokenize": 1.983,
+     "pooled": 1.427,
+     "terminal": 25.965
+    },
+    "asrun": {
+     "tokenize": 5.104,
+     "pooled": 1.234,
+     "score": 2.576,
+     "wall": 10.539
+    }
+   },
+   "survivors": {
+    "ours": 7991,
+    "asrun": 7991,
+    "common": 7991,
+    "only_ours": 0,
+    "only_asrun": 0,
+    "only_ours_ids": [],
+    "only_asrun_ids": []
+   },
+   "kept": {
+    "ours": 5825,
+    "asrun": 5826
+   },
+   "pooled_abs_delta": {
+    "n": 7991,
+    "n_zero": 42,
+    "mean": 0.0002030778928259528,
+    "p50": 3.790855407714844e-05,
+    "p90": 0.0006132125854492188,
+    "p99": 0.0018467704452514305,
+    "p99.9": 0.0033956207271196364,
+    "max": 0.0067021846771240234
+   },
+   "terminal_abs_delta": {
+    "n": 1557,
+    "n_zero": 0,
+    "mean": 0.0013639025119470338,
+    "p50": 0.0008432865142822266,
+    "p90": 0.0033560000000000256,
+    "p99": 0.007191751003265386,
+    "p99.9": 0.011736857056618238,
+    "max": 0.01433950662612915
+   },
+   "routes_asrun_to_ours": {
+    "accept": {
+     "accept": 4565,
+     "band_keep": 3,
+     "band_reject": 0,
+     "drop": 0
+    },
+    "band_keep": {
+     "accept": 1,
+     "band_keep": 1255,
+     "band_reject": 2,
+     "drop": 0
+    },
+    "band_reject": {
+     "accept": 0,
+     "band_keep": 1,
+     "band_reject": 299,
+     "drop": 0
+    },
+    "drop": {
+     "accept": 0,
+     "band_keep": 0,
+     "band_reject": 0,
+     "drop": 1865
+    }
+   },
+   "decision_agreement": 0.9996245776498561,
+   "n_flips": 3,
+   "flips": [
+    {
+     "doc_id": "db6e8429-eb33-4f93-834f-55001dfb08c7",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.6052456498146057,
+      "terminal": 0.4378235638141632
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.606653,
+      "terminal": 0.437519
+     },
+     "asrun_distance": 2.3573637008666992e-05,
+     "ours_distance": 0.00028099017715454977,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "c8b2a8c7-383f-4dcd-b71e-9017cf0ea0a2",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.328813761472702,
+      "terminal": 0.43986761569976807
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.328515,
+      "terminal": 0.436691
+     },
+     "asrun_distance": 0.0020676255226135254,
+     "ours_distance": 0.0011089901771545452,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "b00a5ce5-2fa1-4448-ac32-fc5f9643bd7c",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_reject",
+      "pooled": 0.741948,
+      "terminal": 0.435061
+     },
+     "ours": {
+      "route": "band_keep",
+      "pooled": 0.7421979308128357,
+      "terminal": 0.43966254591941833
+     },
+     "asrun_distance": 0.0027389901771545655,
+     "ours_distance": 0.001862555742263794,
+     "within_epsilon": true
+    }
+   ],
+   "pass": {
+    "decision_agreement": true,
+    "flips_within_epsilon": true
+   }
+  },
+  {
+   "name": "F5",
+   "warc_path": "s3://commoncrawl/projects/cc-open-athena-test/CC-SUPPLEMENTAL-2026-22/segments/20260526134233/warc/CC-SUPPLEMENTAL-2026-22-20260526134319-20260526174319-00066.warc.gz",
+   "warc_hash": "06154469c8ed",
+   "asrun_shard": 32001,
+   "status": "ok",
+   "backend": "torch",
+   "device": "NVIDIA GeForce RTX 2080 Ti",
+   "n_devices": 1,
+   "asrun_device": "TPU v4",
+   "asrun_n_devices": 4,
+   "same_device_type": false,
+   "counters": {
+    "ours": {
+     "n_in": 8010,
+     "n_prefilter_dropped": 15,
+     "n_extract_empty": 388,
+     "n_extract_crashed": 1,
+     "n_presurvivors": 5912,
+     "n_hi_accept": 1143,
+     "n_band": 2860,
+     "n_kept": 2458
+    },
+    "asrun": {
+     "n_in": 8010,
+     "n_prefilter_dropped": 15,
+     "n_extract_empty": 388,
+     "n_extract_crashed": 1,
+     "n_presurvivors": 5912,
+     "n_hi_accept": 1145,
+     "n_band": 2859,
+     "n_kept": 2456
+    }
+   },
+   "phase_a_counters_equal": true,
+   "seconds": {
+    "ours": {
+     "phase_a": 80.056,
+     "tokenize": 3.96,
+     "pooled": 1.209,
+     "terminal": 46.359
+    },
+    "asrun": {
+     "tokenize": 8.799,
+     "pooled": 1.081,
+     "score": 5.683,
+     "wall": 17.125
+    }
+   },
+   "survivors": {
+    "ours": 5912,
+    "asrun": 5912,
+    "common": 5912,
+    "only_ours": 0,
+    "only_asrun": 0,
+    "only_ours_ids": [],
+    "only_asrun_ids": []
+   },
+   "kept": {
+    "ours": 2458,
+    "asrun": 2456
+   },
+   "pooled_abs_delta": {
+    "n": 5912,
+    "n_zero": 17,
+    "mean": 0.00034516064212988443,
+    "p50": 0.00016599999999999948,
+    "p90": 0.0009521961212158209,
+    "p99": 0.0020094600000000436,
+    "p99.9": 0.0034580351353111854,
+    "max": 0.0046195387840271
+   },
+   "terminal_abs_delta": {
+    "n": 2856,
+    "n_zero": 0,
+    "mean": 0.0013140077173629731,
+    "p50": 0.0008743405342102051,
+    "p90": 0.0031365000000000004,
+    "p99": 0.006350847055816629,
+    "p99.9": 0.010327073633670825,
+    "max": 0.016485118272781374
+   },
+   "routes_asrun_to_ours": {
+    "accept": {
+     "accept": 1142,
+     "band_keep": 3,
+     "band_reject": 0,
+     "drop": 0
+    },
+    "band_keep": {
+     "accept": 0,
+     "band_keep": 1310,
+     "band_reject": 1,
+     "drop": 0
+    },
+    "band_reject": {
+     "accept": 1,
+     "band_keep": 2,
+     "band_reject": 1543,
+     "drop": 2
+    },
+    "drop": {
+     "accept": 0,
+     "band_keep": 0,
+     "band_reject": 1,
+     "drop": 1907
+    }
+   },
+   "decision_agreement": 0.9993234100135318,
+   "n_flips": 4,
+   "flips": [
+    {
+     "doc_id": "ad518c4c-b228-4fa1-9199-8137e3011cdd",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_keep",
+      "pooled": 0.20928485691547394,
+      "terminal": 0.4380933344364166
+     },
+     "ours": {
+      "route": "band_reject",
+      "pooled": 0.209601,
+      "terminal": 0.437384
+     },
+     "asrun_distance": 0.00029334425926208496,
+     "ours_distance": 0.000415990177154546,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "0cc4e967-4531-4fff-82fd-b0e80f0a267d",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_reject",
+      "pooled": 0.522935,
+      "terminal": 0.435241
+     },
+     "ours": {
+      "route": "band_keep",
+      "pooled": 0.5220426917076111,
+      "terminal": 0.4387524724006653
+     },
+     "asrun_distance": 0.002558990177154552,
+     "ours_distance": 0.0009524822235107422,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "6c705113-5696-4692-ac8c-6313f1962092",
+     "stage": "terminal",
+     "threshold": 0.43779999017715454,
+     "asrun": {
+      "route": "band_reject",
+      "pooled": 0.177562,
+      "terminal": 0.435722
+     },
+     "ours": {
+      "route": "band_keep",
+      "pooled": 0.17800070345401764,
+      "terminal": 0.45220711827278137
+     },
+     "asrun_distance": 0.002077990177154543,
+     "ours_distance": 0.014407128095626831,
+     "within_epsilon": true
+    },
+    {
+     "doc_id": "87ec5551-39db-4d93-a6ce-e5cfca3fda44",
+     "stage": "pooled",
+     "threshold": 0.8883000016212463,
+     "asrun": {
+      "route": "band_reject",
+      "pooled": 0.888238,
+      "terminal": 0.169956
+     },
+     "ours": {
+      "route": "accept",
+      "pooled": 0.8888401985168457,
+      "terminal": null
+     },
+     "asrun_distance": 6.200162124636588e-05,
+     "ours_distance": 0.0005401968955993652,
+     "within_epsilon": true
+    }
+   ],
+   "pass": {
+    "decision_agreement": true,
+    "flips_within_epsilon": true
+   }
+  }
+ ]
+}

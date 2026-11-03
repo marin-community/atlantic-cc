@@ -1,0 +1,170 @@
+{
+ "benchmarks": [
+  {
+   "artifact": "gdpval_aa_v2/train.parquet",
+   "coverage_note": "All public GDPval tasks; prompt and hidden grading rubric are indexed.",
+   "expected_records": 220,
+   "filter_note": null,
+   "list_fields": [],
+   "name": "GDPval-AA v2",
+   "official_records": 220,
+   "record_type": "row",
+   "source": "openai/gdpval",
+   "source_revision": "11e7900cdcac61bc4daf59e65feb238acda98fbf",
+   "split": "train",
+   "subset": null,
+   "text_fields": [
+    "prompt",
+    "rubric_pretty"
+   ]
+  },
+  {
+   "artifact": "tau3_banking/test.parquet",
+   "coverage_note": "Full upstream v1.0.1 task set; user scenarios and hidden evaluation criteria are indexed.",
+   "expected_records": 97,
+   "filter_note": null,
+   "list_fields": [],
+   "name": "tau3-Banking",
+   "official_records": 97,
+   "record_type": "tau3_task",
+   "source": "https://raw.githubusercontent.com/sierra-research/tau2-bench/fc0055dc4e0a316c3f83133267fbd6faaa770992/data/tau2/domains/banking_knowledge/tasks.json",
+   "source_revision": "fc0055dc4e0a316c3f83133267fbd6faaa770992",
+   "split": "test",
+   "subset": null,
+   "text_fields": []
+  },
+  {
+   "artifact": "terminal_bench_2_1/test.parquet",
+   "coverage_note": "All 89 task instructions and oracle solutions from the pinned v2.1 task tree.",
+   "expected_records": 89,
+   "filter_note": null,
+   "list_fields": [],
+   "name": "Terminal-Bench v2.1",
+   "official_records": 89,
+   "record_type": "terminal_bench_task",
+   "source": "https://github.com/harbor-framework/terminal-bench-2-1/archive/c5ee500c185224c97cd6caff7866a990a0057f41.zip",
+   "source_revision": "c5ee500c185224c97cd6caff7866a990a0057f41",
+   "split": "test",
+   "subset": null,
+   "text_fields": [
+    "instruction",
+    "solution"
+   ]
+  },
+  {
+   "artifact": "scicode/test.parquet",
+   "coverage_note": "Pinned public test split. It contains 291 subproblems, three more than the 288 reported by AA; the conservative superset is indexed.",
+   "expected_records": 291,
+   "filter_note": null,
+   "list_fields": [],
+   "name": "SciCode",
+   "official_records": 288,
+   "record_type": "scicode_subproblem",
+   "source": "SciCode1/SciCode",
+   "source_revision": "4510f6a6aa27c43fad7b43da2c59602a86e88480",
+   "split": "test",
+   "subset": null,
+   "text_fields": []
+  },
+  {
+   "artifact": "aa_lcr/test.parquet",
+   "coverage_note": "All public questions and answers. Public source documents are prompt context and are not indexed.",
+   "expected_records": 100,
+   "filter_note": null,
+   "list_fields": [],
+   "name": "AA-LCR",
+   "official_records": 100,
+   "record_type": "row",
+   "source": "ArtificialAnalysis/AA-LCR",
+   "source_revision": "bdae010bbce259820c0e34c1d7cce210d966fb75",
+   "split": "test",
+   "subset": null,
+   "text_fields": [
+    "question",
+    "answer"
+   ]
+  },
+  {
+   "artifact": "aa_omniscience/train.parquet",
+   "coverage_note": "The mandatory public release contains 600 of the 6,000 private evaluation questions.",
+   "expected_records": 600,
+   "filter_note": null,
+   "list_fields": [],
+   "name": "AA-Omniscience",
+   "official_records": 6000,
+   "record_type": "row",
+   "source": "ArtificialAnalysis/AA-Omniscience-Public",
+   "source_revision": "4a8ffc87c4650054825fb767fe0da4a4fc97ff32",
+   "split": "train",
+   "subset": null,
+   "text_fields": [
+    "question",
+    "answer"
+   ]
+  },
+  {
+   "artifact": "hle/test.parquet",
+   "coverage_note": "All 2,500 questions from the May 2025 revision. For multimodal rows, the question and answer text are indexed; image bytes are not.",
+   "expected_records": 2500,
+   "filter_note": null,
+   "list_fields": [],
+   "name": "Humanity's Last Exam",
+   "official_records": 2500,
+   "record_type": "row",
+   "source": "cais/hle",
+   "source_revision": "5a81a4c7271a2a2a312b9a690f0c2fde837e4c29",
+   "split": "test",
+   "subset": null,
+   "text_fields": [
+    "question",
+    "answer"
+   ]
+  },
+  {
+   "artifact": "gpqa_diamond/train.parquet",
+   "coverage_note": "Full official task set.",
+   "expected_records": 198,
+   "filter_note": null,
+   "list_fields": [],
+   "name": "GPQA Diamond",
+   "official_records": 198,
+   "record_type": "row",
+   "source": "Idavidrein/gpqa",
+   "source_revision": "633f5ee89ab8ad4522a9f850766b73f62147ffdd",
+   "split": "train",
+   "subset": "gpqa_diamond",
+   "text_fields": [
+    "Question",
+    "Correct Answer",
+    "Incorrect Answer 1",
+    "Incorrect Answer 2",
+    "Incorrect Answer 3"
+   ]
+  },
+  {
+   "artifact": "critpt/train.parquet",
+   "coverage_note": "All 70 public composite challenges used by AA, with response templates and published answer code. CritPt reports 189 modular checkpoints for the 70 test challenges, but those checkpoint prompts are not part of the public dataset.",
+   "expected_records": 70,
+   "filter_note": null,
+   "list_fields": [],
+   "name": "CritPt",
+   "official_records": 70,
+   "record_type": "row",
+   "source": "CritPt-Benchmark/CritPt",
+   "source_revision": "9b9fc8498596ec08ab5437a72f4aa18beef2b876",
+   "split": "train",
+   "subset": null,
+   "text_fields": [
+    "problem_description",
+    "code_template",
+    "answer_code",
+    "answer_only_code"
+   ]
+  }
+ ],
+ "corpus_version": "aa-index-v4.1.1-v3-fill",
+ "required": true,
+ "schema_version": 1,
+ "status": "complete",
+ "suite": "Artificial Analysis Intelligence Index v4.1.1"
+}

@@ -1,0 +1,27 @@
+{
+  "fixture": "F3",
+  "description": "recent CC-MAIN, 8M segment",
+  "warc_path": "s3://commoncrawl/crawl-data/CC-MAIN-2026-12/segments/1772687277590.81/warc/CC-MAIN-20260308022436-20260308052436-00349.warc.gz",
+  "warc_hash": "4ff1f9108b5a",
+  "snapshot": "CC-MAIN-2026-12",
+  "warc_bytes": 845424740,
+  "shard": 10000,
+  "code_path": "fused",
+  "region": "us-central2",
+  "device": "TPU v4",
+  "n_devices": 4,
+  "processed_at": "2026-10-06T03:35:57.694000+00:00",
+  "content_length_guard": true,
+  "n_kept": 2830,
+  "n_tombstones": 6683,
+  "sources": {
+    "kept": {
+      "path": "gs://marin-us-central2/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/kept/data-4ff1f9108b5a.parquet",
+      "md5": "Fh5UsO3RQcq7PjLYld+o/w=="
+    },
+    "tombstones": {
+      "path": "gs://marin-us-central2/documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb/tombstones/data-4ff1f9108b5a.jsonl.gz",
+      "md5": "mHBfVgswDmYdQBY8R8wf0w=="
+    }
+  }
+}

@@ -1,0 +1,375 @@
+{
+ "description": "T1: unit 0 of the DCLM 400m-1x input list (493 files, 7.99 GB), standalone vs Marin's as-run rdedup run on the same inputs",
+ "pass": true,
+ "runs": {
+  "as_planned": {
+   "candidate": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a4/t1/sa/run",
+   "candidate_output_root": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a4/t1/sa/out",
+   "criteria": {
+    "1_survivor_and_removal_sets": {
+     "attrs": {
+      "equal_units": 1,
+      "mismatched_unit_count": 0,
+      "mismatched_units": {},
+      "rows": 216734,
+      "units": 1
+     },
+     "c075_marks": {
+      "equal_units": 1,
+      "mismatched_unit_count": 0,
+      "mismatched_units": {},
+      "rows": 121765,
+      "units": 1
+     },
+     "oversized": {
+      "candidate": {},
+      "equal": true
+     },
+     "pass": true,
+     "reps": {
+      "equal_units": 1,
+      "mismatched_unit_count": 0,
+      "mismatched_units": {},
+      "rows": 4320369,
+      "units": 1
+     }
+    },
+    "2_survivor_tuples": {
+     "method": "implied by identical decompressed outputs; checked record by record in differing files",
+     "pass": true
+    },
+    "3_decompressed_outputs": {
+     "candidate_sha256_of_digests": "0afeafe09bbfe278b12e3f7e714cb2244212275dc548f2593d39be108656b3d8",
+     "decompressed_bytes": 24931780150,
+     "docs": 4198604,
+     "equal_files": 16,
+     "files": 16,
+     "mismatched_details": {},
+     "mismatched_files": 0,
+     "names_equal": true,
+     "only_candidate": [],
+     "only_reference": [],
+     "pass": true,
+     "reference_files": 16
+    },
+    "4_stats": {
+     "compared_fields": 139,
+     "differences": [],
+     "headline": {
+      "c075": {
+       "chars": 22970888375,
+       "docs": 4198604,
+       "max_cluster_size": 100000,
+       "removed": 121765,
+       "rule": {
+        "exact_scan_maximum": 256,
+        "maximum_candidates": 32,
+        "maximum_posting_length": 512,
+        "minimum_containment": 0.75,
+        "ngram_size": 3,
+        "probe_ngrams": 32,
+        "rule_version": "containment_ngram3_v2"
+       }
+      },
+      "components": 55393,
+      "exact_duplicates": 89937,
+      "records_in": 4410306,
+      "unique_docs": 4320369
+     },
+     "partition_dependent_fields_dropped": false,
+     "pass": true
+    },
+    "5_gz_bytes": {
+     "equal": true,
+     "equal_files": 16,
+     "note": "gzip bytes also depend on the zlib build (header OS byte, deflate implementation)"
+    }
+   },
+   "elapsed_seconds": 35.5,
+   "inputs": {
+    "equal": true,
+    "files": 493,
+    "inputs_sha256": "ddba8e88294c2a9ae83389070714cc0fdefd7b8328d8a922f2875f7816c97c6a"
+   },
+   "pass": true,
+   "plans": {
+    "candidate": {
+     "c075": 3,
+     "exact": 1,
+     "lsh": 1,
+     "units": 1,
+     "units_per_node_partition": 1
+    },
+    "reference": {
+     "c075": 3,
+     "exact": 1,
+     "lsh": 1,
+     "units": 1,
+     "units_per_node_partition": 1
+    },
+    "same_layout": true,
+    "same_partitions": true
+   },
+   "reference": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a4/t1/asrun/run",
+   "reference_output_root": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a4/t1/asrun/out",
+   "runtime": {
+    "candidate": [
+     {
+      "NPY_DISABLE_CPU_FEATURES": "",
+      "cpu_has_avx512f": false,
+      "cpu_model": "AMD EPYC 7B12",
+      "host": "t1v-n-86fca6fe-w-24",
+      "machine": "x86_64",
+      "numpy_avx512_enabled": [],
+      "role": "run"
+     }
+    ],
+    "reference": [
+     {
+      "NPY_DISABLE_CPU_FEATURES": "",
+      "cpu_has_avx512f": false,
+      "cpu_model": "AMD EPYC 7B12",
+      "host": "t1v-n-c94b84f0-w-0",
+      "machine": "x86_64",
+      "numpy_avx512_enabled": [],
+      "role": "asrun"
+     }
+    ]
+   },
+   "verifier": {
+    "NPY_DISABLE_CPU_FEATURES": "",
+    "host": "t1v-n-3ae2e34f-w-0",
+    "machine": "x86_64",
+    "numpy": "2.3.5",
+    "numpy_cpu_baseline": [
+     "SSE",
+     "SSE2",
+     "SSE3"
+    ],
+    "numpy_cpu_dispatch": [
+     "SSSE3",
+     "SSE41",
+     "POPCNT",
+     "SSE42",
+     "AVX",
+     "F16C",
+     "FMA3",
+     "AVX2",
+     "AVX512F",
+     "AVX512CD",
+     "AVX512_KNL",
+     "AVX512_KNM",
+     "AVX512_SKX",
+     "AVX512_CLX",
+     "AVX512_CNL",
+     "AVX512_ICL",
+     "AVX512_SPR"
+    ],
+    "numpy_cpu_enabled": [
+     "AVX",
+     "AVX2",
+     "F16C",
+     "FMA3",
+     "MMX",
+     "POPCNT",
+     "SSE",
+     "SSE2",
+     "SSE3",
+     "SSE41",
+     "SSE42",
+     "SSSE3"
+    ],
+    "pid": 9,
+    "platform": "Linux-5.19.0-1022-gcp-x86_64-with-glibc2.41",
+    "python": "3.12.15 (main, Oct 21 2026, 01:08:20) [GCC 14.2.0]",
+    "tie_order_platform": "x86_64-avx2",
+    "time": 1793680147.7269988
+   }
+  },
+  "other_partition_counts": {
+   "candidate": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a4/t1/sar/run",
+   "candidate_output_root": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a4/t1/sar/out",
+   "criteria": {
+    "1_survivor_and_removal_sets": {
+     "attrs": {
+      "equal_units": 1,
+      "mismatched_unit_count": 0,
+      "mismatched_units": {},
+      "rows": 216734,
+      "units": 1
+     },
+     "c075_marks": {
+      "equal_units": 1,
+      "mismatched_unit_count": 0,
+      "mismatched_units": {},
+      "rows": 121765,
+      "units": 1
+     },
+     "oversized": {
+      "candidate": {},
+      "equal": true
+     },
+     "pass": true,
+     "reps": {
+      "equal_units": 1,
+      "mismatched_unit_count": 0,
+      "mismatched_units": {},
+      "rows": 4320369,
+      "units": 1
+     }
+    },
+    "2_survivor_tuples": {
+     "method": "implied by identical decompressed outputs; checked record by record in differing files",
+     "pass": true
+    },
+    "3_decompressed_outputs": {
+     "candidate_sha256_of_digests": "0afeafe09bbfe278b12e3f7e714cb2244212275dc548f2593d39be108656b3d8",
+     "decompressed_bytes": 24931780150,
+     "docs": 4198604,
+     "equal_files": 16,
+     "files": 16,
+     "mismatched_details": {},
+     "mismatched_files": 0,
+     "names_equal": true,
+     "only_candidate": [],
+     "only_reference": [],
+     "pass": true,
+     "reference_files": 16
+    },
+    "4_stats": {
+     "compared_fields": 113,
+     "differences": [],
+     "headline": {
+      "c075": {
+       "chars": 22970888375,
+       "docs": 4198604,
+       "max_cluster_size": 100000,
+       "removed": 121765,
+       "rule": {
+        "exact_scan_maximum": 256,
+        "maximum_candidates": 32,
+        "maximum_posting_length": 512,
+        "minimum_containment": 0.75,
+        "ngram_size": 3,
+        "probe_ngrams": 32,
+        "rule_version": "containment_ngram3_v2"
+       }
+      },
+      "components": 55393,
+      "exact_duplicates": 89937,
+      "records_in": 4410306,
+      "unique_docs": 4320369
+     },
+     "partition_dependent_fields_dropped": true,
+     "pass": true
+    },
+    "5_gz_bytes": {
+     "equal": true,
+     "equal_files": 16,
+     "note": "gzip bytes also depend on the zlib build (header OS byte, deflate implementation)"
+    }
+   },
+   "elapsed_seconds": 34.2,
+   "inputs": {
+    "equal": true,
+    "files": 493,
+    "inputs_sha256": "ddba8e88294c2a9ae83389070714cc0fdefd7b8328d8a922f2875f7816c97c6a"
+   },
+   "pass": true,
+   "plans": {
+    "candidate": {
+     "c075": 11,
+     "exact": 4,
+     "lsh": 6,
+     "units": 1,
+     "units_per_node_partition": 1
+    },
+    "reference": {
+     "c075": 3,
+     "exact": 1,
+     "lsh": 1,
+     "units": 1,
+     "units_per_node_partition": 1
+    },
+    "same_layout": true,
+    "same_partitions": false
+   },
+   "reference": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a4/t1/asrun/run",
+   "reference_output_root": "gs://marin-us-central2/tmp/ttl=14d/atlantic_cc_repro/a4/t1/asrun/out",
+   "runtime": {
+    "candidate": [
+     {
+      "NPY_DISABLE_CPU_FEATURES": "",
+      "cpu_has_avx512f": false,
+      "cpu_model": "AMD EPYC 7B12",
+      "host": "t1v-n-86fca6fe-w-24",
+      "machine": "x86_64",
+      "numpy_avx512_enabled": [],
+      "role": "run"
+     }
+    ],
+    "reference": [
+     {
+      "NPY_DISABLE_CPU_FEATURES": "",
+      "cpu_has_avx512f": false,
+      "cpu_model": "AMD EPYC 7B12",
+      "host": "t1v-n-c94b84f0-w-0",
+      "machine": "x86_64",
+      "numpy_avx512_enabled": [],
+      "role": "asrun"
+     }
+    ]
+   },
+   "verifier": {
+    "NPY_DISABLE_CPU_FEATURES": "",
+    "host": "t1v-n-3ae2e34f-w-0",
+    "machine": "x86_64",
+    "numpy": "2.3.5",
+    "numpy_cpu_baseline": [
+     "SSE",
+     "SSE2",
+     "SSE3"
+    ],
+    "numpy_cpu_dispatch": [
+     "SSSE3",
+     "SSE41",
+     "POPCNT",
+     "SSE42",
+     "AVX",
+     "F16C",
+     "FMA3",
+     "AVX2",
+     "AVX512F",
+     "AVX512CD",
+     "AVX512_KNL",
+     "AVX512_KNM",
+     "AVX512_SKX",
+     "AVX512_CLX",
+     "AVX512_CNL",
+     "AVX512_ICL",
+     "AVX512_SPR"
+    ],
+    "numpy_cpu_enabled": [
+     "AVX",
+     "AVX2",
+     "F16C",
+     "FMA3",
+     "MMX",
+     "POPCNT",
+     "SSE",
+     "SSE2",
+     "SSE3",
+     "SSE41",
+     "SSE42",
+     "SSSE3"
+    ],
+    "pid": 1141,
+    "platform": "Linux-5.19.0-1022-gcp-x86_64-with-glibc2.41",
+    "python": "3.12.15 (main, Oct 21 2026, 01:08:20) [GCC 14.2.0]",
+    "tie_order_platform": "x86_64-avx2",
+    "time": 1793680182.4972556
+   }
+  }
+ },
+ "tier": "T1"
+}

@@ -1,0 +1,40 @@
+{
+ "c075_partitions": 56,
+ "exact_partitions": 3,
+ "files_per_output": 32,
+ "lsh_partitions": 20,
+ "n_files": 10364,
+ "output_root": "gs://marin-us-central2/documents/atlantic_cc_dclm_pools/400m-1x",
+ "rules": [
+  "c075"
+ ],
+ "run_root": "gs://marin-us-central2/tmp/ttl=14d/rdedup/dclm-pools/400m-1x",
+ "spec_id": "lpv11_fastpipe_v2_1_fused",
+ "unit_starts": [
+  0,
+  493,
+  967,
+  1452,
+  1937,
+  2411,
+  2888,
+  3378,
+  3861,
+  4329,
+  4797,
+  5276,
+  5761,
+  6246,
+  6734,
+  7212,
+  7688,
+  8167,
+  8629,
+  9102,
+  9593,
+  10073,
+  10364
+ ],
+ "units_per_node_partition": 5,
+ "version": 1
+}

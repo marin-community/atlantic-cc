@@ -1,0 +1,148 @@
+{
+ "repos": {
+  "fasttext": "marin-community/atlantic-cc-fasttext",
+  "pooled": "marin-community/atlantic-cc-pooled-transformer",
+  "terminal": "marin-community/atlantic-cc-modernbert"
+ },
+ "source": "staged",
+ "expected": {
+  "fasttext": [
+   0.9010107517242432,
+   0.8340708613395691
+  ],
+  "pooled": [
+   0.347929984331131,
+   0.028782589361071587
+  ],
+  "terminal": [
+   0.8365545868873596,
+   0.01406362745910883
+  ]
+ },
+ "environments": {
+  "5.12.1": {
+   "report": {
+    "transformers": "5.12.1",
+    "python": "3.12.15",
+    "repos": {
+     "fasttext": "marin-community/atlantic-cc-fasttext",
+     "pooled": "marin-community/atlantic-cc-pooled-transformer",
+     "terminal": "marin-community/atlantic-cc-modernbert"
+    },
+    "fasttext": {
+     "labels": [
+      "__label__",
+      "__label__no_useful",
+      "__label__useful"
+     ],
+     "readme_outputs": [
+      "[0.9010107517242432, 0.8340708613395691]\n"
+     ]
+    },
+    "pooled": {
+     "load_warnings": [],
+     "class": "PooledTransformerForSequenceClassification",
+     "architectures": [
+      "PooledTransformerForSequenceClassification"
+     ],
+     "id2label": {
+      "0": "not_useful",
+      "1": "useful"
+     },
+     "pipeline": [
+      {
+       "label": "useful",
+       "score": 0.6034128069877625
+      }
+     ],
+     "readme_outputs": [
+      "[0.347929984331131, 0.028782589361071587]\n"
+     ]
+    },
+    "terminal": {
+     "load_warnings": [],
+     "class": "ModernBertForSequenceClassification",
+     "architectures": [
+      "ModernBertForSequenceClassification"
+     ],
+     "id2label": {
+      "0": "not_useful",
+      "1": "useful"
+     },
+     "pipeline": [
+      {
+       "label": "useful",
+       "score": 0.9003262519836426
+      }
+     ],
+     "readme_outputs": [
+      "[0.8392075896263123, 0.01384861022233963]\n"
+     ]
+    }
+   },
+   "problems": []
+  },
+  "4.48.3": {
+   "report": {
+    "transformers": "4.48.3",
+    "python": "3.12.15",
+    "repos": {
+     "fasttext": "marin-community/atlantic-cc-fasttext",
+     "pooled": "marin-community/atlantic-cc-pooled-transformer",
+     "terminal": "marin-community/atlantic-cc-modernbert"
+    },
+    "fasttext": {
+     "labels": [
+      "__label__",
+      "__label__no_useful",
+      "__label__useful"
+     ],
+     "readme_outputs": [
+      "[0.9010107517242432, 0.8340708613395691]\n"
+     ]
+    },
+    "pooled": {
+     "load_warnings": [],
+     "class": "PooledTransformerForSequenceClassification",
+     "architectures": [
+      "PooledTransformerForSequenceClassification"
+     ],
+     "id2label": {
+      "0": "not_useful",
+      "1": "useful"
+     },
+     "pipeline": [
+      {
+       "label": "useful",
+       "score": 0.6034128069877625
+      }
+     ],
+     "readme_outputs": [
+      "[0.347929984331131, 0.028782589361071587]\n"
+     ]
+    },
+    "terminal": {
+     "load_warnings": [],
+     "class": "ModernBertForSequenceClassification",
+     "architectures": [
+      "ModernBertForSequenceClassification"
+     ],
+     "id2label": {
+      "0": "not_useful",
+      "1": "useful"
+     },
+     "pipeline": [
+      {
+       "label": "useful",
+       "score": 0.9003262519836426
+      }
+     ],
+     "readme_outputs": [
+      "[0.8381505608558655, 0.01384861022233963]\n"
+     ]
+    }
+   },
+   "problems": []
+  }
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "check": "manifest",
+ "files": 27985,
+ "records": 9951767085,
+ "by_kind": {
+  "part": 9950417677,
+  "contaminated": 1349408
+ },
+ "manifest_bytes_equal": true,
+ "manifest_equal": true,
+ "paths_files": {
+  "v1.0.parquet.paths.gz": {
+   "gzip_bytes_equal": true,
+   "content_equal": true,
+   "lines": 27985
+  },
+  "v1.0.clean.parquet.paths.gz": {
+   "gzip_bytes_equal": true,
+   "content_equal": true,
+   "lines": 27736
+  }
+ },
+ "wall_seconds": 99.4
+}

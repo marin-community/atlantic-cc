@@ -1,0 +1,122 @@
+{
+ "lima": {
+  "files": 1,
+  "records": 1330,
+  "source": "gs://marin-us-central2/raw/lima_text-68958e9/68958e9/train.jsonl.gz"
+ },
+ "paloma_4chan": {
+  "files": 4,
+  "records": 523,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/4chan_meta_sep/val/val*.jsonl.gz"
+ },
+ "paloma_c4_100_domains": {
+  "files": 99,
+  "records": 14059,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/c4_100_domains/val/val*.jsonl.gz"
+ },
+ "paloma_c4_en": {
+  "files": 6,
+  "records": 2091,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/c4_en/val/val*.jsonl.gz"
+ },
+ "paloma_dolma-v1_5": {
+  "files": 6,
+  "records": 4600,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/dolma-v1_5/val/val*.jsonl.gz"
+ },
+ "paloma_dolma_100_programing_languages": {
+  "files": 100,
+  "records": 8123,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/dolma_100_programing_languages/val/val*.jsonl.gz"
+ },
+ "paloma_dolma_100_subreddits": {
+  "files": 100,
+  "records": 46347,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/dolma_100_subreddits/val/val*.jsonl.gz"
+ },
+ "paloma_falcon-refinedweb": {
+  "files": 6,
+  "records": 1553,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/falcon-refinedweb/val/val*.jsonl.gz"
+ },
+ "paloma_gab": {
+  "files": 10,
+  "records": 23249,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/gab/val/val*.jsonl.gz"
+ },
+ "paloma_m2d2_s2orc_unsplit": {
+  "files": 167,
+  "records": 167,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/m2d2_s2orc_unsplit/val/val*.jsonl.gz"
+ },
+ "paloma_m2d2_wikipedia_unsplit": {
+  "files": 49,
+  "records": 49,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/m2d2_wikipedia_unsplit/val/val*.jsonl.gz"
+ },
+ "paloma_manosphere_meta_sep": {
+  "files": 8,
+  "records": 2382,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/manosphere_meta_sep/val/val*.jsonl.gz"
+ },
+ "paloma_mc4": {
+  "files": 5,
+  "records": 1108,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/mc4/val/val*.jsonl.gz"
+ },
+ "paloma_ptb": {
+  "files": 1,
+  "records": 1,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/ptb/val/val*.jsonl.gz"
+ },
+ "paloma_redpajama": {
+  "files": 7,
+  "records": 632,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/redpajama/val/val*.jsonl.gz"
+ },
+ "paloma_twitterAAE_HELM_fixed": {
+  "files": 2,
+  "records": 50000,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/twitterAAE_HELM_fixed/val/val*.jsonl.gz"
+ },
+ "paloma_wikitext_103": {
+  "files": 1,
+  "records": 59,
+  "source": "gs://marin-us-central2/raw/paloma-fc6827/65cd6fc/wikitext_103/val/val*.jsonl.gz"
+ },
+ "uncheatable_ao3_english": {
+  "files": 1,
+  "records": 1000,
+  "source": "gs://marin-us-central2/raw/uncheatable-eval/latest_43d8c7f4/ao3_english_*.jsonl.gz"
+ },
+ "uncheatable_arxiv_computer_science": {
+  "files": 1,
+  "records": 1000,
+  "source": "gs://marin-us-central2/raw/uncheatable-eval/latest_43d8c7f4/arxiv_computer_science_*.jsonl.gz"
+ },
+ "uncheatable_arxiv_physics": {
+  "files": 1,
+  "records": 1000,
+  "source": "gs://marin-us-central2/raw/uncheatable-eval/latest_43d8c7f4/arxiv_physics_*.jsonl.gz"
+ },
+ "uncheatable_bbc_news": {
+  "files": 1,
+  "records": 1081,
+  "source": "gs://marin-us-central2/raw/uncheatable-eval/latest_43d8c7f4/bbc_news_*.jsonl.gz"
+ },
+ "uncheatable_github_cpp": {
+  "files": 1,
+  "records": 998,
+  "source": "gs://marin-us-central2/raw/uncheatable-eval/latest_43d8c7f4/github_cpp_*.jsonl.gz"
+ },
+ "uncheatable_github_python": {
+  "files": 1,
+  "records": 973,
+  "source": "gs://marin-us-central2/raw/uncheatable-eval/latest_43d8c7f4/github_python_*.jsonl.gz"
+ },
+ "uncheatable_wikipedia_english": {
+  "files": 1,
+  "records": 1000,
+  "source": "gs://marin-us-central2/raw/uncheatable-eval/latest_43d8c7f4/wikipedia_english_*.jsonl.gz"
+ }
+}
