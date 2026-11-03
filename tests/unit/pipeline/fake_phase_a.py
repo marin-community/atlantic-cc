@@ -79,6 +79,26 @@ class FakeRunner:
 
 
 @dataclass(frozen=True)
+class BrokenPhaseA:
+    """Fails to start in every subprocess, as production's phase A does without the extractor installed."""
+
+    def __call__(self) -> FakeRunner:
+        raise RuntimeError("resiliparse-rs smoke extraction failed (crashed=['_smoke'], result=('', False))")
+
+
+@dataclass(frozen=True)
+class SlowStartPhaseA:
+    """Does not finish starting until ``release`` (a spawn-context Event) is set: a hung model load."""
+
+    release: Any
+    log: str
+
+    def __call__(self) -> FakeRunner:
+        self.release.wait()
+        return FakeRunner(FakePhaseA(self.log))
+
+
+@dataclass(frozen=True)
 class BlockingPhaseA:
     """Does not finish a WARC until ``release`` (a spawn-context Event) is set: an extractor hang."""
 

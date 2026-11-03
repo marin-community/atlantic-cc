@@ -87,11 +87,16 @@ production's two binaries, unchanged:
 | `resiliparse/liblexbor.so.2` | 12,431,649 | `hX51w84LHTU6X/dTPVUyfw==` | `cf016d48cf67a8b6d859cb25e71c82c3c7ff414cfcaedf595e8b3c158f5aecd2` |
 
 The wheel is not published yet. Until it is, it exists only where maintainers build it (see the end of
-this section). Install it into the environment that runs Atlantic-CC, for example:
+this section). Install it into the project environment and smoke-test it:
 
 ```bash
 uv pip install resiliparse_rs_atlantic_cc-0+850891b-cp312-cp312-manylinux_2_34_x86_64.whl
+uv run atlantic-cc extractor-check     # prints "smoke": "passed" and "asrun_binaries": true
 ```
+
+The wheel is not in the project's lockfile, and `uv sync` removes every package the lockfile does not
+list. Run `uv sync` first, with every extra you need (for example `--extra torch --extra dev`), and
+install the wheel after it, or sync with `uv sync --inexact`. `uv run` does not remove it.
 
 The highest symbol versions the binaries need are `GLIBC_2.34` (`pthread_key_create`), `GLIBC_2.33`
 and `GLIBC_2.29` (`log`), so the wheel installs on glibc 2.34 or newer: RHEL, Alma and Rocky Linux 9,
@@ -113,13 +118,13 @@ Maintainers with access to those buckets rebuild the wheel from the production a
 
 ### Docker (portable, glibc >= 2.28)
 
-From the Atlantic-CC repository root, on any machine with Docker (install the wheel on the Linux
-x86_64 machine that will run extraction):
+From the Atlantic-CC repository root, on any machine with Docker (install the wheel, as in Option 1,
+on the Linux x86_64 machine that will run extraction):
 
 ```bash
 docker build --platform linux/amd64 -t atlantic-cc-resiliparse-rs scripts/build_resiliparse_rs
 docker run --rm --platform linux/amd64 -v "$PWD/dist:/out" atlantic-cc-resiliparse-rs
-pip install dist/resiliparse_rs_atlantic_cc-0+850891b-cp312-cp312-manylinux_2_28_x86_64.whl
+uv pip install dist/resiliparse_rs_atlantic_cc-0+850891b-cp312-cp312-manylinux_2_28_x86_64.whl
 ```
 
 The image is `quay.io/pypa/manylinux_2_28_x86_64:2026.10.26-1` (AlmaLinux 8, glibc 2.28), pinned by
@@ -213,16 +218,20 @@ writes to `OUT_DIR/artifact/`; pass the directory it returns as `pkg_dir`.
 
 ## Verifying an install
 
-1. Hashes. For the as-run wheel, compare both installed files with the table above:
+1. Smoke test. `uv run atlantic-cc extractor-check` (about a second) extracts a small page in a spawned
+   process, as every phase-A process does at startup, and reports `asrun_binaries`: whether the
+   extension that loads is production's build. With an artifact directory, add `--pkg-dir DIR`.
+
+2. Hashes. For the as-run wheel, compare both installed files with the table above:
 
    ```bash
-   python -c "
+   uv run python -c "
    import hashlib, pathlib, resiliparse._extract_rs as m
    for p in (pathlib.Path(m.__file__), pathlib.Path(m.__file__).with_name('liblexbor.so.2')):
        print(p, hashlib.sha256(p.read_bytes()).hexdigest())"
    ```
 
-2. F1 golden. `tests/parity/extractor/test_extractor_golden.py` downloads F1 (222 MB) from
+3. F1 golden. `tests/parity/extractor/test_extractor_golden.py` downloads F1 (222 MB) from
    data.commoncrawl.org, extracts its 13,516 HTML pages with the installed extension in
    crash-isolated worker processes, and compares each result with
    `tests/parity/extractor/golden_f1_asrun.tsv.gz`: the production binaries' status and the first 16
@@ -230,14 +239,13 @@ writes to `OUT_DIR/artifact/`; pass the directory it returns as `pkg_dir`.
    laptop it took 3 minutes, including the download.
 
    ```bash
-   uv run --with resiliparse_rs_atlantic_cc-0+850891b-cp312-cp312-manylinux_2_34_x86_64.whl \
-     pytest -m "network and extractor" tests/parity/extractor/test_extractor_golden.py
+   uv run --extra dev pytest -m "network and extractor" tests/parity/extractor/test_extractor_golden.py
    ```
 
-   Drop `--with` when the wheel is already installed in the project environment. A skip means the
+   To test a wheel without installing it, add `--with <wheel>` after `--extra dev`. A skip means the
    test could not import `resiliparse._extract_rs`; it is not a pass.
 
-3. Full parity. `tests/parity/extractor/run_parity.py` compares any number of installs ("variants")
+4. Full parity. `tests/parity/extractor/run_parity.py` compares any number of installs ("variants")
    page by page on F1 and F3. Each page runs in a supervised worker process, so a segfault or hang
    costs one page and is recorded as `crash` or `timeout`. A variant passes when its status and text
    sha256 equal the reference's on every page. `cluster_build.sh` and `cluster_parity.sh` in the same

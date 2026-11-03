@@ -7,6 +7,7 @@ In the fake WARCs, survivor i is pooled-accepted when i % 3 == 0, in the band wh
 terminal model keeps it when i is even) and pooled-dropped when i % 3 == 2.
 """
 
+import dataclasses
 import functools
 import gzip
 import json
@@ -19,16 +20,34 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
 from atlantic_cc.io.local import LocalStore
-from atlantic_cc.pipeline.outputs import WarcStatus, attempts_path, kept_path, marker_path, read_marker, tombstones_path
+from atlantic_cc.pipeline.cli import exit_if_warcs_failed
+from atlantic_cc.pipeline.outputs import (
+    ATTEMPTS_DIR,
+    MARKERS_DIR,
+    WarcStatus,
+    attempts_path,
+    kept_path,
+    marker_path,
+    read_marker,
+    tombstones_path,
+)
 from atlantic_cc.pipeline.phase_b import run_phase_b
-from atlantic_cc.pipeline.worker import PhaseB, WorkerStalledError, run_worker, select_shard
+from atlantic_cc.pipeline.worker import (
+    MAX_WARC_ATTEMPTS,
+    PhaseB,
+    WorkerEnvironmentError,
+    WorkerStalledError,
+    run_worker,
+    select_shard,
+)
 from atlantic_cc.spec import CLS_TOKEN_ID, POOLED_MAX_TOKENS, SEP_TOKEN_ID, TERMINAL_MAX_TOKENS
 from atlantic_cc.warc.identity import warc_hash
-from tests.unit.pipeline.fake_phase_a import BlockingPhaseA, FakePhaseA, url
+from tests.unit.pipeline.fake_phase_a import BlockingPhaseA, BrokenPhaseA, FakePhaseA, SlowStartPhaseA, url
 
 DATA = Path(__file__).parent / "data"
 REPO_ROOT = Path(__file__).parents[3]
@@ -47,8 +66,9 @@ root, log = sys.argv[1:3]
 report = run_worker([url(3)], LocalStore(), root, PoolPhaseA(log), PHASE_B, phase_a_procs=1, queue_depth=1)
 print(report.n_done)
 """
-# Lives for the whole session: the hung subprocess may only start after its test has returned.
+# Live for the whole session: a hung subprocess may only start after its test has returned.
 _RELEASE_HUNG_PHASE_A = mp.get_context("spawn").Event()
+_RELEASE_HUNG_STARTUP = mp.get_context("spawn").Event()
 _DOC_RE = re.compile(r"doc (\d+)")
 _TOKEN_BASE = 1000
 
@@ -163,6 +183,81 @@ def test_hung_phase_a_stalls_the_worker(tmp_path):
         _RELEASE_HUNG_PHASE_A.set()  # lets the stuck subprocess finish so its pool can shut down
     assert json.loads(store.read(attempts_path(root, warc_hash(url(1))))) == {"attempts": 1}
     assert store.stat(marker_path(root, warc_hash(url(1)))) is None
+
+
+def test_a_setup_where_phase_a_cannot_start_never_charges_or_abandons_a_warc(tmp_path):
+    # Regression: without the extractor every start failed, four runs abandoned the queued WARCs with
+    # zero documents, and the fourth exited 0.
+    root, store, log = str(tmp_path / "out"), LocalStore(), tmp_path / "phase_a.log"
+    urls = [url(2), url(4)]
+
+    for _ in range(MAX_WARC_ATTEMPTS + 1):
+        with pytest.raises(WorkerEnvironmentError, match=r"phase A could not start \(RuntimeError: resiliparse-rs"):
+            run_worker(urls, store, root, BrokenPhaseA(), PHASE_B, phase_a_procs=1, queue_depth=2)
+
+    assert store.list(f"{root}/{ATTEMPTS_DIR}/") == []
+    assert store.list(f"{root}/{MARKERS_DIR}/") == []
+    report = run_worker(urls, store, root, FakePhaseA(str(log)), PHASE_B, phase_a_procs=1, queue_depth=2)
+    assert (report.n_done, report.n_abandoned) == (2, 0)
+    assert [read_marker(store, root, warc_hash(u)).attempt for u in urls] == [1, 1]
+
+
+def test_phase_b_failure_stops_the_run_and_takes_back_the_unfinished_starts(tmp_path):
+    root, store, log = str(tmp_path / "out"), LocalStore(), tmp_path / "phase_a.log"
+    done, failing, queued = url(2), url(4), url(6)
+    urls = [done, failing, queued]
+    store.write(attempts_path(root, warc_hash(failing)), b'{"attempts": 2}')  # two earlier starts never finished
+
+    def classify_out_of_memory_on_failing(table: pa.Table):
+        if table.num_rows and table.column("doc_id")[0].as_py().startswith("w4-"):
+            raise RuntimeError("CUDA out of memory")
+        return PHASE_B.classify(table)
+
+    out_of_memory = dataclasses.replace(PHASE_B, classify=classify_out_of_memory_on_failing)
+    with pytest.raises(WorkerEnvironmentError, match=r"phase B failed on \S+/w4\.warc\.gz: RuntimeError: CUDA out"):
+        run_worker(urls, store, root, FakePhaseA(str(log)), out_of_memory, phase_a_procs=1, queue_depth=1)
+
+    # The WARC before the failure is done; the one in phase B and the one queued behind it are unmarked,
+    # with the start counts they had before the run.
+    assert read_marker(store, root, warc_hash(done)).status == WarcStatus.OK
+    assert store.stat(marker_path(root, warc_hash(failing))) is None
+    assert store.stat(marker_path(root, warc_hash(queued))) is None
+    assert json.loads(store.read(attempts_path(root, warc_hash(failing)))) == {"attempts": 2}
+    assert store.stat(attempts_path(root, warc_hash(queued))) is None
+
+    report = run_worker(urls, store, root, FakePhaseA(str(log)), PHASE_B, phase_a_procs=1, queue_depth=1)
+    assert (report.n_already_done, report.n_done, report.n_abandoned) == (1, 2, 0)
+    marker = read_marker(store, root, warc_hash(failing))
+    assert (marker.status, marker.attempt, marker.n_kept) == (WarcStatus.OK, 3, 2)
+    assert read_marker(store, root, warc_hash(queued)).attempt == 1
+
+
+def test_phase_a_that_never_starts_stalls_without_charging_a_warc(tmp_path):
+    root, store = str(tmp_path / "out"), LocalStore()
+    hung = SlowStartPhaseA(_RELEASE_HUNG_STARTUP, str(tmp_path / "phase_a.log"))
+    try:
+        with pytest.raises(WorkerStalledError, match="phase A did not start"):
+            run_worker([url(1)], store, root, hung, PHASE_B, phase_a_procs=1, queue_depth=1, stall_seconds=1)
+    finally:
+        _RELEASE_HUNG_STARTUP.set()  # lets the stuck subprocess finish starting so its pool can shut down
+    assert store.stat(attempts_path(root, warc_hash(url(1)))) is None
+
+
+def test_a_run_that_abandons_or_cannot_download_a_warc_exits_nonzero(tmp_path, caplog):
+    root, store, log = str(tmp_path / "out"), LocalStore(), tmp_path / "phase_a.log"
+    poison, unfetchable = url(3), url(7)
+    store.write(attempts_path(root, warc_hash(poison)), b'{"attempts": 3}')
+    urls = [poison, unfetchable, url(2)]
+    phase_a = FakePhaseA(str(log), unfetchable=frozenset({unfetchable}))
+
+    report = run_worker(urls, store, root, phase_a, PHASE_B, phase_a_procs=1, queue_depth=2)
+
+    with pytest.raises(SystemExit) as exited:
+        exit_if_warcs_failed(report)
+    assert exited.value.code == 1
+    assert "2 of 3 WARCs failed in this run: 1 abandoned and 1 download_failed" in caplog.text
+    # The rerun finds every WARC marked, so it has nothing to fail.
+    exit_if_warcs_failed(run_worker(urls, store, root, phase_a, PHASE_B, phase_a_procs=1, queue_depth=2))
 
 
 def test_shards_match_production_base_layout():

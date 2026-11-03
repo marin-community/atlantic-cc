@@ -8,7 +8,7 @@ Layout under an output root (a local directory or a ``gs://``/``s3://`` prefix):
     kept/data-{warc_hash}.parquet         kept documents, schemas.KEPT_SCHEMA, zstd level 12
     tombstones/data-{warc_hash}.jsonl.gz  one line per dropped fastText survivor; absent if none
     markers/data-{warc_hash}.json         written last: a WARC is done iff its marker exists
-    attempts/data-{warc_hash}.json        how often the WARC was started, to abandon poison WARCs
+    attempts/data-{warc_hash}.json        how often the WARC was started, to abandon poison WARCs (absent if never)
 
 The kept and tombstone files are byte-compatible with production's (``write_table_v3`` and
 ``write_tombstones_band``): re-serializing an as-run kept table gives the identical file, and
@@ -146,3 +146,12 @@ def record_attempt(store: Store, root: str, warc_hash: str) -> int:
     attempts = 1 if store.stat(path) is None else read_json(store, path)["attempts"] + 1
     store.write(path, dumps({"attempts": attempts}))
     return attempts
+
+
+def release_attempt(store: Store, root: str, warc_hash: str, attempt: int) -> None:
+    """Undo the :func:`record_attempt` call that returned ``attempt`` (a start the WARC is not to blame for)."""
+    path = attempts_path(root, warc_hash)
+    if attempt == 1:
+        store.delete(path)
+    else:
+        store.write(path, dumps({"attempts": attempt - 1}))

@@ -8,9 +8,9 @@
 ARM, and they keep different subsets. The solver calls it twice for batches of more than 256 members (the 32 rarest
 probe n-grams; the 32 best-sharing candidates), so those batches can remove different documents on different CPUs.
 The release was built on TPU v4 hosts (AMD EPYC 7B12: AVX2, no AVX-512). The dedup CLI therefore masks AVX-512 by
-default (``--simd mask-avx512``), and exact parity is claimed for x86_64 only: on ARM these tests document the
-scalar kernel's choice and are otherwise skipped. Masking AVX2 as well leaves x86_64 with the scalar selection,
-which keeps the same tied items as ARM.
+default (``--simd mask-avx512``), and exact parity is claimed for x86_64 with AVX2 only: on ARM, and on x86_64
+CPUs without AVX2 (Intel before Haswell), these tests document the scalar kernel's choice and are otherwise
+skipped. Masking AVX2 as well leaves x86_64 with the scalar selection, which keeps the same tied items as ARM.
 """
 
 import json
@@ -21,6 +21,7 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+from numpy._core import _multiarray_umath
 
 from atlantic_cc.dedup.runtime import NUMPY_DISABLE_ENV, enabled_avx512_features, tie_order_platform
 
@@ -61,9 +62,14 @@ def _probe_with_mask(features: list[str]) -> dict[str, list[int]]:
 
 
 _X86_ONLY = pytest.mark.skipif(not tie_order_platform().startswith("x86_64"), reason="ARM has no SIMD selection")
+# The release's order comes from NumPy's AVX2 selection kernel. Without AVX2 (ARM, or x86_64 before Haswell)
+# NumPy has only the scalar selection, so no mask can restore that order.
+_AVX2_ONLY = pytest.mark.skipif(
+    not _multiarray_umath.__cpu_features__.get("AVX2"), reason="NumPy reports no AVX2 on this CPU"
+)
 
 
-@_X86_ONLY
+@_AVX2_ONLY
 def test_masking_avx512_restores_the_release_tie_order():
     enabled = enabled_avx512_features()
     probe = _probe_with_mask(enabled) if enabled else tie_probe()

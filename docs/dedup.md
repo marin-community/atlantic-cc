@@ -140,7 +140,7 @@ the cut depends on the SIMD kernel NumPy dispatches at runtime:
 |---|---|---|
 | x86_64 with AVX-512 (Intel Skylake-SP and later; AMD Zen 4, e.g. EPYC 9B14) | `ArgQSelect_AVX512_SKX` | differ from the release's |
 | x86_64 with AVX2 and no AVX-512 (e.g. AMD EPYC 7B12, Zen 2) | `ArgQSelect_AVX2` | **the release's** |
-| ARM (Apple silicon, Graviton), or x86_64 with AVX2 masked | generic introselect | differ from the release's (the same on both) |
+| ARM (Apple silicon, Graviton); x86_64 without AVX2 (Intel before Haswell) or with AVX2 masked | generic introselect | differ from the release's (the same on all) |
 
 The release was built on TPU v4 hosts in us-central2 (every worker was a TPU VM; their CPUs are AMD EPYC
 7B12, with AVX2 and no AVX-512). Only removals inside solve batches of more than 256 members can change,
@@ -158,8 +158,9 @@ itself with `NPY_DISABLE_CPU_FEATURES` listing them (the AVX2 kernels stay enabl
 the mask did not take. Child processes inherit the mask. On an AMD EPYC 9B14 the masked process keeps
 exactly the AVX2 kernel's tied items and reproduces the release's solver goldens. `--simd native` lets
 NumPy use whatever the CPU offers. Every `run`/`worker` process records its CPU model, flags and enabled
-NumPy features in `{run_root}/runtime/`, and `atlantic-cc dedup verify` reports them. ARM hosts cannot
-reproduce the release's tie order; their results differ only in solve batches of more than 256 members.
+NumPy features in `{run_root}/runtime/`, and `atlantic-cc dedup verify` reports them. ARM hosts and x86_64
+hosts without AVX2 cannot reproduce the release's tie order; their results differ only in solve batches of
+more than 256 members.
 
 The rest of the contract is pinned by the Python and library versions: CPython 3.12's Unicode tables
 decide `casefold`, `split`, `strip` and `\s`; dupekit's Rust tables decide CleanText's lowercasing

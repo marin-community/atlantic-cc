@@ -21,8 +21,17 @@ Resumption and failure handling follow production:
   retries it until the attempt cap;
 * if no WARC finishes phase A for ``stall_seconds`` (production: 25 minutes), the worker raises
   :class:`WorkerStalledError`; the CLI then exits hard so a supervisor can restart it.
+
+Production ran in one fixed environment; a user's setup can be broken, and that must never cost a
+WARC its starts. So before counting any start, one task proves that a phase-A subprocess loads the
+fastText model and passes the extractor's smoke extraction. When phase A cannot start, or phase B
+raises (CUDA out of memory, a model error), the worker stops with :class:`WorkerEnvironmentError`.
+Whenever the run stops on an error other than a stall or a dead phase-A subprocess (the two ways a
+WARC can take its worker down), the starts it counted for WARCs it did not finish are taken back.
 """
 
+import contextlib
+import io
 import logging
 import multiprocessing as mp
 import time
@@ -44,6 +53,7 @@ from atlantic_cc.pipeline.outputs import (
     WarcStatus,
     is_done,
     record_attempt,
+    release_attempt,
     write_marker,
     write_warc_outputs,
 )
@@ -111,7 +121,8 @@ class CascadePhaseA:
     extract_procs: int
 
     def __call__(self) -> CascadeRunner:
-        gate = FastTextGate.load(self.fasttext_model)
+        with contextlib.redirect_stderr(io.StringIO()):  # fastText prints a deprecation notice on every load
+            gate = FastTextGate.load(self.fasttext_model)
         return CascadeRunner(gate, open_extractor_pool(self.extract_procs, self.extractor_pkg_dir))
 
 
@@ -138,26 +149,66 @@ class WorkerReport:
     n_abandoned: int
     n_errors: int  # phase A raised; unmarked, retried by the next run
 
+    @property
+    def n_failed(self) -> int:
+        """WARCs this run abandoned, could not download, or saw raise in phase A."""
+        return self.n_abandoned + self.n_download_failed + self.n_errors
+
 
 class WorkerStalledError(RuntimeError):
     """No WARC finished phase A within the stall window; a phase-A subprocess is probably hung."""
 
 
+class WorkerEnvironmentError(RuntimeError):
+    """The run stopped for a reason outside any WARC: phase A could not start, or phase B raised."""
+
+
 _RUNNER: PhaseARunner | None = None  # set once per subprocess by _init_phase_a
+_STARTUP_ERROR: Exception | None = None  # set instead when the runner could not be built
 
 
 def _init_phase_a(factory: PhaseAFactory) -> None:
-    global _RUNNER
-    _RUNNER = factory()
+    global _RUNNER, _STARTUP_ERROR
+    try:
+        _RUNNER = factory()
+    except Exception as e:  # raised by this subprocess's tasks: a failing initializer only breaks the pool
+        _STARTUP_ERROR = e
+        return
     # A multiprocessing child joins its own child processes while it exits, before the executor
     # machinery would stop them, so the runner's extraction pool is closed by an exit finalizer.
     Finalize(_RUNNER, _RUNNER.close, exitpriority=RUNNER_CLOSE_EXIT_PRIORITY)
 
 
+def _runner() -> PhaseARunner:
+    if _STARTUP_ERROR is not None:
+        raise WorkerEnvironmentError(
+            f"phase A could not start ({type(_STARTUP_ERROR).__name__}: {_STARTUP_ERROR}); check the fastText "
+            "model and the resiliparse-rs install (`atlantic-cc extractor-check`)"
+        ) from _STARTUP_ERROR
+    return _RUNNER
+
+
+def _check_phase_a() -> None:
+    """A run's first task: it returns only if this subprocess built its phase-A runner."""
+    _runner()
+
+
 def _phase_a_task(warc_path: str) -> tuple[pa.Table, PhaseACounters, float]:
+    runner = _runner()
     start = time.monotonic()
-    table, counters = _RUNNER.run(warc_path)
+    table, counters = runner.run(warc_path)
     return table, counters, time.monotonic() - start
+
+
+def _wait_for_phase_a(executor: ProcessPoolExecutor, timeout: float) -> None:
+    """Raise unless a phase-A subprocess starts and builds its runner within ``timeout`` seconds."""
+    ready = executor.submit(_check_phase_a)
+    if not wait([ready], timeout=timeout).done:
+        raise WorkerStalledError(f"phase A did not start in {timeout:.0f}s")
+    try:
+        ready.result()
+    except BrokenProcessPool as e:
+        raise WorkerEnvironmentError("phase A could not start: its subprocess died while starting") from e
 
 
 def as_s3_url(path: str) -> str:
@@ -175,11 +226,12 @@ def read_warc_list(path: str) -> list[str]:
 def select_shard(warc_urls: list[str], shard_index: int, num_shards: int) -> list[str]:
     """Production's static partition, ``int(sha256(url)[:8], 16) % num_shards == shard_index``, sorted.
 
-    With ``num_shards=32000`` a shard holds exactly production's base shard of the same index.
+    With ``num_shards=32000`` a shard holds exactly production's base shard of the same index. A URL
+    listed twice is kept once (the worker runs each WARC once).
     """
     if not 0 <= shard_index < num_shards:
         raise ValueError(f"shard index {shard_index} outside [0, {num_shards})")
-    return sorted(url for url in warc_urls if hash_shard(url, num_shards) == shard_index)
+    return sorted({url for url in warc_urls if hash_shard(url, num_shards) == shard_index})
 
 
 def run_worker(
@@ -193,19 +245,38 @@ def run_worker(
     queue_depth: int,
     stall_seconds: float = STALL_MINUTES * 60,
 ) -> WorkerReport:
-    """Extract and classify every WARC in ``warc_urls`` that has no marker under ``root``."""
+    """Extract and classify every WARC in ``warc_urls`` that has no marker under ``root``.
+
+    Raises:
+        WorkerEnvironmentError: Phase A could not start, or phase B raised; no WARC was charged a start.
+        WorkerStalledError: Phase A did not start, or no WARC finished it, within ``stall_seconds``.
+    """
     todo = [url for url in warc_urls if not is_done(store, root, warc_hash(url))]
     n_already_done = len(warc_urls) - len(todo)
     logger.info("%d WARCs, %d already done, %d to process", len(warc_urls), n_already_done, len(todo))
     counts = {status: 0 for status in WarcStatus}
     n_errors = 0
+    unfinished: dict[str, int] = {}  # url -> the start this run counted, until the WARC is marked or raises
+
+    def report() -> WorkerReport:
+        return WorkerReport(
+            n_warcs=len(warc_urls),
+            n_already_done=n_already_done,
+            n_done=sum(counts.values()),
+            n_download_failed=counts[WarcStatus.DOWNLOAD_FAILED],
+            n_abandoned=counts[WarcStatus.ABANDONED],
+            n_errors=n_errors,
+        )
 
     def finish(url: str, attempt: int, table: pa.Table, a: PhaseACounters, a_seconds: float, error: str) -> None:
         status = WarcStatus.ABANDONED if attempt > MAX_WARC_ATTEMPTS else WarcStatus.OK
         if a.download_failed:
             status, error = WarcStatus.DOWNLOAD_FAILED, a.download_error
         h = warc_hash(url)
-        kept, tombstones, b = phase_b.classify(table)
+        try:
+            kept, tombstones, b = phase_b.classify(table)
+        except Exception as e:
+            raise WorkerEnvironmentError(f"phase B failed on {url}: {type(e).__name__}: {e}") from e
         start = time.monotonic()
         write_warc_outputs(store, root, h, kept, tombstones)
         marker = WarcMarker(
@@ -232,6 +303,7 @@ def run_worker(
             n_devices=phase_b.n_devices,
         )
         write_marker(store, root, marker)
+        del unfinished[url]
         counts[status] += 1
         logger.info(
             "%s %s: %d in -> %d survivors -> %d accepted + %d band -> %d kept (A %.1fs, tokenize %.1fs, "
@@ -249,6 +321,8 @@ def run_worker(
             b.terminal_seconds,
         )
 
+    if not todo:
+        return report()
     executor = ProcessPoolExecutor(
         max_workers=phase_a_procs, mp_context=mp.get_context("spawn"), initializer=_init_phase_a, initargs=(phase_a,)
     )
@@ -261,6 +335,7 @@ def run_worker(
             if url is None:
                 return
             attempt = record_attempt(store, root, warc_hash(url))
+            unfinished[url] = attempt
             if attempt > MAX_WARC_ATTEMPTS:
                 reason = f"abandoned: {attempt - 1} starts never completed"
                 logger.error("%s %s; recording an explicit failure", url, reason)
@@ -269,6 +344,7 @@ def run_worker(
             pending[executor.submit(_phase_a_task, url)] = (url, attempt)
 
     try:
+        _wait_for_phase_a(executor, stall_seconds)
         fill()
         while pending:
             finished, _ = wait(pending, timeout=stall_seconds, return_when=FIRST_COMPLETED)
@@ -280,22 +356,22 @@ def run_worker(
                 fill()  # keep the CPUs busy while the accelerator scores this WARC
                 try:
                     table, a_counters, a_seconds = future.result()
-                except BrokenProcessPool:
+                except (BrokenProcessPool, WorkerEnvironmentError):
                     raise
-                except Exception:  # production retried the WARC; the attempt is already counted
+                except Exception:  # production retried the WARC; this start counts
                     logger.exception("phase A failed on %s (attempt %d); leaving it for a rerun", url, attempt)
                     n_errors += 1
+                    del unfinished[url]
                     continue
                 finish(url, attempt, table, a_counters, a_seconds, "")
-    except BaseException:
+    except BaseException as e:
         executor.shutdown(wait=False, cancel_futures=True)
+        # A stall or a dead phase-A subprocess may be a WARC's doing (a hang, a crash), so as in production
+        # those starts count; so do the starts of an interrupted or killed run.
+        if isinstance(e, Exception) and not isinstance(e, (WorkerStalledError, BrokenProcessPool)):
+            for url, attempt in unfinished.items():
+                release_attempt(store, root, warc_hash(url), attempt)
+            logger.info("took back the starts of %d unfinished WARCs", len(unfinished))
         raise
     executor.shutdown(wait=True)
-    return WorkerReport(
-        n_warcs=len(warc_urls),
-        n_already_done=n_already_done,
-        n_done=sum(counts.values()),
-        n_download_failed=counts[WarcStatus.DOWNLOAD_FAILED],
-        n_abandoned=counts[WarcStatus.ABANDONED],
-        n_errors=n_errors,
-    )
+    return report()

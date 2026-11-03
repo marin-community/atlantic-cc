@@ -5,8 +5,11 @@
 
 Writes ``kept/``, ``tombstones/``, ``markers/`` and ``attempts/`` under ``--output`` (see
 ``atlantic_cc.pipeline.outputs``). Rerunning the same command resumes: WARCs with a marker are
-skipped. Exit status: 0 when every WARC of the shard has a marker, 1 when some WARC raised in
-phase A (rerun to retry it), and 70 when phase A stalled (a supervisor should restart the worker).
+skipped. Exit status: 0 when every WARC of the shard has a marker and none failed in this run;
+1 when this run abandoned a WARC, could not download one or saw one raise in phase A (a rerun
+retries the last kind), or stopped because phase A could not start or phase B raised (no WARC is
+charged a start for that; fix the setup and rerun); 70 when phase A stalled (a supervisor should
+restart the worker).
 """
 
 import argparse
@@ -15,6 +18,7 @@ import logging
 import os
 import shutil
 import sys
+import warnings
 
 import fsspec
 
@@ -28,6 +32,8 @@ from atlantic_cc.pipeline.worker import (
     STALL_MINUTES,
     CascadePhaseA,
     PhaseB,
+    WorkerEnvironmentError,
+    WorkerReport,
     WorkerStalledError,
     read_warc_list,
     run_worker,
@@ -39,6 +45,17 @@ logger = logging.getLogger(__name__)
 FASTTEXT_FILE = "model.bin"  # in the Hub repo and in a staged repo folder
 STALL_EXIT_CODE = 70  # production's stall-watchdog exit code
 DEFAULT_CACHE_DIR = os.path.expanduser("~/.cache/atlantic_cc")
+# Triton (with torch 2.15) announces a future change of its default; this run's kernels do not depend on it.
+TRITON_FP_FUSION_NOTICE = "TRITON_DEFAULT_FP_FUSION is unset"
+
+
+def quiet_logs() -> None:
+    """Drop a known-benign Triton notice, and progress bars when stderr is a log file rather than a terminal."""
+    warnings.filterwarnings("ignore", message=TRITON_FP_FUSION_NOTICE)
+    if not sys.stderr.isatty():
+        from transformers.utils import logging as transformers_logging  # noqa: PLC0415 (heavy; phase B loads it)
+
+        transformers_logging.disable_progress_bar()
 
 
 def local_copy(source: str, cache_dir: str) -> str:
@@ -91,6 +108,22 @@ def default_torch_device() -> str:
     import torch  # noqa: PLC0415 (optional torch)
 
     return "cuda" if torch.cuda.is_available() else "cpu"
+
+
+def exit_if_warcs_failed(report: WorkerReport) -> None:
+    """Exit with status 1 and a one-line summary if the run abandoned, could not download or failed a WARC."""
+    if not report.n_failed:
+        return
+    logger.error(
+        "%d of %d WARCs failed in this run: %d abandoned and %d download_failed (marked, with no documents), "
+        "%d raised in phase A (unmarked; rerun to retry them)",
+        report.n_failed,
+        report.n_warcs - report.n_already_done,
+        report.n_abandoned,
+        report.n_download_failed,
+        report.n_errors,
+    )
+    sys.exit(1)
 
 
 def register(subparsers: argparse._SubParsersAction) -> None:
@@ -172,6 +205,7 @@ def register(subparsers: argparse._SubParsersAction) -> None:
 
 
 def run(args: argparse.Namespace) -> None:
+    quiet_logs()
     root = args.output.rstrip("/")
     warcs = select_shard(read_warc_list(args.warc_list), args.shard_index, args.num_shards)
     logger.info(
@@ -221,7 +255,8 @@ def run(args: argparse.Namespace) -> None:
         )
         logging.shutdown()
         os._exit(STALL_EXIT_CODE)  # a hung phase-A process would block a normal interpreter exit
-    logger.info("done: %s", report)
-    if report.n_errors:
-        logger.error("%d WARCs raised in phase A; rerun the same command to retry them", report.n_errors)
+    except WorkerEnvironmentError:
+        logger.exception("stopped without charging any WARC a start; fix the setup and rerun the same command")
         sys.exit(1)
+    logger.info("done: %s", report)
+    exit_if_warcs_failed(report)

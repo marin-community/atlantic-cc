@@ -24,7 +24,7 @@ from tests.parity.r2_asrun import FIXTURES, fetch_asrun
 
 DATA = Path(__file__).parent / "data"
 # Production's F3 kept file holds web text, so it is not committed: it is fetched from Marin's GCS once.
-ASRUN_F3_DIR = Path(__file__).parents[3] / ".cache" / "a3" / "f3"
+ASRUN_F3_DIR = Path(__file__).parents[3] / ".cache" / "asrun" / "f3"
 ASRUN_F3_KEPT = ASRUN_F3_DIR / "kept-4ff1f9108b5a.parquet"
 GZIP_FLAGS_BYTE = 3  # FNAME, FCOMMENT, ... bits; production's files carry no file name
 

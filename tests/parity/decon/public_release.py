@@ -7,7 +7,7 @@ Uses only public inputs: release files from ``data.commoncrawl.org`` plus the sh
 (D in the package; S' and the S' name map as release assets). Every document must get exactly the
 stored ``decon_matches`` (empty for ``part-*`` files, non-empty for ``contaminated-*``).
 
-    uv run python -m tests.parity.decon.public_release --artifacts .cache/a5/artifacts --cache .cache/a5/release
+    uv run python -m tests.parity.decon.public_release --artifacts .cache/decon/artifacts --cache .cache/decon/release
 """
 
 import argparse

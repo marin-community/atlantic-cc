@@ -14,9 +14,12 @@ cascade of three classifiers, then globally deduplicated and decontaminated.
 ```bash
 git clone https://github.com/marin-community/atlantic-cc && cd atlantic-cc
 uv sync --extra torch        # GPUs or CPU; use --extra tpu on TPUs
+uv pip install resiliparse_rs_atlantic_cc-0+850891b-cp312-cp312-manylinux_2_34_x86_64.whl
 ```
 
-Python 3.12. Extraction needs Linux x86_64 and the resiliparse-rs extension ([docs/extractor.md](docs/extractor.md)).
+Python 3.12. Extraction needs Linux x86_64 and the resiliparse-rs extractor, which the last line installs
+([docs/extractor.md](docs/extractor.md)). It is not in the lockfile, so a later `uv sync` removes it (`uv run`
+does not). GPUs need compute capability 7.5 or newer ([GPU requirements](docs/running.md#gpus)).
 
 ## Quickstart: one WARC
 
@@ -25,7 +28,8 @@ echo crawl-data/CC-MAIN-2026-12/segments/1772687277590.81/warc/CC-MAIN-202603080
 uv run atlantic-cc extract-classify --warc-list one.paths --output out/ --backend torch --phase-a-procs 1
 ```
 
-Writes `out/kept/data-4ff1f9108b5a.parquet`; the release kept 2,830 of this WARC's 19,112 pages.
+Writes `out/kept/data-4ff1f9108b5a.parquet`; the release kept 2,830 of this WARC's 19,112 pages (a GPU may
+keep a few more or fewer, near a threshold).
 
 ## Reproducing the corpus
 
@@ -40,6 +44,10 @@ Writes `out/kept/data-4ff1f9108b5a.parquet`; the release kept 2,830 of this WARC
 CPU stages reproduce the release exactly; the neural classifiers match it bit for bit on production's
 accelerator type and up to a few near-threshold decisions elsewhere ([reproducibility.md](docs/reproducibility.md),
 [provenance.md](docs/provenance.md)).
+
+## Tests
+
+`uv run --extra dev pytest` runs the offline suite in a minute or two.
 
 ## License
 

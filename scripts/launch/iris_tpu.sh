@@ -4,9 +4,10 @@
 #
 # Extract and classify a range of shards on Marin's Iris cluster, one TPU job per block of shards.
 #
-# Each job runs `atlantic-cc extract-classify` over its shards one after another. Iris retries a
-# job that exits non-zero (a stalled phase A exits 70, a WARC that raised exits 1), and markers make
-# every rerun resume where the last one stopped, so retries never redo finished WARCs.
+# Each job runs `atlantic-cc extract-classify` over its shards one after another. A stalled phase A
+# (exit 70) ends the job at once; a shard that exits 1 (a WARC failed, or the setup is broken) does
+# not stop the others, and the job then exits 1. Iris retries a failed job up to MAX_RETRIES times,
+# and markers make every rerun resume where the last one stopped, so retries never redo finished WARCs.
 #
 # Usage (from the repository root, so the job bundles this checkout):
 #   OUTPUT=gs://my-bucket/atlantic-cc/extract WARC_LIST=gs://my-bucket/v1.0.input.warc.paths.gz \
@@ -28,26 +29,30 @@ REGION="${REGION:-us-central2}"            # keep the job in the region of OUTPU
 PHASE_A_PROCS="${PHASE_A_PROCS:-8}"
 CPUS="${CPUS:-56}"                         # PHASE_A_PROCS * (1 + 6 extraction processes)
 MEMORY="${MEMORY:-200GB}"
+MAX_RETRIES="${MAX_RETRIES:-5}"
 EXTRACTOR="${EXTRACTOR:?resiliparse-rs artifact prefix (see docs/extraction.md)}"
 IRIS="${IRIS:-iris}"
-MODEL_ARGS=()
-[[ -n "${FASTTEXT_MODEL:-}" ]] && MODEL_ARGS+=(--fasttext-model "${FASTTEXT_MODEL}")
-[[ -n "${POOLED_MODEL:-}" ]] && MODEL_ARGS+=(--pooled-model "${POOLED_MODEL}")
-[[ -n "${TERMINAL_MODEL:-}" ]] && MODEL_ARGS+=(--terminal-model "${TERMINAL_MODEL}")
+# Optional model sources, quoted for the job's shell.
+MODEL_ARGS="${FASTTEXT_MODEL:+ --fasttext-model '${FASTTEXT_MODEL}'}${POOLED_MODEL:+ --pooled-model '${POOLED_MODEL}'}"
+MODEL_ARGS+="${TERMINAL_MODEL:+ --terminal-model '${TERMINAL_MODEL}'}"
 
 for ((first = FIRST_SHARD; first <= LAST_SHARD; first += SHARDS_PER_JOB)); do
   last=$((first + SHARDS_PER_JOB - 1))
   ((last > LAST_SHARD)) && last=${LAST_SHARD}
-  # The job's own loop; ${s} is expanded on the worker.
-  script="for s in \$(seq ${first} ${last}); do
+  # The job's own loop; ${s}, ${status} and ${failed} are expanded on the worker.
+  script="failed=0
+  for s in \$(seq ${first} ${last}); do
     python -m atlantic_cc.cli extract-classify --warc-list '${WARC_LIST}' --output '${OUTPUT}' \
       --shard-index \${s} --num-shards ${NUM_SHARDS} --backend jax \
-      --phase-a-procs ${PHASE_A_PROCS} --extractor '${EXTRACTOR}' --cache-dir /root/.cache/atlantic_cc \
-      ${MODEL_ARGS[*]} || exit \$?
-  done"
+      --phase-a-procs ${PHASE_A_PROCS} --extractor '${EXTRACTOR}' --cache-dir /root/.cache/atlantic_cc${MODEL_ARGS}
+    status=\$?
+    if [ \${status} -eq 70 ]; then exit 70; fi
+    if [ \${status} -ne 0 ]; then failed=1; fi
+  done
+  exit \${failed}"
   "${IRIS}" --cluster=marin job run \
     --tpu "${TPU}" --region "${REGION}" --cpu "${CPUS}" --memory "${MEMORY}" --enable-extra-resources \
-    --extra tpu --extra gcs \
+    --extra tpu --extra gcs --max-retries "${MAX_RETRIES}" \
     --job-name "atlcc-extract-${TPU}-$(printf '%05d' "${first}")" --no-wait \
     -- bash -c "${script}"
 done
