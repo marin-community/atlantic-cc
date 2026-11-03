@@ -6,7 +6,7 @@ every fastText survivor's scores and decision with production's outputs.
 
     # run the worker on F3, then compare (arguments after -- go to `atlantic-cc extract-classify`)
     python -m tests.parity.r2_phase_b run --fixtures F3 --output OUT --report OUT/r2_report.json -- \\
-        --backend jax --phase-a-procs 4 --fasttext-model ... --pooled-model ... --terminal-model ... --extractor ...
+        --backend jax --phase-a-procs 4
 
     # compare an existing output tree
     python -m tests.parity.r2_phase_b compare --fixtures F3 --output OUT --report OUT/r2_report.json
@@ -14,8 +14,10 @@ every fastText survivor's scores and decision with production's outputs.
 The report (JSON) has, per WARC and aggregated (all WARCs, and split by whether our device type
 equals the one production used for that WARC): survivor-set agreement, |delta p| distributions
 for the pooled and terminal scores, the route confusion matrix, decision agreement, and every flip
-with its distance to the threshold that decided it. Reading production's outputs needs Marin GCS
-credentials; run in us-central2, where every as-run kept file lives.
+with its distance to the threshold that decided it. Production's outputs for the fixtures come from
+their committed goldens, so the comparison needs no bucket access. ``--asrun gcs`` reads them from
+Marin's GCS instead (maintainers; needed for ``--warcs``); run that in us-central2, where every as-run
+kept file lives.
 """
 
 import argparse
@@ -26,6 +28,7 @@ import json
 import logging
 import os
 import tempfile
+from enum import StrEnum
 
 import fsspec
 import pyarrow.parquet as pq
@@ -33,7 +36,7 @@ import pyarrow.parquet as pq
 from atlantic_cc.io.resolve import store_for
 from atlantic_cc.pipeline import cli as pipeline_cli
 from atlantic_cc.pipeline.outputs import is_done, kept_path, read_marker, tombstones_path
-from tests.parity.r2_asrun import FIXTURES, AsRunWarc, base_warc, load_asrun
+from tests.parity.r2_asrun import FIXTURES, AsRunWarc, asrun_from_golden, base_warc, load_asrun
 from tests.parity.r2_compare import (
     MIN_DECISION_AGREEMENT,
     POOLED_FLIP_EPSILON,
@@ -55,6 +58,14 @@ PHASE_A_COUNTERS = {
 PHASE_B_COUNTERS = {name: name for name in ("n_presurvivors", "n_hi_accept", "n_band", "n_kept")}
 
 
+class AsRunSource(StrEnum):
+    GOLDEN = "golden"  # the fixtures' committed goldens
+    GCS = "gcs"  # Marin's buckets
+
+
+ASRUN_LOADERS = {AsRunSource.GOLDEN: asrun_from_golden, AsRunSource.GCS: load_asrun}
+
+
 def run_extract_classify(root: str, warc_urls: list[str], worker_args: list[str]) -> None:
     """``atlantic-cc extract-classify`` over ``warc_urls`` into ``root``; WARCs that raise are left unmarked."""
     parser = argparse.ArgumentParser(prog="atlantic-cc")
@@ -71,7 +82,7 @@ def run_extract_classify(root: str, warc_urls: list[str], worker_args: list[str]
         os.unlink(f.name)
 
 
-def compare_warc(root: str, name: str, warc: AsRunWarc):
+def compare_warc(root: str, name: str, warc: AsRunWarc, source: AsRunSource):
     store = store_for(root)
     h = warc.warc_hash
     entry = {"name": name, "warc_path": warc.warc_path, "warc_hash": h, "asrun_shard": warc.shard}
@@ -85,7 +96,7 @@ def compare_warc(root: str, name: str, warc: AsRunWarc):
         if store.stat(tombstones_file) is None
         else [json.loads(line) for line in gzip.decompress(store.read(tombstones_file)).decode().splitlines()]
     )
-    asrun = load_asrun(warc)
+    asrun = ASRUN_LOADERS[source](warc)
     comparison = compare_survivors(
         survivors_from_outputs(kept, tombstones), survivors_from_outputs(asrun.kept, asrun.tombstones)
     )
@@ -111,10 +122,10 @@ def compare_warc(root: str, name: str, warc: AsRunWarc):
     return entry, comparison
 
 
-def build_report(root: str, warcs: dict[str, AsRunWarc]) -> dict:
+def build_report(root: str, warcs: dict[str, AsRunWarc], source: AsRunSource) -> dict:
     entries, same, other = [], [], []
     for name, warc in warcs.items():
-        entry, comparison = compare_warc(root, name, warc)
+        entry, comparison = compare_warc(root, name, warc, source)
         entries.append(entry)
         if comparison is None:
             logger.warning("%s (%s): no marker under %s", name, warc.warc_hash, root)
@@ -136,6 +147,7 @@ def build_report(root: str, warcs: dict[str, AsRunWarc]) -> dict:
         "harness": "tests/parity/r2_phase_b.py",
         "created": datetime.datetime.now(datetime.UTC).isoformat(timespec="seconds"),
         "output": root,
+        "asrun_source": str(source),
         "gates": {
             "min_decision_agreement": MIN_DECISION_AGREEMENT,
             "pooled_flip_epsilon": POOLED_FLIP_EPSILON,
@@ -158,18 +170,27 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--warcs", nargs="*", default=[], help="s3://commoncrawl/ URLs of base-crawl CC-MAIN WARCs")
     parser.add_argument("--output", required=True, help="output root of the worker (local or gs://)")
     parser.add_argument("--report", required=True, help="where to write the JSON report (local or gs://)")
+    parser.add_argument(
+        "--asrun",
+        type=AsRunSource,
+        choices=list(AsRunSource),
+        default=AsRunSource.GOLDEN,
+        help="production's outputs: the fixtures' committed goldens, or Marin's GCS (maintainers)",
+    )
     args, worker_args = parser.parse_known_args(argv)
     if worker_args[:1] == ["--"]:
         worker_args = worker_args[1:]
     warcs = {name: FIXTURES[name] for name in args.fixtures} | {url: base_warc(url) for url in args.warcs}
     if not warcs:
         parser.error("name at least one WARC with --fixtures or --warcs")
+    if args.warcs and args.asrun is AsRunSource.GOLDEN:
+        parser.error("only the fixtures have committed goldens; compare --warcs with --asrun gcs")
     root = args.output.rstrip("/")
     if args.command == "run":
         run_extract_classify(root, [w.warc_path for w in warcs.values()], worker_args)
     elif worker_args:
         parser.error(f"unexpected arguments for compare: {worker_args}")
-    report = build_report(root, warcs)
+    report = build_report(root, warcs, args.asrun)
     with fsspec.open(args.report, "w") as f:
         json.dump(report, f, indent=1)
     logger.info("report -> %s; aggregate: %s", args.report, json.dumps(report["aggregate"]["all"]))

@@ -227,18 +227,20 @@ terminal model is 10-12 times slower than on an A100, and phase B becomes the bo
 
 ## Checking a run against production
 
-`tests/parity/r2_phase_b.py` runs the worker on fixture WARCs and compares every fastText survivor's
-scores and decision with production's outputs (it needs read access to Marin's buckets):
+`tests/parity/r2_phase_b.py` runs the worker on the fixture WARCs F1–F5
+([reproducibility.md](reproducibility.md#results)) and compares every fastText survivor's scores and
+decision with production's. The repository holds production's outputs for these WARCs
+(`tests/golden/per_warc/`), so the check needs no access to Marin's buckets:
 
 ```bash
 uv run python -m tests.parity.r2_phase_b run --fixtures F3 --output OUT --report OUT/r2_report.json -- \
-  --backend jax --phase-a-procs 1 --extractor ... --fasttext-model ... --pooled-model ... --terminal-model ...
+  --backend jax --phase-a-procs 1
 ```
 
 The report gives survivor-set agreement (phase A exactness), |delta p| distributions for both
 models, the route confusion matrix, decision agreement, and every flipped document with its
 distance to the threshold that decided it, split by whether the device type matches the one
-production used for that WARC. `tests/parity/r3_phase_b.py` is the same harness for GPUs. On a GPU
-host without access to Marin's buckets, run `atlantic-cc extract-classify` on the fixtures there,
-copy the output tree to a bucket in us-central2, where production's outputs are, and run
-`r3_phase_b compare` on it.
+production used for that WARC. `tests/parity/r3_phase_b.py` is the same harness for GPUs
+(`-- --backend torch --torch-device cuda`). With `compare` instead of `run`, either harness checks an
+existing output tree, such as one that `scripts/launch/slurm_gpu.sbatch` wrote. Maintainers can check
+other WARCs with `--warcs URL ... --asrun gcs`, which reads production's outputs from Marin's buckets.

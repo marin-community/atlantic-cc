@@ -1,12 +1,15 @@
 # Copyright The Marin Authors
 # SPDX-License-Identifier: Apache-2.0
 
-"""Where production's per-WARC outputs live on Marin's GCS, and the fixture WARCs F1-F6.
+"""Production's per-WARC outputs: the fixture WARCs F1-F6, their committed goldens, and where on
+Marin's GCS the outputs of every WARC live.
 
-Every WARC's ``kept/`` file was consolidated to us-central2. Its tombstones stayed in the region of
-the worker that processed it, which the shard's catalog row records (``region``, and the TPU in
-``device``). Shards 0-403 ran production's two-phase path, whose catalog and tombstones live under
-its own namespace. Reading these needs Marin GCS credentials; run in us-central2 for the kept files.
+The goldens (``tests/golden/per_warc/``) hold the fixtures' outputs, so comparing a run on a fixture
+needs no bucket access. For other WARCs: every ``kept/`` file was consolidated to us-central2. Its
+tombstones stayed in the region of the worker that processed it, which the shard's catalog row records
+(``region``, and the TPU in ``device``). Shards 0-403 ran production's two-phase path, whose catalog and
+tombstones live under its own namespace. Reading these needs Marin GCS credentials; run in us-central2
+for the kept files.
 """
 
 import gzip
@@ -17,10 +20,12 @@ from dataclasses import dataclass
 
 import fsspec
 import pyarrow as pa
+import pyarrow.compute as pc
 import pyarrow.parquet as pq
 
 from atlantic_cc.warc.identity import warc_hash
 from atlantic_cc.worklist.identity import hash_shard
+from tests.parity.r1_compare import COUNTERS_FILE, GOLDEN_ROOT, SURVIVORS_FILE
 
 FUSED_NAMESPACE = "documents/fast_curation/lpv11_fastpipe_v2_1_fused-2a076ddfcb"
 TWO_PHASE_NAMESPACE = "documents/fast_curation/lpv11_fastpipe_v2_1-944ca6bc38"
@@ -137,10 +142,38 @@ def read_tombstone_rows(url: str) -> list[dict]:
 
 
 def load_asrun(warc: AsRunWarc) -> AsRunOutputs:
+    """Production's outputs for any WARC, read from Marin's GCS."""
     row = read_catalog_row(warc)
     with fsspec.open(kept_url(warc), "rb") as f:
         kept = pq.read_table(f, columns=KEPT_SCORE_COLUMNS)
     return AsRunOutputs(row, kept, read_tombstone_rows(tombstones_url(warc, row["region"])))
+
+
+def asrun_from_golden(warc: AsRunWarc) -> AsRunOutputs:
+    """Production's outputs for a fixture, rebuilt from its committed golden; equal to ``load_asrun``'s.
+
+    The golden stores every survivor's scores as float32: exact for kept rows, and for tombstones the
+    stored six-decimal value, which ``round(x, 6)`` recovers exactly. Its counters file keeps
+    production's marker (or, on the two-phase path, catalog) record.
+    """
+    golden = GOLDEN_ROOT / warc.warc_hash
+    if not golden.is_dir():
+        raise FileNotFoundError(f"no committed golden for {warc.warc_path}; read it from GCS instead")
+    counters = json.loads((golden / COUNTERS_FILE).read_text())
+    raw = counters.pop("raw")
+    record = raw["marker"]["record"] if "marker" in raw else raw["catalog_row"]
+    survivors = pq.read_table(golden / SURVIVORS_FILE)
+    is_kept = survivors.column("kept")
+    dropped = survivors.filter(pc.invert(is_kept)).select(["doc_id", "pooled_prob", "modernbert_prob"])
+    tombstones = [
+        {
+            "doc_id": row["doc_id"],
+            "pooled_prob": round(row["pooled_prob"], 6),
+            "modernbert_prob": None if row["modernbert_prob"] is None else round(row["modernbert_prob"], 6),
+        }
+        for row in dropped.to_pylist()
+    ]
+    return AsRunOutputs(record | counters, survivors.filter(is_kept).select(KEPT_SCORE_COLUMNS), tombstones)
 
 
 def fetch_asrun(warc: AsRunWarc, dest: str) -> None:
