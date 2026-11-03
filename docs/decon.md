@@ -88,10 +88,10 @@ layout and is not reproducible from the regrouped release, so D is shipped.
 | Artifact | Where | Size | Digest |
 |---|---|---|---|
 | D, `drop_hashes.npy` (sorted uint64) | this package, `atlantic_cc/decon/data/` | 66,558 hashes, 532,592 B | sha256 of the LE uint64 bytes `5d71024672f39cd7e52fe4ae97c6d846481cbcf290aacf5d9cbd4ed787795fb8` |
-| S', `eval_hits.npy` (sorted uint64) | release asset | 10,944,079 hashes, 87,552,760 B | array sha256 `1890774187c40b516dd1243ec69f9022e7c5854e9ae64e3ce19fbca955a828a0`; file sha256 `243edfa7306c95cd9ba8bf45f8eae54a7f3f89640afdb7b18de96f72214e7205` |
-| `eval_hit_names.parquet` (`hash uint64`, `eval_names list<string>`) | release asset | 10,944,079 rows, 94,902,663 B | file sha256 `b6f2653e3e3dc94f9321b253026752247d7897592833b58da7ab3b9d8ede3681` |
+| S', `eval_hits.npy` (sorted uint64) | [v1.0 release][release] | 10,944,079 hashes, 87,552,760 B | array sha256 `1890774187c40b516dd1243ec69f9022e7c5854e9ae64e3ce19fbca955a828a0`; file sha256 `243edfa7306c95cd9ba8bf45f8eae54a7f3f89640afdb7b18de96f72214e7205` |
+| `eval_hit_names.parquet` (`hash uint64`, `eval_names list<string>`) | [v1.0 release][release] | 10,944,079 rows, 94,902,663 B | file sha256 `b6f2653e3e3dc94f9321b253026752247d7897592833b58da7ab3b9d8ede3681` |
 | eval corpus digests, `eval_file_digests.json` (per file: records, sha256 of `id\tsha256(text)` lines, sha256 of sorted distinct feature hashes) | this package, `data/as_run/` | 1,147 files, 366 KB | |
-| eval record digests, `eval_record_digests.parquet` (`file`, `id`, `text_sha256`) | release asset | 2,106,579 rows, 68,468,737 B | |
+| eval record digests, `eval_record_digests.parquet` (`file`, `id`, `text_sha256`) | [v1.0 release][release] | 2,106,579 rows, 68,468,737 B | file sha256 `c2db5681dc0b63d2dab5d113b0548ff66c17caadb1e5e6892c501e5b406ec651` |
 | as-run manifests and provenance (`aa_manifest.json`, `lmh_manifest.json`, `val_manifest.json`, `provenance.json`) | this package, `data/as_run/` | 220 KB | task names, record counts, summaries, object md5s |
 
 S' is every eval phrase that the as-run mark pass (one required phrase, no drop set) matched anywhere in
@@ -99,9 +99,14 @@ the 9.95B-document pool. It contains no eval text, only hashes of 13-word phrase
 records) that already occur in public Common Crawl documents. The full bloom (901 MB) also covers phrases
 that never occur on the web (HLE, GPQA, Paloma, LIMA) and is not shipped by default.
 
+[release]: https://github.com/marin-community/atlantic-cc/releases/tag/v1.0
+
 ## Replay: exact on the released text
 
 ```bash
+for f in eval_hits.npy eval_hit_names.parquet; do
+    curl -LO "https://github.com/marin-community/atlantic-cc/releases/download/v1.0/$f"
+done
 atlantic-cc decon filter --kind release \
     --eval-hits eval_hits.npy --names eval_hit_names.parquet --workers 8 \
     --out decon_out/ 'crawl=CC-NEWS-2016-08/*.parquet'
