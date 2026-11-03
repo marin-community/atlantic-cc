@@ -12,7 +12,7 @@
 #
 # Required: OUTPUT and WARC_LIST. Optional: NUM_SHARDS (default 1000; the array covers 0 to
 # NUM_SHARDS-1), PHASE_A_PROCS, EXTRACTOR (a production-layout resiliparse-rs artifact; unset uses
-# the installed wheel), CACHE_DIR (passed as --cache-dir), FASTTEXT_MODEL, POOLED_MODEL and
+# the wheel that the extractor extra installs), CACHE_DIR (passed as --cache-dir), FASTTEXT_MODEL, POOLED_MODEL and
 # TERMINAL_MODEL. With a hand-installed torch (Pascal or Volta GPUs), also export UV_NO_SYNC=1 so
 # that uv keeps it (docs/running.md#gpus).
 #
@@ -40,7 +40,7 @@ NUM_SHARDS="${NUM_SHARDS:-1000}"
 PHASE_A_PROCS="${PHASE_A_PROCS:-4}"      # each uses 1 + 6 CPUs and ~6 GB of RAM
 
 status=0
-uv run --extra torch atlantic-cc extract-classify \
+uv run --extra torch --extra extractor atlantic-cc extract-classify \
   --warc-list "${WARC_LIST}" --output "${OUTPUT}" \
   --shard-index "${SLURM_ARRAY_TASK_ID}" --num-shards "${NUM_SHARDS}" \
   --backend torch --torch-device cuda --phase-a-procs "${PHASE_A_PROCS}" \

@@ -35,14 +35,14 @@ this code reproduces the production file byte for byte, and tombstones decompres
 
 - Linux x86_64 and CPython 3.12. Phase A is exact only there ([reproducibility.md](reproducibility.md)); the
   resiliparse-rs extension is built for it.
-- The environment: `uv sync --extra torch` for GPUs or CPUs, `uv sync --extra tpu` on a TPU VM, or
-  `uv sync --extra jax` for the JAX backend on a CPU; add `--extra gcs` or `--extra s3` to read or write
-  buckets. GPUs have further requirements ([GPUs](#gpus)).
-- The resiliparse-rs extension: the as-run wheel, installed with `uv pip install` after the last
-  `uv sync` ([extractor.md](extractor.md)). The wheel is not in the lockfile, so `uv sync` removes it;
-  `uv run` and `uv sync --inexact` keep it. Alternatively, pass a production-layout artifact directory
-  as `--extractor <prefix>`; it is unpacked under `--cache-dir`, which must allow executable mappings
-  (not a `noexec` `/tmp`).
+- The environment: `uv sync --extra torch --extra extractor` for GPUs or CPUs; on a TPU VM use
+  `--extra tpu` instead of `--extra torch`, and for the JAX backend on a CPU `--extra jax`. Add
+  `--extra gcs` or `--extra s3` to read or write buckets. GPUs have further requirements ([GPUs](#gpus)).
+- The resiliparse-rs extension: the `extractor` extra installs production's binaries, the as-run wheel
+  ([extractor.md](extractor.md)). Pass it to every `uv sync`, which removes packages the selected extras
+  do not list (`uv run` keeps them). Alternatively, pass a production-layout artifact directory as
+  `--extractor <prefix>`; it is unpacked under `--cache-dir`, which must allow executable mappings (not
+  a `noexec` `/tmp`).
 - The three classifiers. By default they come from the Hugging Face Hub
   (`marin-community/atlantic-cc-fasttext`, `-pooled-transformer`, `-modernbert`). `--fasttext-model`,
   `--pooled-model` and `--terminal-model` also take local repo folders and `gs://`/`s3://` folders,
@@ -91,12 +91,11 @@ Production ran this worker on TPU v4-8, v5p-8, v5e (v5litepod-8/16/32) and v6e h
 backend:
 
 ```bash
-uv sync --extra tpu --extra gcs
+uv sync --extra tpu --extra extractor --extra gcs
 uv run atlantic-cc extract-classify \
   --warc-list gs://bucket/v1.0.input.warc.paths.gz --output gs://bucket/atlantic-cc/ \
   --shard-index 0 --num-shards 32000 \
-  --backend jax --phase-a-procs 14 --extract-procs 6 --queue-depth 6 \
-  --extractor gs://bucket/artifacts/resiliparse_rs/latest
+  --backend jax --phase-a-procs 14 --extract-procs 6 --queue-depth 6
 ```
 
 The JAX scorer shards every batch of 32 over the host's chips (8 rows per chip on 4-chip hosts,
@@ -112,8 +111,7 @@ to Marin's Iris cluster.
 The PyTorch backend runs on one GPU per worker:
 
 ```bash
-uv sync --extra torch --extra s3
-uv pip install resiliparse_rs_atlantic_cc-0+850891b-cp312-cp312-manylinux_2_34_x86_64.whl   # after every uv sync
+uv sync --extra torch --extra extractor --extra s3
 uv run atlantic-cc extract-classify --warc-list ... --output s3://bucket/atlantic-cc/ \
   --shard-index $SLURM_ARRAY_TASK_ID --num-shards 1000 \
   --backend torch --torch-device cuda --phase-a-procs 4

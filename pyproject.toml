@@ -38,6 +38,10 @@ s3 = ["s3fs==2026.1.0"]
 jax = ["jax==0.11.0"]
 tpu = ["jax[tpu]==0.11.0"]
 torch = ["torch>=2.6"]
+# Production's resiliparse-rs binaries (docs/extractor.md). The wheel exists for Linux x86_64 only.
+extractor = [
+    "resiliparse-rs-atlantic-cc @ https://github.com/marin-community/atlantic-cc-resiliparse/releases/download/atlantic-cc-v1.0/resiliparse_rs_atlantic_cc-0%2B850891b-cp312-cp312-manylinux_2_34_x86_64.whl ; sys_platform == 'linux' and platform_machine == 'x86_64'",
+]
 dev = ["pytest>=8", "ruff>=0.6"]
 
 [project.scripts]
@@ -45,6 +49,10 @@ atlantic-cc = "atlantic_cc.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/atlantic_cc"]
+
+[tool.hatch.metadata]
+# The extractor extra installs its wheel by URL.
+allow-direct-references = true
 
 [tool.uv]
 # marin-dupekit-native is published only as dev pre-releases.

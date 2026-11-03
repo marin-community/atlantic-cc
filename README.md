@@ -13,13 +13,12 @@ cascade of three classifiers, then globally deduplicated and decontaminated.
 
 ```bash
 git clone https://github.com/marin-community/atlantic-cc && cd atlantic-cc
-uv sync --extra torch        # GPUs or CPU; use --extra tpu on TPUs
-uv pip install resiliparse_rs_atlantic_cc-0+850891b-cp312-cp312-manylinux_2_34_x86_64.whl
+uv sync --extra torch --extra extractor   # GPUs or CPU; on TPUs, --extra tpu instead of --extra torch
 ```
 
-Python 3.12. Extraction needs Linux x86_64 and the resiliparse-rs extractor, which the last line installs
-([docs/extractor.md](docs/extractor.md)). It is not in the lockfile, so a later `uv sync` removes it (`uv run`
-does not). GPUs need compute capability 7.5 or newer ([GPU requirements](docs/running.md#gpus)).
+Python 3.12. Extraction needs Linux x86_64 with glibc 2.34 or newer, where the `extractor` extra installs
+production's resiliparse-rs binaries ([docs/extractor.md](docs/extractor.md)). GPUs need compute capability
+7.5 or newer ([GPU requirements](docs/running.md#gpus)).
 
 ## Quickstart: one WARC
 

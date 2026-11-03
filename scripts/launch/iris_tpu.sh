@@ -30,11 +30,11 @@ PHASE_A_PROCS="${PHASE_A_PROCS:-8}"
 CPUS="${CPUS:-56}"                         # PHASE_A_PROCS * (1 + 6 extraction processes)
 MEMORY="${MEMORY:-200GB}"
 MAX_RETRIES="${MAX_RETRIES:-5}"
-EXTRACTOR="${EXTRACTOR:?resiliparse-rs artifact prefix (see docs/extraction.md)}"
 IRIS="${IRIS:-iris}"
-# Optional model sources, quoted for the job's shell.
-MODEL_ARGS="${FASTTEXT_MODEL:+ --fasttext-model '${FASTTEXT_MODEL}'}${POOLED_MODEL:+ --pooled-model '${POOLED_MODEL}'}"
-MODEL_ARGS+="${TERMINAL_MODEL:+ --terminal-model '${TERMINAL_MODEL}'}"
+# Optional sources, quoted for the job's shell. EXTRACTOR is a production-layout resiliparse-rs artifact
+# prefix (docs/extractor.md); unset, the job uses the wheel that the extractor extra installs.
+SOURCE_ARGS="${EXTRACTOR:+ --extractor '${EXTRACTOR}'}${FASTTEXT_MODEL:+ --fasttext-model '${FASTTEXT_MODEL}'}"
+SOURCE_ARGS+="${POOLED_MODEL:+ --pooled-model '${POOLED_MODEL}'}${TERMINAL_MODEL:+ --terminal-model '${TERMINAL_MODEL}'}"
 
 for ((first = FIRST_SHARD; first <= LAST_SHARD; first += SHARDS_PER_JOB)); do
   last=$((first + SHARDS_PER_JOB - 1))
@@ -44,7 +44,7 @@ for ((first = FIRST_SHARD; first <= LAST_SHARD; first += SHARDS_PER_JOB)); do
   for s in \$(seq ${first} ${last}); do
     python -m atlantic_cc.cli extract-classify --warc-list '${WARC_LIST}' --output '${OUTPUT}' \
       --shard-index \${s} --num-shards ${NUM_SHARDS} --backend jax \
-      --phase-a-procs ${PHASE_A_PROCS} --extractor '${EXTRACTOR}' --cache-dir /root/.cache/atlantic_cc${MODEL_ARGS}
+      --phase-a-procs ${PHASE_A_PROCS} --cache-dir /root/.cache/atlantic_cc${SOURCE_ARGS}
     status=\$?
     if [ \${status} -eq 70 ]; then exit 70; fi
     if [ \${status} -ne 0 ]; then failed=1; fi
@@ -52,7 +52,7 @@ for ((first = FIRST_SHARD; first <= LAST_SHARD; first += SHARDS_PER_JOB)); do
   exit \${failed}"
   "${IRIS}" --cluster=marin job run \
     --tpu "${TPU}" --region "${REGION}" --cpu "${CPUS}" --memory "${MEMORY}" --enable-extra-resources \
-    --extra tpu --extra gcs --max-retries "${MAX_RETRIES}" \
+    --extra tpu --extra gcs --extra extractor --max-retries "${MAX_RETRIES}" \
     --job-name "atlcc-extract-${TPU}-$(printf '%05d' "${first}")" --no-wait \
     -- bash -c "${script}"
 done

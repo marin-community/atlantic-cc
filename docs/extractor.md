@@ -86,17 +86,19 @@ production's two binaries, unchanged:
 | `resiliparse/_extract_rs.cpython-312-x86_64-linux-gnu.so` | 3,979,816 | `mjHiDXINNTxVCUttKER1Iw==` | `9e2bdfe91dc14fbe17846c0d1c0806eb12b19f64bba6db9cf8669fd1bd19a364` |
 | `resiliparse/liblexbor.so.2` | 12,431,649 | `hX51w84LHTU6X/dTPVUyfw==` | `cf016d48cf67a8b6d859cb25e71c82c3c7ff414cfcaedf595e8b3c158f5aecd2` |
 
-The wheel is not published yet. Until it is, it exists only where maintainers build it (see the end of
-this section). Install it into the project environment and smoke-test it:
+The wheel is published with the fork's
+[`atlantic-cc-v1.0` release](https://github.com/marin-community/atlantic-cc-resiliparse/releases/tag/atlantic-cc-v1.0),
+and the project's `extractor` extra installs it from there; the lockfile pins its sha256. On platforms
+other than Linux x86_64 the extra installs nothing. Install it with the rest of the environment and
+smoke-test it:
 
 ```bash
-uv pip install resiliparse_rs_atlantic_cc-0+850891b-cp312-cp312-manylinux_2_34_x86_64.whl
+uv sync --extra torch --extra extractor
 uv run atlantic-cc extractor-check     # prints "smoke": "passed" and "asrun_binaries": true
 ```
 
-The wheel is not in the project's lockfile, and `uv sync` removes every package the lockfile does not
-list. Run `uv sync` first, with every extra you need (for example `--extra torch --extra dev`), and
-install the wheel after it, or sync with `uv sync --inexact`. `uv run` does not remove it.
+Pass `--extra extractor` to every later `uv sync` too: `uv sync` removes packages that the selected
+extras do not list. `uv run` does not remove them.
 
 The highest symbol versions the binaries need are `GLIBC_2.34` (`pthread_key_create`), `GLIBC_2.33`
 and `GLIBC_2.29` (`log`), so the wheel installs on glibc 2.34 or newer: RHEL, Alma and Rocky Linux 9,
@@ -118,12 +120,18 @@ Maintainers with access to those buckets rebuild the wheel from the production a
 
 ### Docker (portable, glibc >= 2.28)
 
-From the Atlantic-CC repository root, on any machine with Docker (install the wheel, as in Option 1,
-on the Linux x86_64 machine that will run extraction):
+From the Atlantic-CC repository root, on any machine with Docker:
 
 ```bash
 docker build --platform linux/amd64 -t atlantic-cc-resiliparse-rs scripts/build_resiliparse_rs
 docker run --rm --platform linux/amd64 -v "$PWD/dist:/out" atlantic-cc-resiliparse-rs
+```
+
+Install the wheel on the Linux x86_64 machine that will run extraction, after a `uv sync` without
+`--extra extractor`. The lockfile does not list it, so a later `uv sync` removes it; `uv run` and
+`uv sync --inexact` keep it.
+
+```bash
 uv pip install dist/resiliparse_rs_atlantic_cc-0+850891b-cp312-cp312-manylinux_2_28_x86_64.whl
 ```
 

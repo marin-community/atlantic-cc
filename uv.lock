@@ -142,6 +142,9 @@ dev = [
     { name = "pytest" },
     { name = "ruff" },
 ]
+extractor = [
+    { name = "resiliparse-rs-atlantic-cc", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
+]
 gcs = [
     { name = "gcsfs" },
     { name = "google-cloud-storage" },
@@ -177,6 +180,7 @@ requires-dist = [
     { name = "pyarrow", specifier = "==23.0.1" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
     { name = "requests", specifier = "==2.33.1" },
+    { name = "resiliparse-rs-atlantic-cc", marker = "platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extractor'", url = "https://github.com/marin-community/atlantic-cc-resiliparse/releases/download/atlantic-cc-v1.0/resiliparse_rs_atlantic_cc-0%2B850891b-cp312-cp312-manylinux_2_34_x86_64.whl" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.6" },
     { name = "s3fs", marker = "extra == 's3'", specifier = "==2026.1.0" },
     { name = "safetensors", specifier = "==0.6.2" },
@@ -187,7 +191,7 @@ requires-dist = [
     { name = "xxhash", specifier = "==3.6.0" },
     { name = "zstandard", specifier = "==0.25.0" },
 ]
-provides-extras = ["gcs", "s3", "jax", "tpu", "torch", "dev"]
+provides-extras = ["gcs", "s3", "jax", "tpu", "torch", "extractor", "dev"]
 
 [[package]]
 name = "attrs"
@@ -1486,6 +1490,14 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/42/f2/05f29bc3913aea15eb670be136045bf5c5bbf4b99ecb839da9b422bb2c85/requests-oauthlib-2.0.0.tar.gz", hash = "sha256:b3dffaebd884d8cd778494369603a9e7b58d29111bf6b41bdc2dcd87203af4e9", size = 55650, upload-time = "2024-03-22T20:32:29.939Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3b/5d/63d4ae3b9daea098d5d6f5da83984853c1bbacd5dc826764b249fe119d24/requests_oauthlib-2.0.0-py2.py3-none-any.whl", hash = "sha256:7dd8a5c40426b779b0868c404bdef9768deccf22749cde15852df527e6269b36", size = 24179, upload-time = "2024-03-22T20:32:28.055Z" },
+]
+
+[[package]]
+name = "resiliparse-rs-atlantic-cc"
+version = "0+850891b"
+source = { url = "https://github.com/marin-community/atlantic-cc-resiliparse/releases/download/atlantic-cc-v1.0/resiliparse_rs_atlantic_cc-0%2B850891b-cp312-cp312-manylinux_2_34_x86_64.whl" }
+wheels = [
+    { url = "https://github.com/marin-community/atlantic-cc-resiliparse/releases/download/atlantic-cc-v1.0/resiliparse_rs_atlantic_cc-0%2B850891b-cp312-cp312-manylinux_2_34_x86_64.whl", hash = "sha256:7747e6e4dce15057df3082275fcdd722a4a81a571aeda33dc919365baf1439f8" },
 ]
 
 [[package]]
